@@ -7,8 +7,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+<!-- JS flag: added immediately so CSS can key off it -->
+<script>document.documentElement.classList.add('js')</script>
 <style>
-/* ── TOKENS ─────────────────────────────────────────────── */
 :root {
   --bg:      #09090e;
   --surf:    #111118;
@@ -22,154 +23,192 @@
   --r:       3px;
   --navh:    70px;
 }
-/* ── RESET ──────────────────────────────────────────────── */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;font-weight:300;font-size:16px;overflow-x:hidden;cursor:none}
-a{text-decoration:none;color:inherit}
-/* ── CURSOR ─────────────────────────────────────────────── */
-.c-dot,.c-ring{position:fixed;border-radius:50%;pointer-events:none;z-index:9000;transform:translate(-50%,-50%)}
-.c-dot{width:7px;height:7px;background:var(--gold);z-index:9001;transition:width .15s,height .15s}
-.c-ring{width:34px;height:34px;border:1px solid rgba(201,169,110,.32);transition:width .2s,height .2s,border-color .2s}
-body.ch .c-dot{width:11px;height:11px}
-body.ch .c-ring{width:52px;height:52px;border-color:rgba(201,169,110,.55)}
-/* ── NOISE ──────────────────────────────────────────────── */
-body::after{content:'';position:fixed;inset:0;z-index:8000;pointer-events:none;opacity:.5;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E")}
-/* ── NAV ────────────────────────────────────────────────── */
-#nav{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--navh);display:flex;align-items:center;justify-content:space-between;padding:0 56px;border-bottom:1px solid transparent;transition:background .3s,border-color .3s}
-#nav.solid{background:rgba(9,9,14,.93);backdrop-filter:blur(18px);border-color:var(--border)}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;letter-spacing:.04em;color:var(--gold-lt);cursor:none}
-.nav-logo em{font-style:italic}
-.nav-links{display:flex;gap:30px;list-style:none}
-.nav-links a{font-family:'DM Mono',monospace;font-size:.67rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);transition:color .2s;cursor:none}
-.nav-links a:hover{color:var(--gold)}
-.nav-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 20px;background:var(--gold);color:var(--bg);font-family:'DM Mono',monospace;font-size:.67rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;border-radius:var(--r);transition:background .2s,transform .2s;cursor:none}
-.nav-btn:hover{background:var(--gold-lt);transform:translateY(-1px)}
-/* ── BUTTONS ────────────────────────────────────────────── */
-.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.11em;text-transform:uppercase;border-radius:var(--r);transition:all .2s;cursor:none}
-.btn-s{background:var(--gold);color:var(--bg);font-weight:500}
-.btn-s:hover{background:var(--gold-lt);transform:translateY(-2px)}
-.btn-g{border:1px solid rgba(201,169,110,.35);color:var(--gold)}
-.btn-g:hover{border-color:var(--gold);background:rgba(201,169,110,.06);transform:translateY(-2px)}
-.btn-d{border:1px solid rgba(255,255,255,.11);color:var(--muted)}
-.btn-d:hover{border-color:rgba(255,255,255,.24);color:var(--text);transform:translateY(-2px)}
-/* ── SECTION ────────────────────────────────────────────── */
-.sec{position:relative;z-index:1;padding:108px 56px;border-top:1px solid var(--border)}
-.sec-alt{background:var(--surf)}
-/* ── TYPE ───────────────────────────────────────────────── */
-.eyebrow{display:flex;align-items:center;gap:10px;font-family:'DM Mono',monospace;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
-.eyebrow::before{content:'//';color:var(--muted)}
-.disp{font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1.05;letter-spacing:-.01em}
-.disp em{font-style:italic;color:var(--gold-lt)}
-.d-xl{font-size:clamp(3.8rem,9vw,8.8rem)}
-.d-lg{font-size:clamp(2.2rem,4.5vw,3.8rem)}
-.d-md{font-size:1.7rem}
-.d-sm{font-size:1.4rem}
-.body-l{font-size:1.04rem;color:rgba(232,232,240,.72);line-height:1.82}
-.body-s{font-size:.87rem;color:rgba(232,232,240,.6);line-height:1.76}
-.mono{font-family:'DM Mono',monospace;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-/* ── CARD ───────────────────────────────────────────────── */
-.card{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:36px;transition:border-color .25s,transform .25s;cursor:none}
-.card:hover{border-color:rgba(201,169,110,.28);transform:translateY(-3px)}
-.card-top::before{content:'';display:block;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:-36px -36px 30px}
-/* ── PILL ───────────────────────────────────────────────── */
-.pill{display:inline-block;padding:5px 12px;border:1px solid var(--border);border-radius:var(--r);font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);transition:border-color .2s,color .2s}
-.pill:hover,.pill.on{border-color:rgba(201,169,110,.38);color:var(--gold)}
-/* ── REVEAL ─────────────────────────────────────────────── */
-.rv{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
-.rv.vis{opacity:1;transform:none}
-.rv.d1{transition-delay:.09s}.rv.d2{transition-delay:.18s}.rv.d3{transition-delay:.27s}
-/* ── HERO ───────────────────────────────────────────────── */
-#hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 56px 80px;overflow:hidden;border:none}
-.h-grid{position:absolute;inset:0;z-index:0;
-  background-image:linear-gradient(rgba(201,169,110,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,169,110,.04) 1px,transparent 1px);
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { background:var(--bg); color:var(--text); font-family:'Outfit',sans-serif; font-weight:300; font-size:16px; overflow-x:hidden; }
+a { text-decoration:none; color:inherit; }
+
+/* ── CURSOR (only active when JS runs) ───────────────── */
+.c-dot, .c-ring {
+  position:fixed; border-radius:50%; pointer-events:none;
+  z-index:9000; transform:translate(-50%,-50%);
+  opacity:0; transition:opacity .3s;
+}
+.c-dot { width:7px; height:7px; background:var(--gold); z-index:9001; }
+.c-ring { width:34px; height:34px; border:1px solid rgba(201,169,110,.35); transition:width .2s, height .2s, border-color .2s, opacity .3s; }
+body.cursor-ready .c-dot,
+body.cursor-ready .c-ring { opacity:1; cursor:none; }
+body.cursor-ready { cursor:none; }
+body.ch .c-dot  { width:11px; height:11px; }
+body.ch .c-ring { width:52px; height:52px; border-color:rgba(201,169,110,.55); }
+
+/* ── NOISE ───────────────────────────────────────────── */
+body::after {
+  content:''; position:fixed; inset:0; z-index:8000; pointer-events:none; opacity:.45;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+}
+
+/* ── NAV ─────────────────────────────────────────────── */
+#nav {
+  position:fixed; top:0; left:0; right:0; z-index:500;
+  height:var(--navh); display:flex; align-items:center;
+  justify-content:space-between; padding:0 56px;
+  border-bottom:1px solid transparent;
+  transition:background .3s, border-color .3s;
+}
+#nav.solid { background:rgba(9,9,14,.93); backdrop-filter:blur(18px); border-color:var(--border); }
+.nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:300; letter-spacing:.04em; color:var(--gold-lt); }
+.nav-logo em { font-style:italic; }
+.nav-links { display:flex; gap:28px; list-style:none; }
+.nav-links a { font-family:'DM Mono',monospace; font-size:.67rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); transition:color .2s; }
+.nav-links a:hover { color:var(--gold); }
+.nav-btn { display:inline-flex; align-items:center; gap:6px; padding:8px 20px; background:var(--gold); color:var(--bg); font-family:'DM Mono',monospace; font-size:.67rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase; border-radius:var(--r); transition:background .2s, transform .2s; }
+.nav-btn:hover { background:var(--gold-lt); transform:translateY(-1px); }
+
+/* ── BUTTONS ─────────────────────────────────────────── */
+.btn { display:inline-flex; align-items:center; gap:7px; padding:11px 24px; font-family:'DM Mono',monospace; font-size:.68rem; letter-spacing:.11em; text-transform:uppercase; border-radius:var(--r); transition:all .2s; }
+.btn-s { background:var(--gold); color:var(--bg); font-weight:500; }
+.btn-s:hover { background:var(--gold-lt); transform:translateY(-2px); }
+.btn-g { border:1px solid rgba(201,169,110,.35); color:var(--gold); }
+.btn-g:hover { border-color:var(--gold); background:rgba(201,169,110,.06); transform:translateY(-2px); }
+.btn-d { border:1px solid rgba(255,255,255,.11); color:var(--muted); }
+.btn-d:hover { border-color:rgba(255,255,255,.24); color:var(--text); transform:translateY(-2px); }
+
+/* ── SECTIONS ────────────────────────────────────────── */
+.sec { position:relative; z-index:1; padding:108px 56px; border-top:1px solid var(--border); }
+.sec-alt { background:var(--surf); }
+
+/* ── TYPE ────────────────────────────────────────────── */
+.eyebrow { display:flex; align-items:center; gap:10px; font-family:'DM Mono',monospace; font-size:.64rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
+.eyebrow::before { content:'//'; color:var(--muted); }
+.disp { font-family:'Cormorant Garamond',serif; font-weight:300; line-height:1.05; letter-spacing:-.01em; }
+.disp em { font-style:italic; color:var(--gold-lt); }
+.d-xl { font-size:clamp(3.8rem,9vw,8.8rem); }
+.d-lg { font-size:clamp(2.2rem,4.5vw,3.8rem); }
+.d-sm { font-size:1.4rem; }
+.body-l { font-size:1.04rem; color:rgba(232,232,240,.72); line-height:1.82; }
+.body-s { font-size:.87rem; color:rgba(232,232,240,.6); line-height:1.76; }
+.mono { font-family:'DM Mono',monospace; font-size:.64rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+
+/* ── CARD ────────────────────────────────────────────── */
+.card { background:var(--surf); border:1px solid var(--border); border-radius:var(--r); padding:36px; transition:border-color .25s, transform .25s; }
+.card:hover { border-color:rgba(201,169,110,.28); transform:translateY(-3px); }
+.card-top::before { content:''; display:block; height:2px; background:linear-gradient(90deg,var(--gold),transparent); margin:-36px -36px 30px; }
+
+/* ── PILLS ───────────────────────────────────────────── */
+.pill-row { display:flex; flex-wrap:wrap; gap:7px; margin-top:28px; }
+.pill { display:inline-block; padding:5px 13px; border:1px solid rgba(201,169,110,.22); border-radius:var(--r); font-family:'DM Mono',monospace; font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; color:rgba(201,169,110,.7); cursor:default; user-select:none; }
+
+/* ── REVEAL — content visible by default, JS animates it */
+.rv { transition:opacity .65s ease, transform .65s ease; }
+.js .rv { opacity:0; transform:translateY(20px); }
+.js .rv.vis { opacity:1; transform:none; }
+.rv.d1 { transition-delay:.09s; }
+.rv.d2 { transition-delay:.18s; }
+.rv.d3 { transition-delay:.27s; }
+
+/* ── HERO ────────────────────────────────────────────── */
+#hero {
+  position:relative; min-height:100vh;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  padding:0 56px 80px; overflow:hidden; border:none;
+}
+.h-grid {
+  position:absolute; inset:0; z-index:0;
+  background-image: linear-gradient(rgba(201,169,110,.04) 1px,transparent 1px), linear-gradient(90deg,rgba(201,169,110,.04) 1px,transparent 1px);
   background-size:58px 58px;
-  mask-image:radial-gradient(ellipse 75% 70% at 65% 50%,black 20%,transparent 78%)}
-.h-glow{position:absolute;pointer-events:none;z-index:0}
-.h-glow-a{top:5%;right:-8%;width:720px;height:720px;background:radial-gradient(circle,rgba(79,142,247,.07) 0%,transparent 65%)}
-.h-glow-b{bottom:-15%;left:5%;width:520px;height:520px;background:radial-gradient(circle,rgba(201,169,110,.05) 0%,transparent 65%)}
-.h-inner{position:relative;z-index:1}
-.h-tag{font-family:'DM Mono',monospace;font-size:.67rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px;margin-bottom:22px;opacity:0;animation:fup .7s .15s forwards}
-.h-tag::before{content:'';width:34px;height:1px;background:var(--gold);opacity:.5}
-.h-name{opacity:0;animation:fup .9s .3s forwards;margin-bottom:28px}
-.h-sub{display:flex;align-items:flex-end;gap:44px;opacity:0;animation:fup .8s .5s forwards}
-.h-desc{max-width:430px}
-.h-btns{display:flex;gap:10px;flex-shrink:0}
-.h-scroll{position:absolute;bottom:32px;right:56px;z-index:1;writing-mode:vertical-rl;display:flex;align-items:center;gap:10px;font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);opacity:0;animation:fin 1s .95s forwards}
-.h-scroll::after{content:'';width:1px;height:52px;background:linear-gradient(to bottom,var(--muted),transparent)}
-/* ── STATS ──────────────────────────────────────────────── */
-.stats{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border)}
-.s-cell{padding:30px 38px;border-right:1px solid var(--border)}
-.s-cell:last-child{border-right:none}
-.s-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--gold-lt);line-height:1;margin-bottom:6px}
-.s-lbl{font-size:.78rem;color:var(--muted);line-height:1.5}
-/* ── ABOUT ──────────────────────────────────────────────── */
-.about-g{display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:start}
-.pill-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:28px}
-.cert-list{list-style:none;margin-top:4px}
-.cert-list li{display:flex;align-items:flex-start;gap:12px;padding:13px 0;border-bottom:1px solid var(--border);font-size:.87rem;color:rgba(232,232,240,.7);line-height:1.55}
-.cert-list li:last-child{border-bottom:none}
-.cert-list li::before{content:'◆';color:var(--gold);font-size:.44rem;margin-top:6px;flex-shrink:0}
-/* ── EXPERIENCE ─────────────────────────────────────────── */
-.exp-g{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.exp-wide{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:40px}
-.exp-org{font-family:'DM Mono',monospace;font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
-.exp-role{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;line-height:1.2;margin-bottom:6px}
-.exp-date{font-family:'DM Mono',monospace;font-size:.61rem;letter-spacing:.08em;color:var(--muted);margin-bottom:20px}
-.blist{list-style:none}
-.blist li{display:flex;gap:11px;padding:7px 0;font-size:.87rem;color:rgba(232,232,240,.68);line-height:1.62;border-bottom:1px solid rgba(255,255,255,.03)}
-.blist li:last-child{border-bottom:none}
-.blist li::before{content:'→';color:var(--gold);font-size:.74rem;flex-shrink:0;margin-top:2px}
-.m-stack{display:flex;flex-direction:column;gap:13px;justify-content:center}
-.m-chip{background:var(--surf2);border:1px solid var(--border);border-radius:var(--r);padding:15px 20px}
-.m-val{font-family:'Cormorant Garamond',serif;font-size:2.1rem;font-weight:300;color:var(--gold-lt);line-height:1}
-.m-desc{font-size:.74rem;color:var(--muted);margin-top:4px;line-height:1.4}
-/* ── PROJECTS ───────────────────────────────────────────── */
-.proj-g{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.proj-card{display:flex;flex-direction:column}
-.proj-icon{width:43px;height:43px;background:var(--surf2);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:20px;flex-shrink:0}
-.proj-name{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:400;margin-bottom:10px}
-.proj-desc{font-size:.85rem;color:rgba(232,232,240,.62);line-height:1.74;flex:1;margin-bottom:18px}
-.proj-lnk{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
-.proj-lnk:hover{gap:10px}
-/* ── CAUSE ──────────────────────────────────────────────── */
-.cause-g{display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:center}
-.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(94,201,139,.08);border:1px solid rgba(94,201,139,.22);border-radius:100px;padding:5px 14px;font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:20px}
-.bdot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:blink 2s ease infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.pull{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-style:italic;font-weight:300;line-height:1.45;color:rgba(232,232,240,.82);margin-bottom:20px}
-.bar-row{display:flex;align-items:center;gap:16px;margin-bottom:14px}
-.bar-w{flex:1}
-.bar-lbl{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.08em;color:var(--muted);margin-bottom:6px}
-.bar-track{height:3px;background:var(--surf2);border-radius:2px;overflow:hidden}
-.bar-fill{height:100%;border-radius:2px;width:0;transition:width 1.3s ease}
-.bar-val{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;min-width:46px;text-align:right}
-/* ── CONTACT ────────────────────────────────────────────── */
-.contact-w{max-width:580px;margin:0 auto;text-align:center}
-.contact-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:38px}
-/* ── FOOTER ─────────────────────────────────────────────── */
-footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:26px 56px;display:flex;justify-content:space-between;align-items:center}
-/* ── KEYFRAMES ──────────────────────────────────────────── */
-@keyframes fup{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
-@keyframes fin{from{opacity:0}to{opacity:1}}
-/* ── RESPONSIVE ─────────────────────────────────────────── */
-@media(max-width:960px){
-  :root{--navh:60px}
-  #nav{padding:0 22px}
-  .nav-links{display:none}
-  #hero,.sec{padding-left:22px;padding-right:22px}
-  #hero{padding-bottom:60px}
-  .h-sub{flex-direction:column;align-items:flex-start;gap:22px}
-  .stats{grid-template-columns:1fr 1fr}
-  .s-cell:nth-child(2){border-right:none}
-  .about-g,.cause-g{grid-template-columns:1fr;gap:44px}
-  .exp-g{grid-template-columns:1fr}
-  .exp-wide{grid-column:span 1;grid-template-columns:1fr}
-  .proj-g{grid-template-columns:1fr}
-  footer{flex-direction:column;gap:8px;text-align:center;padding:20px}
-  body{cursor:auto}
-  .c-dot,.c-ring{display:none}
+  mask-image:radial-gradient(ellipse 75% 70% at 65% 50%,black 20%,transparent 78%);
+}
+.h-glow { position:absolute; pointer-events:none; z-index:0; }
+.h-glow-a { top:5%; right:-8%; width:720px; height:720px; background:radial-gradient(circle,rgba(79,142,247,.07) 0%,transparent 65%); }
+.h-glow-b { bottom:-15%; left:5%; width:520px; height:520px; background:radial-gradient(circle,rgba(201,169,110,.05) 0%,transparent 65%); }
+.h-inner { position:relative; z-index:1; }
+.h-tag { font-family:'DM Mono',monospace; font-size:.67rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); display:flex; align-items:center; gap:12px; margin-bottom:22px; animation:fup .7s .15s both; }
+.h-tag::before { content:''; width:34px; height:1px; background:var(--gold); opacity:.5; }
+.h-name { animation:fup .9s .3s both; margin-bottom:28px; }
+.h-sub { display:flex; align-items:flex-end; gap:44px; animation:fup .8s .5s both; }
+.h-desc { max-width:430px; }
+.h-btns { display:flex; gap:10px; flex-shrink:0; }
+.h-scroll { position:absolute; bottom:32px; right:56px; z-index:1; writing-mode:vertical-rl; display:flex; align-items:center; gap:10px; font-family:'DM Mono',monospace; font-size:.58rem; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); animation:fin 1s .95s both; }
+.h-scroll::after { content:''; width:1px; height:52px; background:linear-gradient(to bottom,var(--muted),transparent); }
+
+/* ── STATS ───────────────────────────────────────────── */
+.stats { position:relative; z-index:1; display:grid; grid-template-columns:repeat(4,1fr); border-bottom:1px solid var(--border); }
+.s-cell { padding:30px 38px; border-right:1px solid var(--border); }
+.s-cell:last-child { border-right:none; }
+.s-num { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:300; color:var(--gold-lt); line-height:1; margin-bottom:6px; padding-top:4px; }
+.s-lbl { font-size:.78rem; color:var(--muted); line-height:1.5; }
+
+/* ── ABOUT ───────────────────────────────────────────── */
+.about-g { display:grid; grid-template-columns:1fr 1fr; gap:68px; align-items:start; }
+.cert-list { list-style:none; margin-top:4px; }
+.cert-list li { display:flex; align-items:flex-start; gap:12px; padding:13px 0; border-bottom:1px solid var(--border); font-size:.87rem; color:rgba(232,232,240,.7); line-height:1.55; }
+.cert-list li:last-child { border-bottom:none; }
+.cert-list li::before { content:'◆'; color:var(--gold); font-size:.44rem; margin-top:6px; flex-shrink:0; }
+
+/* ── EXPERIENCE ──────────────────────────────────────── */
+.exp-g { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.exp-wide { grid-column:span 2; display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+.exp-org { font-family:'DM Mono',monospace; font-size:.63rem; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+.exp-role { font-family:'Cormorant Garamond',serif; font-size:1.7rem; font-weight:300; line-height:1.2; margin-bottom:6px; }
+.exp-date { font-family:'DM Mono',monospace; font-size:.61rem; letter-spacing:.08em; color:var(--muted); margin-bottom:20px; }
+.blist { list-style:none; }
+.blist li { display:flex; gap:11px; padding:7px 0; font-size:.87rem; color:rgba(232,232,240,.68); line-height:1.62; border-bottom:1px solid rgba(255,255,255,.03); }
+.blist li:last-child { border-bottom:none; }
+.blist li::before { content:'→'; color:var(--gold); font-size:.74rem; flex-shrink:0; margin-top:2px; }
+.m-stack { display:flex; flex-direction:column; gap:13px; justify-content:center; }
+.m-chip { background:var(--surf2); border:1px solid var(--border); border-radius:var(--r); padding:15px 20px; }
+.m-val { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:300; color:var(--gold-lt); line-height:1.3; }
+.m-desc { font-size:.74rem; color:var(--muted); margin-top:4px; line-height:1.4; }
+
+/* ── PROJECTS ────────────────────────────────────────── */
+.proj-g { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.proj-card { display:flex; flex-direction:column; }
+.proj-icon { width:43px; height:43px; background:var(--surf2); border:1px solid var(--border); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.25rem; margin-bottom:20px; flex-shrink:0; }
+.proj-name { font-family:'Cormorant Garamond',serif; font-size:1.35rem; font-weight:400; margin-bottom:10px; }
+.proj-desc { font-size:.85rem; color:rgba(232,232,240,.62); line-height:1.74; flex:1; margin-bottom:18px; }
+.proj-lnk { font-family:'DM Mono',monospace; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); display:inline-flex; align-items:center; gap:6px; transition:gap .2s; }
+.proj-lnk:hover { gap:10px; }
+
+/* ── CAUSE ───────────────────────────────────────────── */
+.cause-g { display:grid; grid-template-columns:1fr 1fr; gap:68px; align-items:center; }
+.badge { display:inline-flex; align-items:center; gap:8px; background:rgba(94,201,139,.08); border:1px solid rgba(94,201,139,.22); border-radius:100px; padding:5px 14px; font-family:'DM Mono',monospace; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color:var(--green); margin-bottom:20px; }
+.bdot { width:5px; height:5px; border-radius:50%; background:var(--green); animation:blink 2s ease infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+.pull { font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-style:italic; font-weight:300; line-height:1.45; color:rgba(232,232,240,.82); margin-bottom:20px; }
+.bar-row { display:flex; align-items:center; gap:16px; margin-bottom:14px; }
+.bar-w { flex:1; }
+.bar-lbl { font-family:'DM Mono',monospace; font-size:.6rem; letter-spacing:.08em; color:var(--muted); margin-bottom:6px; }
+.bar-track { height:3px; background:var(--surf2); border-radius:2px; overflow:hidden; }
+.bar-fill { height:100%; border-radius:2px; width:0; transition:width 1.3s ease; }
+.bar-val { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:300; min-width:46px; text-align:right; }
+
+/* ── CONTACT ─────────────────────────────────────────── */
+.contact-w { max-width:580px; margin:0 auto; text-align:center; }
+.contact-btns { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:38px; }
+
+/* ── FOOTER ──────────────────────────────────────────── */
+footer { position:relative; z-index:1; border-top:1px solid var(--border); padding:26px 56px; display:flex; justify-content:space-between; align-items:center; }
+
+/* ── KEYFRAMES ───────────────────────────────────────── */
+@keyframes fup { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+@keyframes fin  { from { opacity:0; } to { opacity:1; } }
+
+/* ── RESPONSIVE ──────────────────────────────────────── */
+@media(max-width:960px) {
+  :root { --navh:60px; }
+  #nav { padding:0 22px; }
+  .nav-links { display:none; }
+  #hero, .sec { padding-left:22px; padding-right:22px; }
+  #hero { padding-bottom:60px; }
+  .h-sub { flex-direction:column; align-items:flex-start; gap:22px; }
+  .stats { grid-template-columns:1fr 1fr; }
+  .s-cell:nth-child(2) { border-right:none; }
+  .about-g, .cause-g { grid-template-columns:1fr; gap:44px; }
+  .exp-g { grid-template-columns:1fr; }
+  .exp-wide { grid-column:span 1; grid-template-columns:1fr; }
+  .proj-g { grid-template-columns:1fr; }
+  footer { flex-direction:column; gap:8px; text-align:center; padding:20px; }
 }
 </style>
 </head>
@@ -200,7 +239,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:26
     <p class="h-tag">Product Leader · AI Strategist · Mission-Driven</p>
     <h1 class="h-name disp d-xl">Daniel<br><em>Schneiderman</em></h1>
     <div class="h-sub">
-      <p class="h-desc body-l">Strategic Product Owner building AI-powered digital products that create measurable impact — from the United Nations to the T1D community.</p>
+      <p class="h-desc body-l">Product Owner who builds with AI and ships things that hold up — currently at the United Nations, personally invested in T1D health tech.</p>
       <div class="h-btns">
         <a class="btn btn-s" href="#contact">Let's Connect</a>
         <a class="btn btn-g" href="https://www.linkedin.com/in/danielschneiderman955/" target="_blank">LinkedIn ↗</a>
@@ -213,10 +252,10 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:26
 
 <!-- STATS -->
 <div class="stats">
-  <div class="s-cell rv"><div class="s-num" style="font-size:1.6rem;padding-top:6px">AI-First</div><div class="s-lbl">Building LLM-powered products that meaningfully reduce manual work</div></div>
-  <div class="s-cell rv d1"><div class="s-num" style="font-size:1.6rem;padding-top:6px">Global Scale</div><div class="s-lbl">Shipped products used by organizations across multiple continents</div></div>
-  <div class="s-cell rv d2"><div class="s-num" style="font-size:1.6rem;padding-top:6px">Mission-Led</div><div class="s-lbl">Work spans the UN, health advocacy, and Fortune 500 transformation</div></div>
-  <div class="s-cell rv d3"><div class="s-num" style="font-size:1.6rem;padding-top:6px">Data-Driven</div><div class="s-lbl">Every roadmap decision tied to measurable user and business outcomes</div></div>
+  <div class="s-cell rv"><div class="s-num">AI-First</div><div class="s-lbl">Building LLM-powered products that meaningfully reduce manual work</div></div>
+  <div class="s-cell rv d1"><div class="s-num">Global Scale</div><div class="s-lbl">Shipped products used by organizations across multiple continents</div></div>
+  <div class="s-cell rv d2"><div class="s-num">Mission-Led</div><div class="s-lbl">Work spans the UN, health advocacy, and large enterprise transformation</div></div>
+  <div class="s-cell rv d3"><div class="s-num">Data-Driven</div><div class="s-lbl">Every roadmap decision tied to real user and business outcomes</div></div>
 </div>
 
 <!-- ABOUT -->
@@ -225,11 +264,11 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:26
     <div>
       <p class="eyebrow rv">About</p>
       <h2 class="disp d-lg rv d1">Where <em>strategy</em><br>meets technology</h2>
-      <p class="body-l rv d2" style="margin-top:26px">I'm a Product Owner with a passion for building AI-native products that make complex data accessible and actionable. Currently at the United Nations Global Compact, I lead the reporting product roadmap — deploying LLM integrations, shaping living AI roadmaps, and driving measurable sustainability outcomes at global scale.</p>
-      <p class="body-l rv d2" style="margin-top:14px">My background bridges business analysis, stakeholder management, and natural language-driven engineering — delivering high-impact projects for Fortune 500 clients with a relentless focus on user experience and data quality.</p>
+      <p class="body-l rv d2" style="margin-top:26px">I'm a Product Owner at the United Nations Global Compact, where I run the reporting product — building LLM integrations that automate what used to take teams weeks, and keeping the roadmap honest with real usage data instead of assumptions.</p>
+      <p class="body-l rv d2" style="margin-top:14px">Before that I spent a few years as a PM and BA on large digital transformation projects, working directly with enterprise clients. I'm at my best when the problem is messy, the data is complicated, and there's a real person on the other end who needs things to actually work.</p>
       <div class="pill-row rv d3">
-        <span class="pill on">AI / LLM Integration</span>
-        <span class="pill on">Product Roadmapping</span>
+        <span class="pill">AI / LLM Integration</span>
+        <span class="pill">Product Roadmapping</span>
         <span class="pill">Agile / SAFe</span>
         <span class="pill">React Prototyping</span>
         <span class="pill">Stakeholder Management</span>
@@ -261,19 +300,19 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:26
         <h3 class="exp-role">Product Owner, Reporting</h3>
         <p class="exp-date">July 2024 — Present</p>
         <ul class="blist">
-          <li>Deployed LLM integrations to automate synthesis of complex sustainability data, significantly reducing manual processing time while maintaining high accuracy</li>
-          <li>Pioneered a natural language programming methodology to generate production-ready React components directly from product requirements</li>
-          <li>Built a living AI roadmap that dynamically reprioritizes initiatives based on real-time market shifts and emerging user pain points</li>
-          <li>Facilitated continuous feedback loops with a global early adopter program, translating qualitative and quantitative insights into feature improvements</li>
-          <li>Improved data quality substantially via AI-powered validation rules and automated anomaly detection within the reporting questionnaire</li>
-          <li>Introduced and tracked key product metrics — engagement, task completion, and data adoption — to inform the roadmap</li>
+          <li>Built LLM integrations that cut the manual work of synthesizing sustainability reports — what used to take days now takes minutes, without sacrificing accuracy</li>
+          <li>Wrote product requirements in plain language and used them to generate production-ready React components directly, cutting the gap between spec and code</li>
+          <li>Replaced a static roadmap with one that updates based on what users are actually doing and where the market is moving</li>
+          <li>Ran a global early adopter program and used that feedback to drive real feature decisions, not just collect responses</li>
+          <li>Rebuilt the data validation layer with AI-powered rules that catch problems automatically instead of waiting for someone to notice them</li>
+          <li>Set up product metrics from scratch — engagement, task completion, adoption — and tied roadmap decisions back to them</li>
         </ul>
       </div>
       <div class="m-stack">
-        <div class="m-chip"><div class="m-val" style="font-size:1.3rem;line-height:1.3">Significant ↓</div><div class="m-desc">Reduction in manual processing via LLM automation</div></div>
-        <div class="m-chip"><div class="m-val" style="font-size:1.3rem;line-height:1.3">Measurable ↑</div><div class="m-desc">Improvement in data quality via AI validation</div></div>
-        <div class="m-chip"><div class="m-val" style="font-size:1.3rem;line-height:1.3">Global Scale</div><div class="m-desc">Early adopter program spanning multiple continents</div></div>
-        <div class="m-chip"><div class="m-val" style="font-size:1.3rem;line-height:1.3">Proven ↑</div><div class="m-desc">User satisfaction via structured feedback loops</div></div>
+        <div class="m-chip"><div class="m-val">Significant ↓</div><div class="m-desc">Reduction in manual processing via LLM automation</div></div>
+        <div class="m-chip"><div class="m-val">Measurable ↑</div><div class="m-desc">Improvement in data quality via AI validation</div></div>
+        <div class="m-chip"><div class="m-val">Global Scale</div><div class="m-desc">Early adopter program spanning multiple continents</div></div>
+        <div class="m-chip"><div class="m-val">Proven ↑</div><div class="m-desc">User satisfaction via structured feedback loops</div></div>
       </div>
     </div>
     <div class="card rv d1">
@@ -281,9 +320,9 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:26
       <h3 class="exp-role">Project Manager / Business Analyst</h3>
       <p class="exp-date">December 2021 — July 2024</p>
       <ul class="blist">
-        <li>Led complex digital transformation engagements from discovery through delivery, on time and within budget</li>
-        <li>Facilitated cross-functional collaboration among designers, developers, and business analysts</li>
-        <li>Built lasting relationships with senior leadership at large enterprise clients throughout the project lifecycle</li>
+        <li>Ran large digital transformation projects end to end — kept them on time, on budget, and actually delivered</li>
+        <li>Worked daily across design, engineering, and business teams, usually as the person translating between all three</li>
+        <li>Managed senior stakeholder relationships at large enterprise clients through the full project lifecycle</li>
       </ul>
     </div>
     <div class="card rv d2">
@@ -291,8 +330,8 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:26
       <h3 class="exp-role">Time In Range Project</h3>
       <p class="exp-date">Ongoing</p>
       <ul class="blist">
-        <li>Living with Type 1 Diabetes drives a personal mission to make glucose data more actionable and accessible</li>
-        <li>Created the Time In Range Project to apply product and AI thinking to real health outcomes for the T1D community</li>
+        <li>Got diagnosed with Type 1 Diabetes — started building tools I actually wanted to exist for myself and others in the same position</li>
+        <li>Betawise is the product coming out of this work: a smarter way to understand and act on CGM data</li>
       </ul>
     </div>
   </div>
@@ -306,19 +345,19 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:26
     <a class="card proj-card rv" href="timeinrange.html">
       <div class="proj-icon">🩸</div>
       <p class="proj-name">Time In Range Project</p>
-      <p class="proj-desc">A personal initiative leveraging data and product thinking to improve outcomes for people living with Type 1 Diabetes — making CGM data visible, meaningful, and motivating.</p>
+      <p class="proj-desc">Built out of a T1D diagnosis. CGM devices produce a flood of glucose data every day — this project is about making that data actually useful. The product coming out of it is called Betawise.</p>
       <span class="proj-lnk">View Project →</span>
     </a>
     <div class="card proj-card rv d1" style="cursor:default">
       <div class="proj-icon">🤖</div>
       <p class="proj-name">UN Sustainability LLM Pipeline</p>
-      <p class="proj-desc">Architected LLM integrations at the UN Global Compact to automate synthesis of complex sustainability data at scale across 500+ member companies at 99% accuracy.</p>
+      <p class="proj-desc">Built an LLM pipeline at the UN Global Compact that handles the synthesis of sustainability reports from hundreds of member organizations — the kind of work that used to require a team.</p>
       <span class="proj-lnk" style="color:var(--muted);cursor:default">LLM · React · Product</span>
     </div>
     <div class="card proj-card rv d2" style="cursor:default">
       <div class="proj-icon">📊</div>
       <p class="proj-name">Living AI Roadmap System</p>
-      <p class="proj-desc">Transitioned the product team from static quarterly planning to a dynamic, AI-driven roadmap that auto-reprioritizes features based on real-time market signals and user pain points.</p>
+      <p class="proj-desc">Moved the product team off a quarterly planning doc and onto a roadmap that updates based on what users are actually doing. Less guessing, faster pivots, better features.</p>
       <span class="proj-lnk" style="color:var(--muted);cursor:default">AI Strategy · Roadmapping</span>
     </div>
   </div>
@@ -329,9 +368,9 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:26
   <div class="cause-g">
     <div>
       <div class="badge rv"><div class="bdot"></div>Personal Advocacy</div>
-      <blockquote class="pull rv d1">"Living with T1D turned my product instincts toward something that really matters."</blockquote>
-      <p class="body-l rv d2">I was diagnosed with Type 1 Diabetes, and that experience fundamentally shaped how I think about data, products, and impact. Managing T1D means living inside a constant stream of glucose readings — and too often, that data is overwhelming without the right tools to interpret it.</p>
-      <p class="body-s rv d2" style="margin-top:14px">The Time In Range Project is my attempt to close that gap — applying the same product and AI thinking I use professionally to help people with T1D spend more time in a healthy glucose range and less time managing crisis moments.</p>
+      <blockquote class="pull rv d1">"Getting diagnosed with T1D changed what I thought products were actually for."</blockquote>
+      <p class="body-l rv d2">I have Type 1 Diabetes. That means I'm looking at glucose readings all day, adjusting on the fly, and trying to make sense of data that never really stops coming. Most of the tools built for this are clinical interfaces designed for doctors, not for people trying to live their lives.</p>
+      <p class="body-s rv d2" style="margin-top:14px">That's what the Time In Range Project is about — and why I'm building Betawise. Not an abstract mission statement, just a real problem I deal with every day, and a skill set that's useful for solving it.</p>
       <a class="btn btn-g rv d3" href="timeinrange.html" style="margin-top:26px;display:inline-flex">Explore the Project →</a>
     </div>
     <div id="bars" class="rv d2">
@@ -349,8 +388,8 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:26
         <div class="bar-val" style="color:var(--green)">22%</div>
       </div>
       <div class="card" style="margin-top:26px;cursor:default">
-        <p class="mono" style="color:var(--green);margin-bottom:10px">Time In Range Project</p>
-        <p class="body-s">A personal mission to make CGM data understandable and actionable — because better tools mean longer, healthier lives for people with T1D.</p>
+        <p class="mono" style="color:var(--green);margin-bottom:10px">Betawise</p>
+        <p class="body-s">The product coming out of the Time In Range Project — built to help people with T1D actually understand what their CGM data is telling them.</p>
       </div>
     </div>
   </div>
@@ -361,7 +400,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:26
   <div class="contact-w">
     <p class="eyebrow rv" style="justify-content:center">Contact</p>
     <h2 class="disp d-lg rv d1">Let's build<br>something <em>great</em></h2>
-    <p class="body-l rv d2" style="margin-top:18px">Open to senior product opportunities where AI, data, and human impact intersect. Let's talk.</p>
+    <p class="body-l rv d2" style="margin-top:18px">Open to senior product roles — especially where AI, real data, and outcomes that actually matter come together. Happy to talk.</p>
     <div class="contact-btns rv d3">
       <a class="btn btn-s" href="mailto:dschneiderman955@gmail.com">✉ Email</a>
       <a class="btn btn-g" href="https://www.linkedin.com/in/danielschneiderman955/" target="_blank">↗ LinkedIn</a>
@@ -378,37 +417,77 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:26
 </footer>
 
 <script>
-/* Cursor */
-const cd = document.getElementById('cd'), cr = document.getElementById('cr');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
-(function tick(){
-  cd.style.left=mx+'px'; cd.style.top=my+'px';
-  rx+=(mx-rx)*.13; ry+=(my-ry)*.13;
-  cr.style.left=rx+'px'; cr.style.top=ry+'px';
-  requestAnimationFrame(tick);
-})();
-document.querySelectorAll('a,button').forEach(el=>{
-  el.addEventListener('mouseenter',()=>document.body.classList.add('ch'));
-  el.addEventListener('mouseleave',()=>document.body.classList.remove('ch'));
-});
-/* Nav */
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40),{passive:true});
-/* Reveal */
-const ro=new IntersectionObserver(es=>es.forEach(e=>{
-  if(e.isIntersecting){e.target.classList.add('vis');ro.unobserve(e.target);}
-}),{threshold:.08});
-document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
-/* Bars */
-const bo=new IntersectionObserver(es=>es.forEach(e=>{
-  if(e.isIntersecting){
-    e.target.querySelectorAll('.bar-fill').forEach(b=>b.style.width=b.dataset.w+'%');
-    bo.unobserve(e.target);
+(function() {
+  'use strict';
+
+  /* ── Cursor ── */
+  var cd = document.getElementById('cd');
+  var cr = document.getElementById('cr');
+  var mx = 0, my = 0, rx = 0, ry = 0;
+
+  if (cd && cr) {
+    document.addEventListener('mousemove', function(e) {
+      mx = e.clientX; my = e.clientY;
+    });
+    document.body.classList.add('cursor-ready');
+
+    (function tick() {
+      cd.style.left = mx + 'px';
+      cd.style.top  = my + 'px';
+      rx += (mx - rx) * 0.13;
+      ry += (my - ry) * 0.13;
+      cr.style.left = rx + 'px';
+      cr.style.top  = ry + 'px';
+      requestAnimationFrame(tick);
+    })();
+
+    document.querySelectorAll('a, button').forEach(function(el) {
+      el.addEventListener('mouseenter', function() { document.body.classList.add('ch'); });
+      el.addEventListener('mouseleave', function() { document.body.classList.remove('ch'); });
+    });
   }
-}),{threshold:.3});
-const bEl=document.getElementById('bars');
-if(bEl) bo.observe(bEl);
+
+  /* ── Nav ── */
+  var nav = document.getElementById('nav');
+  if (nav) {
+    window.addEventListener('scroll', function() {
+      nav.classList.toggle('solid', window.scrollY > 40);
+    }, { passive: true });
+  }
+
+  /* ── Reveal ── */
+  if ('IntersectionObserver' in window) {
+    var ro = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('vis');
+          ro.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.06 });
+    document.querySelectorAll('.rv').forEach(function(el) { ro.observe(el); });
+  } else {
+    /* Fallback: show everything immediately */
+    document.querySelectorAll('.rv').forEach(function(el) { el.classList.add('vis'); });
+  }
+
+  /* ── Bars ── */
+  var barsEl = document.getElementById('bars');
+  if (barsEl && 'IntersectionObserver' in window) {
+    var bo = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.bar-fill').forEach(function(b) {
+            b.style.width = (b.dataset.w || 0) + '%';
+          });
+          bo.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    bo.observe(barsEl);
+  }
+
+})();
 </script>
 </body>
 </html>
