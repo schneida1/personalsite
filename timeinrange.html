@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Time In Range Project — Daniel Schneiderman</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+/* ── TOKENS (shared + page overrides) ──────────────────── */
+:root {
+  --bg:      #07100d;
+  --surf:    #0d1a14;
+  --surf2:   #122019;
+  --border:  rgba(255,255,255,.08);
+  --text:    #e6ede9;
+  --muted:   #6b7d72;
+  --gold:    #c9a96e;
+  --gold-lt: #dfc28e;
+  --green:   #5ec98b;
+  --green-lt:#8fe0b0;
+  --orange:  #f7994f;
+  --red:     #e05c5c;
+  --r:       3px;
+  --navh:    70px;
+  /* accent overrides for this page */
+  --accent:     var(--green);
+  --accent-lt:  var(--green-lt);
+}
+/* ── RESET ──────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;font-weight:300;font-size:16px;overflow-x:hidden;cursor:none}
+a{text-decoration:none;color:inherit}
+/* ── CURSOR (same logic, green tint) ───────────────────── */
+.c-dot,.c-ring{position:fixed;border-radius:50%;pointer-events:none;z-index:9000;transform:translate(-50%,-50%)}
+.c-dot{width:7px;height:7px;background:var(--green);z-index:9001;transition:width .15s,height .15s}
+.c-ring{width:34px;height:34px;border:1px solid rgba(94,201,139,.32);transition:width .2s,height .2s,border-color .2s}
+body.ch .c-dot{width:11px;height:11px}
+body.ch .c-ring{width:52px;height:52px;border-color:rgba(94,201,139,.55)}
+/* ── NOISE ──────────────────────────────────────────────── */
+body::after{content:'';position:fixed;inset:0;z-index:8000;pointer-events:none;opacity:.5;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E")}
+/* ── NAV ────────────────────────────────────────────────── */
+#nav{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--navh);display:flex;align-items:center;justify-content:space-between;padding:0 56px;border-bottom:1px solid transparent;transition:background .3s,border-color .3s}
+#nav.solid{background:rgba(7,16,13,.93);backdrop-filter:blur(18px);border-color:var(--border)}
+.nav-back{display:flex;align-items:center;gap:9px;font-family:'DM Mono',monospace;font-size:.67rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);transition:color .2s;cursor:none}
+.nav-back:hover{color:var(--green)}
+.nav-back svg{transition:transform .2s}
+.nav-back:hover svg{transform:translateX(-3px)}
+.nav-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;color:var(--green-lt);letter-spacing:.04em}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{font-family:'DM Mono',monospace;font-size:.67rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);transition:color .2s;cursor:none}
+.nav-links a:hover{color:var(--green)}
+/* ── BUTTONS (same shape, green accent) ─────────────────── */
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 24px;font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.11em;text-transform:uppercase;border-radius:var(--r);transition:all .2s;cursor:none}
+.btn-s{background:var(--green);color:var(--bg);font-weight:500}
+.btn-s:hover{background:var(--green-lt);transform:translateY(-2px)}
+.btn-g{border:1px solid rgba(94,201,139,.35);color:var(--green)}
+.btn-g:hover{border-color:var(--green);background:rgba(94,201,139,.06);transform:translateY(-2px)}
+.btn-d{border:1px solid rgba(255,255,255,.11);color:var(--muted)}
+.btn-d:hover{border-color:rgba(255,255,255,.24);color:var(--text);transform:translateY(-2px)}
+/* ── SECTION ────────────────────────────────────────────── */
+.sec{position:relative;z-index:1;padding:108px 56px;border-top:1px solid var(--border)}
+.sec-alt{background:var(--surf)}
+/* ── TYPE ───────────────────────────────────────────────── */
+.eyebrow{display:flex;align-items:center;gap:10px;font-family:'DM Mono',monospace;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:14px}
+.eyebrow::before{content:'//';color:var(--muted)}
+.disp{font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1.05;letter-spacing:-.01em}
+.disp em{font-style:italic;color:var(--green-lt)}
+.d-xl{font-size:clamp(3.8rem,9vw,8.2rem)}
+.d-lg{font-size:clamp(2.2rem,4.5vw,3.8rem)}
+.d-md{font-size:1.7rem}
+.d-sm{font-size:1.4rem}
+.body-l{font-size:1.04rem;color:rgba(230,237,233,.72);line-height:1.82}
+.body-s{font-size:.87rem;color:rgba(230,237,233,.6);line-height:1.76}
+.mono{font-family:'DM Mono',monospace;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+/* ── CARD ───────────────────────────────────────────────── */
+.card{background:var(--surf);border:1px solid var(--border);border-radius:var(--r);padding:36px;transition:border-color .25s,transform .25s;cursor:none}
+.card:hover{border-color:rgba(94,201,139,.26);transform:translateY(-3px)}
+.card-top::before{content:'';display:block;height:2px;background:linear-gradient(90deg,var(--green),transparent);margin:-36px -36px 30px}
+/* ── REVEAL ─────────────────────────────────────────────── */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
+.rv.vis{opacity:1;transform:none}
+.rv.d1{transition-delay:.09s}.rv.d2{transition-delay:.18s}.rv.d3{transition-delay:.27s}
+/* ── HERO ───────────────────────────────────────────────── */
+#hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:calc(var(--navh) + 40px) 56px 80px;overflow:hidden;border:none}
+.h-grid{position:absolute;inset:0;z-index:0;
+  background-image:linear-gradient(rgba(94,201,139,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(94,201,139,.04) 1px,transparent 1px);
+  background-size:58px 58px;
+  mask-image:radial-gradient(ellipse 75% 70% at 65% 50%,black 20%,transparent 78%)}
+.h-glow{position:absolute;pointer-events:none;z-index:0}
+.h-glow-a{top:5%;right:-8%;width:720px;height:720px;background:radial-gradient(circle,rgba(94,201,139,.07) 0%,transparent 65%)}
+.h-glow-b{bottom:-15%;left:5%;width:520px;height:520px;background:radial-gradient(circle,rgba(247,153,79,.04) 0%,transparent 65%)}
+.h-inner{position:relative;z-index:1;max-width:780px}
+.h-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(94,201,139,.08);border:1px solid rgba(94,201,139,.24);border-radius:100px;padding:5px 14px;font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:26px;opacity:0;animation:fup .7s .15s forwards}
+.pulse{width:5px;height:5px;border-radius:50%;background:var(--green);animation:blink 2s ease infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.h-name{opacity:0;animation:fup .9s .3s forwards;margin-bottom:26px}
+.h-desc{opacity:0;animation:fup .8s .46s forwards;margin-bottom:38px}
+.h-btns{display:flex;gap:10px;flex-wrap:wrap;opacity:0;animation:fup .8s .6s forwards}
+.h-scroll{position:absolute;bottom:32px;left:56px;z-index:1;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fin 1s 1s forwards}
+.h-scroll-line{width:1px;height:56px;background:linear-gradient(to bottom,var(--green),transparent);animation:scrollp 2s ease infinite}
+@keyframes scrollp{0%,100%{opacity:.3}50%{opacity:1}}
+.h-scroll-lbl{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);writing-mode:vertical-rl}
+/* ── TIR GAUGE ──────────────────────────────────────────── */
+.gauge{position:relative;z-index:1;background:var(--surf);border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:grid;grid-template-columns:1fr 1.4fr;gap:72px;align-items:center;padding:80px 56px}
+.tir-table{border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.tir-row{display:grid;grid-template-columns:8px 1fr 100px 80px 56px;align-items:center;gap:14px;padding:16px 22px;border-bottom:1px solid var(--border);transition:background .2s}
+.tir-row:last-child{border-bottom:none}
+.tir-row:hover{background:rgba(255,255,255,.02)}
+.tir-row.in-range{background:rgba(94,201,139,.05);border-left:2px solid var(--green)}
+.tir-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.tir-name{font-family:'DM Mono',monospace;font-size:.63rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.tir-name.active{color:var(--green)}
+.tir-range{font-size:.78rem;color:rgba(230,237,233,.5);text-align:right}
+.tir-bar-track{height:3px;background:var(--surf2);border-radius:2px;overflow:hidden}
+.tir-bar-fill{height:100%;border-radius:2px;width:0;transition:width 1.3s ease}
+.tir-pct{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;text-align:right}
+/* ── STATS STRIP ────────────────────────────────────────── */
+.stats{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border)}
+.s-cell{padding:30px 38px;border-right:1px solid var(--border)}
+.s-cell:last-child{border-right:none}
+.s-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--green-lt);line-height:1;margin-bottom:6px}
+.s-lbl{font-size:.78rem;color:var(--muted);line-height:1.5}
+/* ── WHY GRID ───────────────────────────────────────────── */
+.why-g{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:0}
+.why-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;line-height:1;margin-bottom:10px}
+.why-title{font-size:.95rem;font-weight:500;margin-bottom:9px}
+.why-body{font-size:.84rem;color:rgba(230,237,233,.6);line-height:1.74}
+/* ── MISSION ────────────────────────────────────────────── */
+.mission-g{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.pull{font-family:'Cormorant Garamond',serif;font-size:1.65rem;font-style:italic;font-weight:300;line-height:1.45;color:rgba(230,237,233,.84);border-left:2px solid var(--green);padding-left:26px;margin-bottom:28px}
+.info-card{background:var(--surf2);border:1px solid var(--border);border-radius:var(--r);padding:20px 22px;margin-bottom:12px}
+.info-card:last-child{margin-bottom:0}
+.info-title{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:8px}
+.info-body{font-size:.86rem;color:rgba(230,237,233,.62);line-height:1.68}
+/* ── STEPS ──────────────────────────────────────────────── */
+.steps{display:flex;flex-direction:column}
+.step{display:grid;grid-template-columns:72px 1fr;gap:28px;padding:34px 0;border-bottom:1px solid var(--border)}
+.step:last-child{border-bottom:none}
+.step-n{font-family:'Cormorant Garamond',serif;font-size:3.2rem;font-weight:300;color:rgba(94,201,139,.18);line-height:1;text-align:right;padding-top:2px}
+.step-title{font-size:1rem;font-weight:500;margin-bottom:8px}
+.step-body{font-size:.86rem;color:rgba(230,237,233,.62);line-height:1.76}
+.step-tag{display:inline-block;margin-top:10px;padding:4px 10px;background:rgba(94,201,139,.1);border-radius:var(--r);font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green)}
+/* ── JDRF ───────────────────────────────────────────────── */
+.jdrf-g{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:start}
+.jdrf-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(94,201,139,.2);border-radius:var(--r);padding:5px 14px;font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:22px}
+/* ── CTA ────────────────────────────────────────────────── */
+.cta-w{max-width:560px;margin:0 auto;text-align:center}
+.cta-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:36px}
+/* ── FOOTER ─────────────────────────────────────────────── */
+footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:26px 56px;display:flex;justify-content:space-between;align-items:center}
+/* ── KEYFRAMES ──────────────────────────────────────────── */
+@keyframes fup{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes fin{from{opacity:0}to{opacity:1}}
+/* ── RESPONSIVE ─────────────────────────────────────────── */
+@media(max-width:960px){
+  :root{--navh:60px}
+  #nav{padding:0 22px}
+  .nav-links{display:none}
+  #hero,.sec{padding-left:22px;padding-right:22px}
+  #hero{padding-top:calc(var(--navh)+30px)}
+  .gauge{grid-template-columns:1fr;padding:60px 22px;gap:40px}
+  .stats{grid-template-columns:1fr 1fr}
+  .s-cell:nth-child(2){border-right:none}
+  .why-g{grid-template-columns:1fr}
+  .mission-g,.jdrf-g{grid-template-columns:1fr;gap:44px}
+  footer{flex-direction:column;gap:8px;text-align:center;padding:20px}
+  body{cursor:auto}
+  .c-dot,.c-ring{display:none}
+  .tir-row{grid-template-columns:8px 1fr 64px 44px}
+  .tir-range{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="c-dot" id="cd"></div>
+<div class="c-ring" id="cr"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-back" href="index.html">
+    <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M11 6.5H2M2 6.5L6.5 2M2 6.5L6.5 11" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Portfolio
+  </a>
+  <span class="nav-title">Time In Range Project</span>
+  <ul class="nav-links">
+    <li><a href="#why">Why TIR</a></li>
+    <li><a href="#story">My Story</a></li>
+    <li><a href="#how">Approach</a></li>
+    <li><a href="#jdrf">Advocacy</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="h-grid"></div>
+  <div class="h-glow h-glow-a"></div>
+  <div class="h-glow h-glow-b"></div>
+  <div class="h-inner">
+    <div class="h-badge"><div class="pulse"></div>Personal Project · Living with T1D</div>
+    <h1 class="h-name disp d-xl">The Time<br>In <em>Range</em><br>Project</h1>
+    <p class="h-desc body-l" style="max-width:520px">A product person's response to a personal diagnosis — using data, technology, and lived experience to help people with Type 1 Diabetes spend more time in their healthy glucose range.</p>
+    <div class="h-btns">
+      <a class="btn btn-s" href="#story">My Story</a>
+      <a class="btn btn-g" href="#why">Why TIR Matters</a>
+      <a class="btn btn-d" href="index.html">← Portfolio</a>
+    </div>
+  </div>
+  <div class="h-scroll">
+    <div class="h-scroll-line"></div>
+    <div class="h-scroll-lbl">Scroll</div>
+  </div>
+</section>
+
+<!-- TIR GAUGE -->
+<div class="gauge" id="gauge">
+  <div>
+    <p class="eyebrow rv">Understanding TIR</p>
+    <h2 class="disp d-lg rv d1">What is <em>Time<br>In Range?</em></h2>
+    <p class="body-l rv d2" style="margin-top:22px">Time In Range (TIR) is the percentage of time a person with diabetes spends with blood glucose between 70–180 mg/dL. Unlike A1C — a blunt 90-day average — TIR reveals the full picture: dangerous highs, scary lows, and the hours spent in a healthy zone. It's one of the most actionable metrics in modern diabetes care.</p>
+  </div>
+  <div class="tir-table rv d2" id="tirTable">
+    <div class="tir-row">
+      <div class="tir-dot" style="background:var(--red)"></div>
+      <div class="tir-name">Very High</div>
+      <div class="tir-range">&gt; 250 mg/dL</div>
+      <div class="tir-bar-track"><div class="tir-bar-fill" data-w="5" style="background:var(--red)"></div></div>
+      <div class="tir-pct" style="color:var(--red)">&lt;5%</div>
+    </div>
+    <div class="tir-row">
+      <div class="tir-dot" style="background:var(--orange)"></div>
+      <div class="tir-name">High</div>
+      <div class="tir-range">181–250 mg/dL</div>
+      <div class="tir-bar-track"><div class="tir-bar-fill" data-w="20" style="background:var(--orange)"></div></div>
+      <div class="tir-pct" style="color:var(--orange)">&lt;25%</div>
+    </div>
+    <div class="tir-row in-range">
+      <div class="tir-dot" style="background:var(--green)"></div>
+      <div class="tir-name active">In Range ✓</div>
+      <div class="tir-range">70–180 mg/dL</div>
+      <div class="tir-bar-track"><div class="tir-bar-fill" data-w="70" style="background:var(--green)"></div></div>
+      <div class="tir-pct" style="color:var(--green)">≥70%</div>
+    </div>
+    <div class="tir-row">
+      <div class="tir-dot" style="background:var(--orange)"></div>
+      <div class="tir-name">Low</div>
+      <div class="tir-range">54–70 mg/dL</div>
+      <div class="tir-bar-track"><div class="tir-bar-fill" data-w="4" style="background:var(--orange)"></div></div>
+      <div class="tir-pct" style="color:var(--orange)">&lt;4%</div>
+    </div>
+    <div class="tir-row">
+      <div class="tir-dot" style="background:var(--red)"></div>
+      <div class="tir-name">Very Low</div>
+      <div class="tir-range">&lt; 54 mg/dL</div>
+      <div class="tir-bar-track"><div class="tir-bar-fill" data-w="1" style="background:var(--red)"></div></div>
+      <div class="tir-pct" style="color:var(--red)">&lt;1%</div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="s-cell rv"><div class="s-num">70%</div><div class="s-lbl">Target TIR goal for most people with T1D</div></div>
+  <div class="s-cell rv d1"><div class="s-num">55%</div><div class="s-lbl">Average TIR achieved today — 4hrs daily out of range</div></div>
+  <div class="s-cell rv d2"><div class="s-num">1.6M</div><div class="s-lbl">Americans living with Type 1 Diabetes</div></div>
+  <div class="s-cell rv d3"><div class="s-num">22%</div><div class="s-lbl">Complication risk reduction per +5% TIR</div></div>
+</div>
+
+<!-- WHY IT MATTERS -->
+<section id="why" class="sec">
+  <p class="eyebrow rv">Why It Matters</p>
+  <h2 class="disp d-lg rv d1" style="margin-bottom:46px">The data behind<br>the <em>mission</em></h2>
+  <div class="why-g">
+    <div class="card rv">
+      <div class="why-num" style="color:var(--green-lt)">22%</div>
+      <div class="why-title">Complication Risk Reduction</div>
+      <p class="why-body">Every 5% increase in Time In Range is associated with a 22% reduction in the risk of diabetic retinopathy — one of the leading causes of blindness in working-age adults.</p>
+    </div>
+    <div class="card rv d1">
+      <div class="why-num" style="color:var(--orange)">55%</div>
+      <div class="why-title">Average TIR Today</div>
+      <p class="why-body">The average person with diabetes achieves only 55% time in range — 15 points below the recommended target, representing nearly 4 hours daily spent outside the safe zone.</p>
+    </div>
+    <div class="card rv d2">
+      <div class="why-num" style="color:var(--green-lt)">500M+</div>
+      <div class="why-title">People Living With Diabetes</div>
+      <p class="why-body">Over 500 million people worldwide live with diabetes. Better TIR tools could meaningfully reduce the $966B annual global health expenditure and improve quality of life at scale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONAL STORY -->
+<section id="story" class="sec sec-alt">
+  <p class="eyebrow rv">My Story</p>
+  <h2 class="disp d-lg rv d1" style="margin-bottom:46px">A diagnosis that<br>changed <em>everything</em></h2>
+  <div class="mission-g">
+    <div>
+      <p class="body-l rv">I was diagnosed with Type 1 Diabetes, and from day one I was handed a CGM and told to "stay in range." What nobody explained was how hard that actually is — or how to make sense of the torrent of data a continuous glucose monitor produces every five minutes, around the clock.</p>
+      <p class="body-l rv d1" style="margin-top:16px">As a product person, my instinct was to look for the gap between the data that existed and the understanding that was missing. That gap was enormous. Patients have access to incredibly rich, real-time health data — and almost no intuitive tools to act on it.</p>
+      <p class="body-l rv d1" style="margin-top:16px">The Time In Range Project is my personal response to that problem. It's where my professional skills in product management, AI, and data meet a cause that is deeply, personally real. Every percentage point of TIR improvement isn't an abstract metric — it's time spent feeling well, avoiding complications, and living fully.</p>
+      <p class="body-l rv d2" style="margin-top:16px">My goal is to build tools and awareness that make Time In Range understandable, motivating, and achievable — for myself and for every T1D patient navigating this every day.</p>
+    </div>
+    <div class="rv d2">
+      <blockquote class="pull">"I was handed a CGM and told to stay in range. Nobody explained how hard that actually is."</blockquote>
+      <div class="info-card">
+        <div class="info-title">The Problem</div>
+        <p class="info-body">T1D patients generate enormous amounts of glucose data. Most tools surface numbers without context, pattern recognition, or actionable guidance.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-title">The Mission</div>
+        <p class="info-body">Make Time In Range visible, understandable, and motivating — using product design and AI to turn raw CGM data into real behavior change.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-title">Why It's Personal</div>
+        <p class="info-body">Living with T1D means this isn't an abstract challenge. Every improvement in TIR is felt — in energy, mood, sleep, and long-term health. That's what drives this work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="sec">
+  <p class="eyebrow rv">Approach</p>
+  <h2 class="disp d-lg rv d1" style="margin-bottom:46px">The product <em>methodology</em></h2>
+  <div class="steps">
+    <div class="step rv">
+      <div class="step-n">01</div>
+      <div>
+        <div class="step-title">Understand the User</div>
+        <p class="step-body">Deep research into the daily lived experience of T1D patients — the mental load of glucose management, the emotional weight of out-of-range readings, and the moments where better data visualization could shift behavior. User interviews with patients, parents, and endocrinologists.</p>
+        <span class="step-tag">User Research</span>
+      </div>
+    </div>
+    <div class="step rv d1">
+      <div class="step-n">02</div>
+      <div>
+        <div class="step-title">Map the Data Landscape</div>
+        <p class="step-body">CGMs like Dexcom and Abbott FreeStyle Libre generate rich time-series glucose data. The project maps what data is available, how it's currently surfaced, and where the biggest gaps in interpretation and action exist for end users.</p>
+        <span class="step-tag">Data Architecture</span>
+      </div>
+    </div>
+    <div class="step rv d2">
+      <div class="step-n">03</div>
+      <div>
+        <div class="step-title">Build for Behavior Change</div>
+        <p class="step-body">Using product design principles, the project focuses on surfacing TIR in motivating, non-clinical ways — progress visualization, pattern recognition (what behaviors correlate with better range?), and gentle nudges rooted in behavioral science.</p>
+        <span class="step-tag">Product Design · UX</span>
+      </div>
+    </div>
+    <div class="step rv">
+      <div class="step-n">04</div>
+      <div>
+        <div class="step-title">Leverage AI for Insight</div>
+        <p class="step-body">Applying the same LLM and analytics techniques used at the UN Global Compact to the T1D space — natural language summaries of glucose trends, anomaly detection, and proactive recommendations based on real-time and historical patterns.</p>
+        <span class="step-tag">LLM · AI Analytics</span>
+      </div>
+    </div>
+    <div class="step rv d1">
+      <div class="step-n">05</div>
+      <div>
+        <div class="step-title">Advocacy &amp; Awareness</div>
+        <p class="step-body">Sharing the work openly — writing, speaking, and connecting with the broader T1D community to raise awareness about Time In Range and the tools that can help. The more people understand TIR, the more they can advocate for better care and better technology.</p>
+        <span class="step-tag">Advocacy · Community</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADVOCACY -->
+<section id="jdrf" class="sec sec-alt">
+  <p class="eyebrow rv">Advocacy</p>
+  <h2 class="disp d-lg rv d1" style="margin-bottom:46px">Why this work<br><em>matters to me</em></h2>
+  <div class="jdrf-g">
+    <div>
+      <div class="jdrf-badge rv">T1D Diagnosis · Personal Mission</div>
+      <p class="body-l rv d1">Type 1 Diabetes is a 24/7 condition. There's no off switch, no vacation from glucose management, no day where it doesn't factor into every meal, every workout, every night of sleep. Living with T1D gave me an intimate understanding of what patients actually need from health technology — and how far most tools fall short.</p>
+      <p class="body-l rv d1" style="margin-top:14px">Advocacy, for me, isn't about awareness campaigns in the abstract. It's about using every skill I have — product management, AI, data design — to make life measurably better for people navigating what I navigate every day.</p>
+      <p class="body-l rv d1" style="margin-top:14px">The Time In Range Project is that work made concrete. It's mission-driven not because a job description said so, but because it's personal.</p>
+    </div>
+    <div class="rv d2">
+      <div class="info-card">
+        <div class="info-title">The Daily Reality</div>
+        <p class="info-body">T1D means checking glucose levels constantly, adjusting insulin, and reacting to readings that can shift dramatically within minutes. Better tools reduce that cognitive burden significantly.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-title">The Opportunity</div>
+        <p class="info-body">CGMs generate more health data per day than most people see in a year of doctor visits. The opportunity to turn that data into meaningful, real-time guidance is enormous — and largely untapped.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-title">The Intersection</div>
+        <p class="info-body">Product management, AI, behavioral design, and lived patient experience rarely meet in one person. That's the intersection the Time In Range Project is built on.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sec">
+  <div class="cta-w">
+    <p class="eyebrow rv" style="justify-content:center">Get In Touch</p>
+    <h2 class="disp d-lg rv d1">Interested in<br><em>collaborating?</em></h2>
+    <p class="body-l rv d2" style="margin-top:18px">Whether you're working in digital health, T1D advocacy, or just want to connect — Daniel would love to hear from you.</p>
+    <div class="cta-btns rv d3">
+      <a class="btn btn-s" href="mailto:dschneiderman955@gmail.com">✉ Get In Touch</a>
+      <a class="btn btn-g" href="index.html">← Back to Portfolio</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="mono">Time In Range Project · Daniel A. Schneiderman</span>
+  <span class="mono">Living with T1D · Product Owner · Fort Lee, NJ</span>
+</footer>
+
+<script>
+/* Cursor */
+const cd=document.getElementById('cd'), cr=document.getElementById('cr');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function tick(){
+  cd.style.left=mx+'px'; cd.style.top=my+'px';
+  rx+=(mx-rx)*.13; ry+=(my-ry)*.13;
+  cr.style.left=rx+'px'; cr.style.top=ry+'px';
+  requestAnimationFrame(tick);
+})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('ch'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('ch'));
+});
+/* Nav */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40),{passive:true});
+/* Reveal */
+const ro=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('vis');ro.unobserve(e.target);}
+}),{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
+/* TIR bars */
+const bo=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){
+    e.target.querySelectorAll('.tir-bar-fill').forEach(b=>b.style.width=b.dataset.w+'%');
+    bo.unobserve(e.target);
+  }
+}),{threshold:.2});
+const tt=document.getElementById('tirTable');
+if(tt) bo.observe(tt);
+/* Stagger steps */
+document.querySelectorAll('.step').forEach((s,i)=>s.style.transitionDelay=(i*.1)+'s');
+</script>
+</body>
+</html>
