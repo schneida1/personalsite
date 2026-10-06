@@ -3,748 +3,169 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Daniel Schneiderman — Product Owner</title>
-<meta name="description" content="Daniel Schneiderman designs, builds, and ships AI products people keep using. Featuring Betawise and Jarvis." />
-<meta property="og:title" content="Daniel Schneiderman — Product Owner" />
-<meta property="og:description" content="Products people keep using: Betawise and Jarvis." />
+<title>Daniel Schneiderman — Product Manager</title>
+<meta name="description" content="Daniel Schneiderman is a product manager at the UN Global Compact exploring how AI lets PMs build and ship. Work: Insights, Betawise, and Jarvis." />
+<meta property="og:title" content="Daniel Schneiderman — Product Manager" />
+<meta property="og:description" content="Daniel Schneiderman is a product manager at the UN Global Compact exploring how AI lets PMs build and ship. Work: Insights, Betawise, and Jarvis." />
 <meta property="og:url" content="https://danielschneiderman.com/" />
 <meta property="og:type" content="website" />
-<meta name="color-scheme" content="light dark" />
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231d1d1f'/%3E%3Ctext x='16' y='21.5' font-family='-apple-system,Helvetica,Arial' font-weight='600' font-size='14' fill='%23f5f5f7' text-anchor='middle'%3EDS%3C/text%3E%3C/svg%3E" />
+<link rel="canonical" href="https://danielschneiderman.com/" />
+<meta name="color-scheme" content="dark light" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7bff'/%3E%3Cstop offset='1' stop-color='%2322d3ee'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='url(%23g)'/%3E%3Ctext x='16' y='21.5' font-family='Helvetica,Arial' font-weight='700' font-size='13' fill='white' text-anchor='middle'%3EDS%3C/text%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<style>
-:root {
-  --bg: #ffffff;
-  --bg-alt: #f5f5f7;
-  --tile: #ffffff;
-  --ink: #1d1d1f;
-  --ink-2: #6e6e73;
-  --ink-3: #86868b;
-  --line: #d2d2d7;
-  --blue: #0071e3;
-  --link: #0066cc;
-  --green: #30d158; --green-ink: #248a3d;
-  --orange: #ff9f0a; --orange-ink: #c93400;
-  --red: #ff453a;
-  --r-vlow: #b3261e; --r-low: #ff6961; --r-in: #34c759; --r-high: #ffcc00; --r-vhigh: #ff9500;
-  --shadow: 0 2px 6px rgba(0,0,0,.04), 0 18px 40px -18px rgba(0,0,0,.18);
-  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --mono: ui-monospace, "SF Mono", Menlo, monospace;
-  --wrap: 1024px;
-  --gutter: max(20px, env(safe-area-inset-left));
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #000000; --bg-alt: #101012; --tile: #1c1c1e; --ink: #f5f5f7; --ink-2: #a1a1a6; --ink-3: #86868b; --line: #38383a;
-    --link: #2997ff; --blue: #0a84ff; --green-ink: #30d158; --orange-ink: #ff9f0a;
-    --shadow: 0 2px 6px rgba(0,0,0,.4), 0 18px 40px -18px rgba(0,0,0,.8);
-  }
-}
-
-*, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 64px; -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.47 var(--font); letter-spacing: -.022em; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-img, svg { display: block; max-width: 100%; }
-a { color: var(--link); text-decoration: none; }
-a:hover { text-decoration: underline; }
-p { margin: 0; }
-h1, h2, h3, h4 { margin: 0; font-weight: 600; }
-:focus-visible { outline: 3px solid color-mix(in srgb, var(--blue) 60%, transparent); outline-offset: 2px; border-radius: 8px; }
-.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
-.center { text-align: center; }
-.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.skip { position: absolute; left: 12px; top: -60px; background: var(--ink); color: var(--bg); padding: 10px 14px; border-radius: 10px; z-index: 100; }
-.skip:focus { top: 12px; }
-
-/* ---------- Nav ---------- */
-.nav-bar { position: sticky; top: 0; z-index: 50; height: 48px; background: color-mix(in srgb, var(--bg) 80%, transparent); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid color-mix(in srgb, var(--line) 50%, transparent); }
-.nav { display: flex; align-items: center; height: 48px; gap: 28px; }
-.nav .brand { color: var(--ink); font-size: 15px; font-weight: 600; letter-spacing: -.01em; margin-right: auto; }
-.nav .brand:hover { text-decoration: none; }
-.nav-links { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; }
-.nav-links a { color: var(--ink); opacity: .8; font-size: 13px; letter-spacing: -.01em; transition: opacity .2s; }
-.nav-links a:hover { opacity: 1; text-decoration: none; }
-.nav-cta { font-size: 12px; font-weight: 500; color: #fff; background: var(--blue); padding: 4px 12px; border-radius: 980px; }
-.nav-cta:hover { text-decoration: none; filter: brightness(1.08); }
-#menu-btn { display: none; width: 44px; height: 44px; margin-right: -12px; border: 0; background: none; color: var(--ink); cursor: pointer; place-items: center; }
-#menu-btn span { display: block; width: 17px; height: 1.5px; background: currentColor; border-radius: 1px; transition: transform .3s; }
-#menu-btn span + span { margin-top: 6px; }
-#menu-btn[aria-expanded="true"] span:first-child { transform: translateY(3.75px) rotate(45deg); }
-#menu-btn[aria-expanded="true"] span:last-child { transform: translateY(-3.75px) rotate(-45deg); }
-.menu { display: none; }
-@media (max-width: 760px) {
-  .nav-links, .nav .nav-cta { display: none; }
-  #menu-btn { display: grid; }
-  .menu { position: absolute; top: 48px; left: 0; right: 0; height: calc(100vh - 48px); height: calc(100dvh - 48px); background: var(--bg); padding: 16px 40px; overflow-y: auto; z-index: 49; }
-  .menu.open { display: block; animation: drop .35s ease; }
-  .menu a { display: block; padding: 10px 0; color: var(--ink); font-size: 28px; font-weight: 600; letter-spacing: -.02em; }
-  .menu a.small { font-size: 17px; font-weight: 400; color: var(--link); padding-top: 24px; }
-}
-@keyframes drop { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
-
-/* ---------- Buttons & links ---------- */
-.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 22px; border-radius: 980px; font: 400 17px/1 var(--font); letter-spacing: -.02em; border: 0; cursor: pointer; transition: filter .2s, transform .2s; }
-.btn:hover { text-decoration: none; filter: brightness(1.08); }
-.btn:active { transform: scale(.98); }
-.btn-blue { background: var(--blue); color: #fff; }
-.btn-ghost { background: transparent; color: var(--link); box-shadow: inset 0 0 0 1px var(--link); }
-.chev::after { content: " ›"; font-size: 1.15em; line-height: 0; }
-.ext::after { content: " ↗"; font-size: .85em; }
-.links { display: flex; flex-wrap: wrap; gap: 14px 30px; align-items: center; justify-content: center; font-size: 17px; }
-.links a { font-size: 17px; }
-
-/* ---------- Reveal on scroll ---------- */
-.js .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
-.js .reveal.in { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .js .reveal { opacity: 1; transform: none; transition: none; } .menu.open { animation: none; } }
-
-/* ---------- Type ---------- */
-.eyebrow { font-size: 17px; font-weight: 600; color: var(--orange-ink); letter-spacing: -.01em; margin-bottom: 10px; }
-.eyebrow.green { color: var(--green-ink); }
-.eyebrow.blue { color: var(--link); }
-.headline { font-size: clamp(40px, 7vw, 80px); line-height: 1.05; letter-spacing: -.035em; }
-.title { font-size: clamp(32px, 5vw, 56px); line-height: 1.07; letter-spacing: -.03em; }
-.sub { font-size: clamp(19px, 2.2vw, 24px); line-height: 1.38; color: var(--ink-2); letter-spacing: -.02em; font-weight: 400; }
-.grad { background: linear-gradient(90deg, #0090f7, #ba62fc 50%, #f2416b); -webkit-background-clip: text; background-clip: text; color: transparent; }
-
-/* ---------- Hero ---------- */
-.hero { padding: clamp(72px, 12vw, 136px) 0 clamp(56px, 8vw, 96px); }
-.hero .eyebrow { color: var(--ink-2); font-weight: 500; font-size: 19px; }
-.hero h1 { font-size: clamp(48px, 9vw, 96px); line-height: 1.02; letter-spacing: -.04em; margin: 0 auto; max-width: 11ch; }
-.hero .sub { max-width: 30em; margin: 24px auto 34px; }
-.hero .links { margin-top: 4px; }
-.avail { display: inline-flex; align-items: center; gap: 8px; margin-top: 36px; font-size: 14px; color: var(--ink-2); }
-.avail i { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px color-mix(in srgb, var(--green) 22%, transparent); }
-
-/* ---------- Product tiles ---------- */
-.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 12px; max-width: 1264px; margin: 0 auto; }
-@media (max-width: 760px) { .tiles { grid-template-columns: 1fr; } }
-.tile { position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 52px 28px 0; min-height: 580px; border-radius: 0; background: var(--bg-alt); color: var(--ink); }
-@media (min-width: 761px) { .tile { border-radius: 0; } }
-.tile.dark { background: #000; color: #f5f5f7; }
-.tile.dark .sub { color: #a1a1a6; }
-.tile.dark a { color: #2997ff; }
-.tile h2 { font-size: clamp(40px, 5vw, 56px); letter-spacing: -.035em; line-height: 1.05; }
-.tile .sub { font-size: clamp(19px, 2vw, 24px); margin: 8px 0 18px; }
-.tile .links { gap: 10px 26px; }
-.tile-art { margin-top: auto; padding-top: 36px; width: 100%; display: flex; justify-content: center; }
-@media (prefers-color-scheme: dark) { .tile { background: var(--tile); } .tile.dark { background: #000; box-shadow: inset 0 0 0 1px #222; } }
-
-/* tile art: Betawise ring */
-.ring-art { width: 260px; height: 260px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 56px;
-  background: conic-gradient(var(--r-vlow) 0 1%, var(--r-low) 1% 3%, var(--r-in) 3% 79%, var(--r-high) 79% 96%, var(--r-vhigh) 96% 100%);
-  -webkit-mask: radial-gradient(circle, transparent 98px, #000 99px); mask: radial-gradient(circle, transparent 98px, #000 99px); }
-.ring-wrap { position: relative; }
-.ring-label { position: absolute; inset: 0 0 56px; display: grid; place-content: center; text-align: center; }
-.ring-label strong { font-size: 64px; font-weight: 600; letter-spacing: -.04em; line-height: 1; }
-.ring-label span { font-size: 14px; color: var(--ink-2); margin-top: 6px; }
-
-/* tile art: Jarvis bubbles */
-.bubbles { width: min(360px, 100%); display: grid; gap: 10px; margin-bottom: 60px; text-align: left; }
-.bubble { justify-self: end; max-width: 86%; background: #0a84ff; color: #fff; padding: 9px 14px; border-radius: 20px 20px 6px 20px; font-size: 16px; line-height: 1.3; letter-spacing: -.01em; }
-.filed { justify-self: start; display: inline-flex; gap: 8px; align-items: center; font-size: 13px; color: #a1a1a6; padding-left: 4px; }
-.filed b { color: #30d158; font-weight: 600; }
-
-/* ---------- Sections ---------- */
-.section { padding: clamp(88px, 12vw, 140px) 0; }
-.section.alt { background: var(--bg-alt); }
-.section.black { background: #000; color: #f5f5f7; --ink: #f5f5f7; --ink-2: #a1a1a6; --ink-3: #86868b; --tile: #1c1c1e; --line: #38383a; --link: #2997ff; --blue: #0a84ff; --green-ink: #30d158; --orange-ink: #ff9f0a; --bg-alt: #1c1c1e; }
-.section-intro { max-width: 820px; margin: 0 auto clamp(48px, 7vw, 80px); text-align: center; }
-.section-intro .sub { margin-top: 20px; }
-
-/* feature layout: phone + highlights */
-.feature { display: grid; grid-template-columns: auto 1fr; gap: clamp(32px, 7vw, 96px); align-items: center; }
-@media (max-width: 860px) { .feature { grid-template-columns: 1fr; justify-items: center; } }
-.highlights { list-style: none; padding: 0; margin: 0; display: grid; gap: 32px; max-width: 420px; }
-.highlights strong { display: block; font-size: 40px; line-height: 1.05; letter-spacing: -.035em; font-weight: 600; }
-.highlights span { display: block; font-size: 17px; color: var(--ink-2); margin-top: 6px; }
-.highlights .fineprint { font-size: 14px; color: var(--ink-3); }
-
-/* ---------- iPhone frame ---------- */
-.iphone { position: relative; width: 320px; height: 660px; padding: 12px; border-radius: 56px; background: #1d1d1f; box-shadow: inset 0 0 0 2px #3a3a3c, 0 0 0 1px #000, var(--shadow), 0 40px 80px -30px rgba(0,0,0,.45); flex: none; }
-.iphone::before { content: ""; position: absolute; top: 24px; left: 50%; transform: translateX(-50%); width: 96px; height: 28px; background: #000; border-radius: 20px; z-index: 3; }
-.screen { position: relative; height: 100%; border-radius: 44px; overflow: hidden; background: #f2f2f7; color: #000; font-size: 15px; letter-spacing: -.01em; display: flex; flex-direction: column; }
-.screen.dark-screen { background: #000; color: #fff; }
-.status-bar { height: 52px; flex: none; display: flex; justify-content: space-between; align-items: center; padding: 14px 30px 0; font-size: 15px; font-weight: 600; }
-.status-bar .icons { display: flex; gap: 5px; align-items: center; }
-.status-bar .icons i { display: block; width: 24px; height: 11px; border-radius: 3px; border: 1.5px solid currentColor; opacity: .9; position: relative; }
-.status-bar .icons i::after { content: ""; position: absolute; inset: 1px; right: 5px; background: currentColor; border-radius: 1px; }
-.app-title { font-size: 30px; font-weight: 700; letter-spacing: -.03em; padding: 6px 18px 10px; }
-@media (max-width: 380px) { .iphone { width: 300px; height: 630px; } }
-
-/* iOS segmented control */
-.seg { display: grid; grid-template-columns: repeat(3, 1fr); margin: 0 16px; padding: 2px; border-radius: 9px; background: rgba(118,118,128,.12); position: relative; }
-.seg button { position: relative; z-index: 1; border: 0; background: none; padding: 6px 4px; font: 500 13px var(--font); letter-spacing: -.01em; color: #000; cursor: pointer; border-radius: 7px; min-height: 30px; }
-.seg .thumb { position: absolute; z-index: 0; top: 2px; bottom: 2px; left: 2px; width: calc((100% - 4px) / 3); border-radius: 7px; background: #fff; box-shadow: 0 3px 8px rgba(0,0,0,.12), 0 3px 1px rgba(0,0,0,.04); transition: transform .3s cubic-bezier(.3,.7,.3,1); }
-.seg button[aria-pressed="true"] { font-weight: 600; }
-
-/* Betawise screen */
-.ios-card { margin: 12px 16px 0; background: #fff; border-radius: 14px; padding: 14px 16px; }
-.ring-row { display: flex; align-items: center; gap: 16px; }
-.ring { --p: 76; width: 92px; height: 92px; flex: none; border-radius: 50%; display: grid; place-items: center; background: conic-gradient(var(--r-in) calc(var(--p) * 1%), #e5e5ea 0); -webkit-mask: radial-gradient(circle, transparent 34px, #000 35px); mask: radial-gradient(circle, transparent 34px, #000 35px); transition: --p .5s; }
-@property --p { syntax: "<number>"; inherits: false; initial-value: 0; }
-.ring-num { position: relative; width: 92px; height: 92px; flex: none; }
-.ring-num .ring { position: absolute; inset: 0; }
-.ring-num b { position: absolute; inset: 0; display: grid; place-items: center; font-size: 24px; font-weight: 700; letter-spacing: -.03em; }
-.ring-meta .k { font-size: 13px; color: #8e8e93; }
-.ring-meta .v { font-size: 15px; font-weight: 600; margin-top: 2px; }
-.ring-meta .v.ok { color: #248a3d; } .ring-meta .v.bad { color: #d70015; }
-.ranges { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 7px; font-size: 13px; }
-.ranges li { display: grid; grid-template-columns: 8px 1fr auto 14px; gap: 8px; align-items: center; }
-.ranges i { width: 8px; height: 8px; border-radius: 50%; }
-.ranges .val { font-variant-numeric: tabular-nums; color: #3c3c43; }
-.ranges .ok { color: #34c759; font-size: 12px; } .ranges .no { color: #ff3b30; font-size: 12px; }
-.focus { margin: 12px 16px 0; border-radius: 14px; padding: 14px 16px; background: #fff; border-left: 4px solid #34c759; }
-.focus.safety { border-left-color: #ff9500; }
-.focus .k { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .02em; color: #248a3d; }
-.focus.safety .k { color: #c93400; }
-.focus h4 { font-size: 19px; letter-spacing: -.02em; margin: 3px 0 4px; }
-.focus p { font-size: 13.5px; line-height: 1.35; color: #3c3c43; }
-
-/* Jarvis screen */
-.chat-head { flex: none; text-align: center; padding: 2px 0 10px; border-bottom: 1px solid #1c1c1e; }
-.chat-head .av { width: 44px; height: 44px; margin: 0 auto 4px; border-radius: 50%; background: linear-gradient(135deg, #3ce6ff, #0a84ff); display: grid; place-items: center; font-weight: 700; color: #fff; font-size: 18px; }
-.chat-head small { font-size: 11px; color: #8e8e93; }
-.chat { flex: 1; overflow: hidden; padding: 14px 14px 6px; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; }
-.chat .bubble { align-self: flex-end; font-size: 15px; word-break: break-word; }
-.note { align-self: stretch; background: #1c1c1e; border-radius: 16px; padding: 12px 14px; }
-.note-meta { display: flex; justify-content: space-between; gap: 8px; font: 500 11px var(--mono); color: #8e8e93; margin-bottom: 6px; letter-spacing: 0; }
-.note-title { font-size: 16px; font-weight: 600; min-height: 1.3em; word-break: break-word; }
-.note-title.empty { color: #636366; font-weight: 400; }
-.note-subs { list-style: none; margin: 6px 0 0; padding: 0; font: 400 13px/1.6 var(--mono); color: #aeaeb2; letter-spacing: 0; }
-.note-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-.note-tags span { font-size: 12px; padding: 3px 8px; border-radius: 980px; background: rgba(10,132,255,.18); color: #64d2ff; }
-.composer { flex: none; display: flex; gap: 8px; align-items: center; padding: 8px 12px 30px; }
-.composer input { flex: 1; min-width: 0; height: 36px; border-radius: 18px; border: 1px solid #3a3a3c; background: #000; color: #fff; padding: 0 14px; font: 400 16px var(--font); letter-spacing: -.01em; }
-.composer input:focus { outline: none; border-color: #0a84ff; }
-.composer .send { width: 30px; height: 30px; flex: none; border-radius: 50%; background: #0a84ff; display: grid; place-items: center; }
-.composer .send svg { width: 14px; height: 14px; }
-
-.try { max-width: 420px; }
-.try h3 { font-size: 28px; letter-spacing: -.03em; line-height: 1.1; }
-.try p.sub { font-size: 17px; margin: 10px 0 18px; }
-.chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.chips button { border: 0; border-radius: 980px; background: var(--tile); color: var(--ink); padding: 9px 14px; font: 400 14px var(--font); letter-spacing: -.01em; cursor: pointer; text-align: left; box-shadow: inset 0 0 0 1px var(--line); transition: background .2s; }
-.chips button:hover { background: color-mix(in srgb, var(--tile) 80%, var(--ink)); }
-.checks { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 12px; }
-.checks li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; font-size: 15px; color: var(--ink-3); align-items: start; transition: color .2s; }
-.checks li.on { color: var(--ink); }
-.checks .ck { width: 20px; height: 20px; border-radius: 50%; box-shadow: inset 0 0 0 1.5px var(--line); display: grid; place-items: center; transition: background .2s; margin-top: 1px; }
-.checks li.on .ck { background: var(--green); box-shadow: none; }
-.checks li.on .ck::after { content: ""; width: 8px; height: 4.5px; border-left: 2px solid #fff; border-bottom: 2px solid #fff; transform: rotate(-45deg) translate(1px, -1px); }
-.fine { font-size: 12px; color: var(--ink-3); margin-top: 22px; line-height: 1.45; }
-
-/* ---------- Bento ---------- */
-.bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-top: clamp(64px, 9vw, 112px); }
-.card { grid-column: span 2; background: var(--tile); border-radius: 28px; padding: 32px 30px; display: flex; flex-direction: column; gap: 10px; min-height: 240px; }
-.section .card { background: var(--bg-alt); }
-.section.alt .card { background: var(--bg); }
-.section.black .card { background: #1c1c1e; }
-@media (prefers-color-scheme: dark) { .section .card, .section.alt .card { background: var(--tile); } }
-.card.wide { grid-column: span 3; }
-.card.full { grid-column: span 6; }
-@media (max-width: 860px) { .bento { grid-template-columns: 1fr; } .card, .card.wide, .card.full { grid-column: auto; min-height: 0; } }
-.card .icon { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; flex: none; }
-.card .icon svg { width: 26px; height: 26px; }
-.card h3 { font-size: 24px; line-height: 1.17; letter-spacing: -.025em; margin-top: 20px; }
-.card p { color: var(--ink-2); font-size: 17px; }
-.card .trade { font-size: 14px; color: var(--ink-3); padding-top: 12px; margin-top: 4px; border-top: 1px solid var(--line); }
-.card .trade b { color: var(--ink-2); font-weight: 600; }
-.i-green { background: color-mix(in srgb, #34c759 16%, transparent); color: #34c759; }
-.i-orange { background: color-mix(in srgb, #ff9500 16%, transparent); color: #ff9500; }
-.i-blue { background: color-mix(in srgb, #0a84ff 16%, transparent); color: #0a84ff; }
-.i-purple { background: color-mix(in srgb, #bf5af2 16%, transparent); color: #bf5af2; }
-.i-pink { background: color-mix(in srgb, #ff375f 16%, transparent); color: #ff375f; }
-.after { margin-top: 48px; }
-
-/* ---------- Principles ---------- */
-.principles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-@media (max-width: 760px) { .principles { grid-template-columns: 1fr; } }
-.principles .card { grid-column: auto; min-height: 0; padding: 36px 32px; }
-.principles .num { font-size: 56px; font-weight: 600; letter-spacing: -.04em; line-height: 1; }
-.principles h3 { margin-top: 18px; }
-
-/* ---------- Experience ---------- */
-.xp { max-width: 820px; margin: 0 auto; list-style: none; padding: 0; }
-.xp li { display: grid; grid-template-columns: 1fr auto; gap: 4px 24px; padding: 26px 0; border-bottom: 1px solid var(--line); }
-.xp li:first-child { border-top: 1px solid var(--line); }
-.xp h3 { font-size: 21px; letter-spacing: -.02em; }
-.xp .org { color: var(--ink-2); font-size: 17px; grid-column: 1; }
-.xp .when { color: var(--ink-3); font-size: 15px; grid-column: 2; grid-row: 1; align-self: center; font-variant-numeric: tabular-nums; }
-@media (max-width: 560px) { .xp li { grid-template-columns: 1fr; } .xp .when { grid-column: 1; grid-row: auto; } }
-.creds { max-width: 820px; margin: 40px auto 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-@media (max-width: 560px) { .creds { grid-template-columns: 1fr; } }
-.cred { background: var(--bg); border-radius: 18px; padding: 20px 22px; }
-@media (prefers-color-scheme: dark) { .cred { background: var(--tile); } }
-.cred strong { display: block; font-size: 17px; font-weight: 600; letter-spacing: -.02em; }
-.cred span { display: block; color: var(--ink-2); font-size: 14px; margin-top: 2px; }
-
-/* ---------- Contact ---------- */
-.contact .headline { max-width: 12ch; margin: 0 auto; }
-.contact .sub { max-width: 28em; margin: 22px auto 34px; }
-.contact .btns { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
-.copy-ok { display: block; min-height: 1.5em; margin-top: 16px; font-size: 14px; color: var(--ink-2); }
-
-footer { background: var(--bg-alt); color: var(--ink-3); font-size: 12px; letter-spacing: -.01em; padding: 20px 0 28px; }
-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; border-top: 1px solid var(--line); padding-top: 16px; }
-footer a { color: var(--ink-2); }
-</style>
-<script>document.documentElement.classList.add('js')</script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css" />
+<script>
+  // Saved theme before first paint; otherwise dark unless the device prefers light.
+  (function () {
+    var t = null; try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    document.documentElement.dataset.theme = t;
+  })();
+  // A page transition the browser skips (e.g. background tab) is harmless; don't log it as an error.
+  ['pageswap', 'pagereveal'].forEach(function (ev) {
+    addEventListener(ev, function (e) { var vt = e.viewTransition; if (vt) { vt.ready.catch(function () {}); vt.finished.catch(function () {}); } });
+  });
+</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<header class="nav-bar">
-  <nav class="wrap nav" aria-label="Primary">
-    <a class="brand" href="#top">Daniel Schneiderman</a>
-    <ul class="nav-links">
-      <li><a href="#betawise">Betawise</a></li>
-      <li><a href="#jarvis">Jarvis</a></li>
-      <li><a href="#approach">Approach</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <a class="nav-cta" href="Daniel_Schneiderman_Resume.pdf" download>Résumé</a>
-    <button id="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><div><span></span><span></span></div></button>
-  </nav>
-  <div class="menu" id="menu">
-    <a href="#betawise">Betawise</a>
-    <a href="#jarvis">Jarvis</a>
-    <a href="#approach">Approach</a>
-    <a href="#experience">Experience</a>
-    <a href="#contact">Contact</a>
-    <a class="small" href="Daniel_Schneiderman_Resume.pdf" download>Download résumé (PDF)</a>
+<nav class="nav glass" aria-label="Primary">
+  <a class="mark" href="/" aria-label="Daniel Schneiderman, home">DS</a>
+  <a class="link" href="/">Home</a>
+  <a class="link" href="/insights/">Insights</a>
+  <a class="link" href="/betawise/">Betawise</a>
+  <a class="link" href="/jarvis/">Jarvis</a>
+  <a class="link" href="/about/">About</a>
+  <button class="k" type="button" data-cmdk aria-haspopup="dialog"><span class="k-long">Search</span><span class="k-short">Menu</span><kbd>⌘K</kbd></button>
+  <button class="icon" type="button" id="theme" aria-label="Switch theme">
+    <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+  </button>
+</nav>
+
+<main id="main">
+
+<header class="hero home">
+  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="hero-grid-lines" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="pill glass"><span class="live" aria-hidden="true"></span>Product Owner · UN Global Compact · New York</span>
+    <h1>Product manager, building with <span class="grad-text">AI</span>.</h1>
+    <p class="lede">Hi, I'm Daniel. I work in product management at the <b>United Nations Global Compact</b>. Lately I've been exploring how AI lets a product manager go past the spec: prototyping, building, and shipping features and small products end to end. Here's some of that work.</p>
+    <div class="ctas">
+      <a class="btn btn-primary" href="#work">See the work <span aria-hidden="true">↓</span></a>
+      <button class="btn btn-glass glass" type="button" data-cmdk>Explore with <kbd>⌘K</kbd></button>
+    </div>
+
+    <div class="bento">
+      <a class="b-jv glass spot" href="/insights/">
+        <div class="b-head"><span class="label">Work · UN Global Compact</span><span class="arrow-chip" aria-hidden="true">→</span></div>
+        <h2 class="b-title vt-insights">Insights</h2>
+        <p class="b-sub">Public data visualizations for 16,000+ company sustainability reports a year.</p>
+        <div class="mini-bars" aria-hidden="true"><span style="height:38%;animation-delay:.05s"></span><span style="height:55%;animation-delay:.1s"></span><span style="height:47%;animation-delay:.15s"></span><span style="height:72%;animation-delay:.2s"></span><span style="height:64%;animation-delay:.25s"></span><span style="height:88%;animation-delay:.3s"></span><span style="height:80%;animation-delay:.35s"></span><span style="height:100%;animation-delay:.4s"></span></div>
+      </a>
+      <a class="b-jv glass spot" href="/betawise/">
+        <div class="b-head"><span class="label">Side project · Health</span><span class="arrow-chip" aria-hidden="true">→</span></div>
+        <h2 class="b-title vt-betawise">Betawise</h2>
+        <p class="b-sub">Turning two weeks of glucose data into one thing to work on.</p>
+        <div class="ring-wrap sm" aria-hidden="true"><div class="mini-ring sm"></div><div class="val"><strong>76%</strong></div></div>
+      </a>
+      <a class="b-jv glass spot" href="/jarvis/">
+        <div class="b-head"><span class="label">Side project · iPhone</span><span class="arrow-chip" aria-hidden="true">→</span></div>
+        <h2 class="b-title vt-jarvis">Jarvis</h2>
+        <p class="b-sub">A notes app you use by texting yourself.</p>
+        <div class="typing-row" aria-hidden="true"><div class="tbubble typing" id="hero-type"></div><div class="tfiled" id="hero-filed"></div></div>
+      </a>
+      <div class="b-stat glass spot">
+        <span class="label">Currently</span>
+        <strong>Product Owner</strong>
+        <span>UN Global Compact, since 2024</span>
+      </div>
+      <div class="b-stat glass spot">
+        <span class="label">Exploring</span>
+        <strong>Building with AI</strong>
+        <span>SwiftUI · React · LLM APIs</span>
+      </div>
+    </div>
   </div>
 </header>
 
-<main id="main">
-  <!-- ============ HERO ============ -->
-  <section class="hero center" id="top">
-    <div class="wrap">
-      <p class="eyebrow">Daniel Schneiderman · Product Owner</p>
-      <h1>Products people <span class="grad">keep</span> using.</h1>
-      <p class="sub">I design, build, and ship AI products, sweating the details until they feel effortless. By day at the United Nations Global Compact. Here are two I made from scratch.</p>
-      <div class="links">
-        <a class="btn btn-blue" href="#betawise">See the work</a>
-        <a class="chev" href="Daniel_Schneiderman_Resume.pdf" download>Download résumé</a>
-      </div>
-      <p class="avail"><i aria-hidden="true"></i>Open to senior product roles · NYC or remote</p>
+<section class="block" id="work" aria-labelledby="work-title" style="padding-top:64px">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="index-num">Selected work</span>
+      <h2 id="work-title">Three projects, one at work and two of my own.</h2>
     </div>
-  </section>
-
-  <!-- ============ TILES ============ -->
-  <div class="tiles">
-    <article class="tile reveal">
-      <p class="eyebrow green" style="margin-bottom:6px">Health · Founder</p>
-      <h2>Betawise</h2>
-      <p class="sub">288 glucose readings a day.<br>One thing to work on.</p>
-      <div class="links"><a class="chev" href="#betawise">Learn more</a><a class="ext" href="https://betawise.org" rel="noopener">betawise.org</a></div>
-      <div class="tile-art" aria-hidden="true">
-        <div class="ring-wrap"><div class="ring-art"></div><div class="ring-label"><strong>76%</strong><span>Time in range</span></div></div>
-      </div>
-    </article>
-    <article class="tile dark reveal">
-      <p class="eyebrow" style="margin-bottom:6px;color:#64d2ff">iPhone · Builder</p>
-      <h2>Jarvis</h2>
-      <p class="sub">Text yourself anything.<br>It files itself.</p>
-      <div class="links"><a class="chev" href="#jarvis">Learn more</a></div>
-      <div class="tile-art" aria-hidden="true">
-        <div class="bubbles">
-          <div class="bubble">remind me to call the endo tomorrow 3pm #health</div>
-          <div class="filed"><b>✓</b> Reminder set · Tomorrow, 3:00 PM · #health</div>
-          <div class="bubble">#event dinner with Sam Friday 7pm</div>
-          <div class="filed"><b>✓</b> Added to Calendar</div>
-        </div>
-      </div>
-    </article>
+    <ul class="work-list">
+      <li class="reveal"><a class="work-row glass spot" href="/insights/">
+        <div><span class="label">01 · UN Global Compact</span><h3>Insights</h3></div>
+        <div><p>A public platform that makes Communication on Progress data explorable year over year, by topic, region, and sector.</p><div class="tags"><span>Product ownership</span><span>Data visualization</span><span>Public data</span></div></div>
+        <span class="arrow-chip" aria-hidden="true">→</span>
+      </a></li>
+      <li class="reveal"><a class="work-row glass spot" href="/betawise/">
+        <div><span class="label">02 · Side project</span><h3>Betawise</h3></div>
+        <div><p>A CGM coach I built around my own Type 1 diabetes: clinical metrics, one weekly focus, and an AI coach with guardrails.</p><div class="tags"><span>Health</span><span>AI with guardrails</span><span>Privacy-first</span></div></div>
+        <span class="arrow-chip" aria-hidden="true">→</span>
+      </a></li>
+      <li class="reveal"><a class="work-row glass spot" href="/jarvis/">
+        <div><span class="label">03 · Side project</span><h3>Jarvis</h3></div>
+        <div><p>A native iPhone notes app I built to learn SwiftUI. Text yourself, and tags, reminders, and events file themselves.</p><div class="tags"><span>SwiftUI</span><span>Widgets</span><span>Natural-language input</span></div></div>
+        <span class="arrow-chip" aria-hidden="true">→</span>
+      </a></li>
+    </ul>
   </div>
+</section>
 
-  <!-- ============ BETAWISE ============ -->
-  <section class="section alt" id="betawise" aria-labelledby="bw-title">
-    <div class="wrap">
-      <div class="section-intro reveal">
-        <p class="eyebrow green">Betawise</p>
-        <h2 class="headline" id="bw-title">Your data, finally making sense.</h2>
-        <p class="sub">I have Type 1 diabetes. My CGM takes a reading every five minutes, and I see my endocrinologist for fifteen minutes a few times a year. Betawise is the coach in between, built for the person living with it, not just the clinic.</p>
-      </div>
-
-      <div class="feature">
-        <div class="reveal">
-          <div class="iphone">
-            <div class="screen">
-              <div class="status-bar"><span>9:41</span><span class="icons"><i></i></span></div>
-              <div class="app-title">This week</div>
-              <div class="seg" role="group" aria-label="Example 14-day profile">
-                <span class="thumb" id="seg-thumb" aria-hidden="true"></span>
-                <button type="button" aria-pressed="true" data-p="0">Steady</button>
-                <button type="button" aria-pressed="false" data-p="1">Night lows</button>
-                <button type="button" aria-pressed="false" data-p="2">After meals</button>
-              </div>
-              <div class="ios-card">
-                <div class="ring-row">
-                  <div class="ring-num"><div class="ring" id="ring"></div><b id="tir-val">76%</b></div>
-                  <div class="ring-meta">
-                    <div class="k">Time in range · 70–180</div>
-                    <div class="v ok" id="tir-goal">Above the 70% goal</div>
-                  </div>
-                </div>
-                <ul class="ranges" id="ranges"></ul>
-              </div>
-              <div class="focus" id="focus" aria-live="polite">
-                <div class="k" id="focus-kind">Biggest opportunity</div>
-                <h4 id="focus-title">—</h4>
-                <p id="focus-body"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="reveal">
-          <ul class="highlights">
-            <li><strong>4,000 → 1</strong><span>Two weeks of readings become one clear focus for the week.</span></li>
-            <li><strong>Safety first.</strong><span>If lows break consensus limits, they're the focus, even when fixing highs would gain more. Tap "Night lows" to see it.</span></li>
-            <li><strong>0 raw readings</strong><span>ever sent to the AI. Analysis happens on your device. No account required.</span></li>
-            <li class="fineprint">Example profiles are made up; the ranking rule is real. Educational only, not medical advice.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="bento">
-        <article class="card wide reveal">
-          <div class="icon i-green" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></div>
-          <h3>One weekly focus, not a dashboard.</h3>
-          <p>The pattern engine finds everything: overnight lows, dawn phenomenon, post-meal spikes, rebound highs. Then it asks you to work on just one.</p>
-          <p class="trade"><b>Trade-off:</b> hides detail power users want, so every metric is one tap away.</p>
-        </article>
-        <article class="card wide reveal">
-          <div class="icon i-blue" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 4-6"/></svg></div>
-          <h3>AI explains the numbers. It never invents them.</h3>
-          <p>Time in Range, Glycemia Risk Index, and GMI are deterministic, tested code built on published clinical definitions. The coach only talks about the results.</p>
-        </article>
-        <article class="card reveal">
-          <div class="icon i-purple" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
-          <h3>Private by design.</h3>
-          <p>Readings stay in your browser. The coach sees a de-identified summary only.</p>
-        </article>
-        <article class="card reveal">
-          <div class="icon i-orange" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div>
-          <h3>Guardrails without the model.</h3>
-          <p>Dosing questions and emergencies get fixed, safe responses before any AI call.</p>
-        </article>
-        <article class="card reveal">
-          <div class="icon i-pink" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg></div>
-          <h3>Ready for the clinic.</h3>
-          <p>A one-page report in the format endocrinologists already use.</p>
-        </article>
-      </div>
-
-      <div class="links after reveal"><a class="btn btn-blue ext" href="https://betawise.org" rel="noopener">Visit betawise.org</a></div>
+<section class="contact-band" aria-labelledby="ct-title">
+  <div class="wrap reveal">
+    <h2 id="ct-title">Say <span class="grad-text">hello.</span></h2>
+    <p>Always happy to talk about product, building with AI, or diabetes tech.</p>
+    <div class="ctas">
+      <a class="btn btn-primary" href="mailto:dschneiderman955@gmail.com">Email me</a>
+      <button class="btn btn-glass glass" type="button" data-copy>Copy email</button>
+      <a class="btn btn-glass glass" href="https://www.linkedin.com/in/danielschneiderman955/" rel="noopener">LinkedIn ↗</a>
+      <a class="btn btn-glass glass" href="/Daniel_Schneiderman_Resume.pdf" download>Résumé ↓</a>
     </div>
-  </section>
+    <span class="copied" id="copied" role="status"></span>
+  </div>
+</section>
 
-  <!-- ============ JARVIS ============ -->
-  <section class="section black" id="jarvis" aria-labelledby="jv-title">
-    <div class="wrap">
-      <div class="section-intro reveal">
-        <p class="eyebrow" style="color:#64d2ff">Jarvis</p>
-        <h2 class="headline" id="jv-title">The best input is the one you already use.</h2>
-        <p class="sub">Every notes app asks you to open it, pick a folder, and fill in a form. The fastest thing anyone does on a phone is send a text. So Jarvis is a notes app you use by texting yourself.</p>
-      </div>
-
-      <div class="feature">
-        <div class="reveal">
-          <div class="iphone">
-            <div class="screen dark-screen">
-              <div class="status-bar"><span>9:41</span><span class="icons"><i></i></span></div>
-              <div class="chat-head"><div class="av" aria-hidden="true">J</div><small>Jarvis</small></div>
-              <div class="chat" aria-live="polite">
-                <div class="bubble" id="jv-bubble"></div>
-                <div class="note">
-                  <div class="note-meta"><span>N-0025</span><span id="jv-when">just now</span></div>
-                  <div class="note-title" id="jv-title-out"></div>
-                  <ul class="note-subs" id="jv-subs"></ul>
-                  <div class="note-tags" id="jv-tags"></div>
-                </div>
-              </div>
-              <div class="composer">
-                <label class="sr-only" for="jv-in">Type a note the way you'd text it</label>
-                <input id="jv-in" type="text" autocomplete="off" spellcheck="false" placeholder="Text Jarvis" value="remind me to call the endo tomorrow 3pm #health" />
-                <span class="send" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="try reveal">
-          <h3>Try it. Type in the phone.</h3>
-          <p class="sub">No fields, no folders. Jarvis reads the message and files it.</p>
-          <div class="chips" aria-label="Examples">
-            <button type="button">#event dinner with Sam Friday 7pm</button>
-            <button type="button">build the PSU #todo - order parts - solder - test</button>
-            <button type="button">great talk on evals https://example.com #ai #read</button>
-          </div>
-          <ul class="checks" id="jv-parsed"></ul>
-          <p class="fine">A simplified JavaScript port of Jarvis's Swift parser. The app uses Apple's date detection, which understands far more phrasings.</p>
-        </div>
-      </div>
-
-      <div class="bento">
-        <article class="card wide reveal">
-          <div class="icon i-blue" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></div>
-          <h3>Syntax instead of forms.</h3>
-          <p>#tags, "remind me…", "- sub-items", and #event come straight from plain text. The message itself sets the structure.</p>
-          <p class="trade"><b>Trade-off:</b> syntax is hard to discover, so it's forgiving ("at 9am", "tomorrow 3pm", "in 30 minutes") and the app teaches by example.</p>
-        </article>
-        <article class="card wide reveal">
-          <div class="icon i-green" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="3"/><path d="M11 18h2"/></svg></div>
-          <h3>Capture from anywhere.</h3>
-          <p>Siri, the Action button, Shortcuts, an iMessage to yourself, or Jarvis's own phone number (via Twilio and a Cloudflare Worker).</p>
-        </article>
-        <article class="card reveal">
-          <div class="icon i-purple" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M9 4v16M15 4v16"/></svg></div>
-          <h3>Four views, one source of truth.</h3>
-          <p>Feed, Board, To-do, and Calendar read from one store, so they always agree.</p>
-        </article>
-        <article class="card reveal">
-          <div class="icon i-orange" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a8 8 0 0 0 16 0M12 3v11M8 10l4 4 4-4"/></svg></div>
-          <h3>Offline first.</h3>
-          <p>A full copy lives on the phone; sync with the web happens quietly in the background.</p>
-        </article>
-        <article class="card reveal">
-          <div class="icon i-pink" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M9 8h6M9 12h4"/></svg></div>
-          <h3>Glanceable.</h3>
-          <p>Lock Screen widgets and a Live Activity mean you rarely need to open the app.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ APPROACH ============ -->
-  <section class="section" id="approach" aria-labelledby="ap-title">
-    <div class="wrap">
-      <div class="section-intro reveal">
-        <p class="eyebrow blue">How I work</p>
-        <h2 class="headline" id="ap-title">Simple is hard. That's the job.</h2>
-      </div>
-      <div class="principles">
-        <article class="card reveal"><span class="num grad">01</span><h3>Show less, so people do more.</h3><p>A dashboard with twelve numbers gets admired, then ignored. One clear next step gets done.</p></article>
-        <article class="card reveal"><span class="num grad">02</span><h3>Meet people where they already are.</h3><p>New habits are expensive. Jarvis lives in your texts; Betawise reads the export you already have.</p></article>
-        <article class="card reveal"><span class="num grad">03</span><h3>AI reads. People decide.</h3><p>Models are great at turning a lot of information into something useful. The final call, where it matters, stays human.</p></article>
-        <article class="card reveal"><span class="num grad">04</span><h3>Prototype before you persuade.</h3><p>A working thing settles in ten minutes what a document argues about for ten days. I build what I propose.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ EXPERIENCE ============ -->
-  <section class="section alt" id="experience" aria-labelledby="ex-title">
-    <div class="wrap">
-      <div class="section-intro reveal">
-        <p class="eyebrow blue">Experience</p>
-        <h2 class="headline" id="ex-title">Where I've done it.</h2>
-      </div>
-      <ol class="xp reveal" reversed>
-        <li><h3>Product Owner</h3><p class="org">United Nations Global Compact</p><span class="when">2024 — Now</span></li>
-        <li><h3>Founder &amp; builder</h3><p class="org">Betawise · Jarvis</p><span class="when">Ongoing</span></li>
-        <li><h3>Project Manager / Business Analyst</h3><p class="org">Algoworks</p><span class="when">2021 — 2024</span></li>
-      </ol>
-      <div class="creds reveal">
-        <div class="cred"><strong>B.S. Energy, Business &amp; Finance</strong><span>Penn State · Minor in Entrepreneurship &amp; Innovation</span></div>
-        <div class="cred"><strong>SAFe Product Owner / Product Manager</strong><span>Scaled Agile Framework</span></div>
-        <div class="cred"><strong>Advanced Scrum Master</strong><span>Scaled Agile Framework</span></div>
-        <div class="cred"><strong>Skull and Bones Senior Honorary Society</strong><span>Penn State's highest honor for service and leadership</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CONTACT ============ -->
-  <section class="section contact center" id="contact" aria-labelledby="ct-title">
-    <div class="wrap reveal">
-      <h2 class="headline" id="ct-title">Let's build something <span class="grad">great.</span></h2>
-      <p class="sub">I'm looking for senior product roles where AI, real-world data, and outcomes that matter come together.</p>
-      <div class="btns">
-        <a class="btn btn-blue" href="mailto:dschneiderman955@gmail.com">Email me</a>
-        <button class="btn btn-ghost" type="button" id="copy-email">Copy email address</button>
-      </div>
-      <div class="links" style="margin-top:22px">
-        <a class="ext" href="https://www.linkedin.com/in/danielschneiderman955/" rel="noopener">LinkedIn</a>
-        <a class="chev" href="Daniel_Schneiderman_Resume.pdf" download>Résumé</a>
-      </div>
-      <span class="copy-ok" id="copy-ok" role="status"></span>
-    </div>
-  </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <span>Copyright © 2026 Daniel A. Schneiderman. Fort Lee, NJ.</span>
-    <span>Designed and built by hand. <a href="#top">Back to top</a></span>
+    <span>© 2026 Daniel A. Schneiderman · Fort Lee, NJ</span>
+    <span>Designed and coded by hand, with AI as a pair. Press <kbd>⌘K</kbd> anywhere.</span>
   </div>
 </footer>
 
+<dialog class="cmdk" id="cmdk" aria-label="Command menu">
+  <div class="cmdk-in">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+    <input id="cmdk-q" type="text" placeholder="Go to a page or run an action…" autocomplete="off" role="combobox" aria-expanded="true" aria-controls="cmdk-list" aria-autocomplete="list" />
+    <kbd>esc</kbd>
+  </div>
+  <ul id="cmdk-list" role="listbox" aria-label="Results"></ul>
+  <div class="cmdk-foot"><span>↑↓ navigate</span><span>↵ select</span><span>esc close</span></div>
+</dialog>
+
+<script src="/site.js"></script>
 <script>
 (function () {
-  function $(id) { return document.getElementById(id); }
-
-  /* ---------- Reveal on scroll ---------- */
-  var reveals = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    var ro = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
-    }, { rootMargin: '0px 0px -8% 0px' });
-    reveals.forEach(function (el) { ro.observe(el); });
-  } else reveals.forEach(function (el) { el.classList.add('in'); });
-
-  /* ---------- Mobile menu ---------- */
-  var menuBtn = $('menu-btn'), menu = $('menu');
-  function setMenu(open) {
-    menu.classList.toggle('open', open);
-    menuBtn.setAttribute('aria-expanded', String(open));
-    menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    document.body.style.overflow = open ? 'hidden' : '';
-  }
-  menuBtn.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
-  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menu.classList.contains('open')) { setMenu(false); menuBtn.focus(); } });
-  addEventListener('resize', function () { if (innerWidth > 760 && menu.classList.contains('open')) setMenu(false); });
-
-  /* ---------- Copy email ---------- */
-  $('copy-email').addEventListener('click', function () {
-    var ok = $('copy-ok'), email = 'dschneiderman955@gmail.com';
-    (navigator.clipboard ? navigator.clipboard.writeText(email) : Promise.reject())
-      .then(function () { ok.textContent = 'Copied ' + email; })
-      .catch(function () { ok.textContent = email; });
-  });
-
-  /* ---------- Betawise: focus logic ---------- */
-  // Consensus targets (Battelino 2019): <54 under 1%, <70 under 4%, 70–180 over 70%, >180 under 25%, >250 under 5%.
-  var RANGES = [
-    { k: 'vlow', label: 'Very low', color: 'var(--r-vlow)', ok: function (p) { return p.vlow < 1; } },
-    { k: 'low', label: 'Low', color: 'var(--r-low)', ok: function (p) { return p.vlow + p.low < 4; } },
-    { k: 'high', label: 'High', color: 'var(--r-high)', ok: function (p) { return p.high + p.vhigh < 25; } },
-    { k: 'vhigh', label: 'Very high', color: 'var(--r-vhigh)', ok: function (p) { return p.vhigh < 5; } }
-  ];
-  var PROFILES = [
-    { vlow: 0.4, low: 2.1, in: 76, high: 17.5, vhigh: 4.0, gain: 5, pattern: 'Late-afternoon highs', where: 'Readings drift above 180 between 3 and 6 PM on weekdays.' },
-    { vlow: 2.2, low: 5.8, in: 64, high: 21, vhigh: 7.0, gain: 0, pattern: 'Overnight lows', where: 'Lows cluster between midnight and 6 AM, mostly after evening exercise.' },
-    { vlow: 0.3, low: 1.7, in: 58, high: 27, vhigh: 13, gain: 9, pattern: 'Post-breakfast spikes', where: 'Glucose passes 250 within 90 minutes of breakfast on 9 of 14 days.' }
-  ];
-  var rangesEl = $('ranges');
-  RANGES.forEach(function (r) {
-    var li = document.createElement('li'); li.dataset.k = r.k;
-    li.innerHTML = '<i style="background:' + r.color + '"></i><span>' + r.label + '</span><span class="val"></span><span class="mark"></span>';
-    rangesEl.appendChild(li);
-  });
-  function renderProfile(i) {
-    var p = PROFILES[i];
-    $('ring').style.setProperty('--p', p.in);
-    $('tir-val').textContent = p.in + '%';
-    var g = $('tir-goal'), good = p.in > 70;
-    g.textContent = good ? 'Above the 70% goal' : 'Below the 70% goal'; g.className = 'v ' + (good ? 'ok' : 'bad');
-    RANGES.forEach(function (r) {
-      var li = rangesEl.querySelector('[data-k="' + r.k + '"]'), ok = r.ok(p);
-      li.querySelector('.val').textContent = p[r.k].toFixed(1) + '%';
-      var m = li.querySelector('.mark'); m.textContent = ok ? '✓' : '✕'; m.className = 'mark ' + (ok ? 'ok' : 'no');
-      m.setAttribute('aria-label', ok ? 'within target' : 'outside target');
-    });
-    var safety = p.vlow >= 1 || p.vlow + p.low >= 4;
-    $('focus').classList.toggle('safety', safety);
-    $('focus-kind').textContent = safety ? 'Safety first' : 'Biggest opportunity';
-    $('focus-title').textContent = p.pattern;
-    $('focus-body').textContent = p.where + (safety ? ' Lows come first, even though fixing highs would add more time in range.' : ' Fixing this could add about ' + p.gain + ' points of time in range.');
-    $('seg-thumb').style.transform = 'translateX(' + (i * 100) + '%)';
-  }
-  var segBtns = document.querySelectorAll('.seg button');
-  segBtns.forEach(function (b) {
-    b.addEventListener('click', function () {
-      segBtns.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
-      renderProfile(+b.dataset.p);
-    });
-  });
-  renderProfile(0);
-
-  /* ---------- Jarvis: parser demo ---------- */
-  var REMIND = ['remind me to ', 'remind me ', 'reminder: ', 'reminder '];
-  var DAYS = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-  var MONTHS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
-  function hashtags(t) { var out = [], m, re = /(?<![\w&])#([A-Za-z0-9_\-]+)/g; while ((m = re.exec(t))) { var g = m[1].toLowerCase(); if (out.indexOf(g) < 0) out.push(g); } return out; }
-  function stripTags(t) { return t.replace(/(?<![\w&])#[A-Za-z0-9_\-]+\s?/g, ''); }
-  function today0(now) { return new Date(now.getFullYear(), now.getMonth(), now.getDate()); }
-  function findDate(t, now) {
-    var s = t.toLowerCase(), m, matched = [];
-    if ((m = s.match(/\bin (\d+) (minute|min|hour|hr|day)s?\b/))) {
-      var n = +m[1], unit = m[2][0];
-      return { date: new Date(now.getTime() + n * (unit === 'm' ? 60e3 : unit === 'h' ? 36e5 : 864e5)), matched: [m[0]] };
-    }
-    var base = null;
-    if ((m = s.match(/\btomorrow\b/))) { base = new Date(now); base.setDate(base.getDate() + 1); matched.push(m[0]); }
-    else if ((m = s.match(/\btoday\b|\btonight\b/))) { base = new Date(now); matched.push(m[0]); }
-    else if ((m = s.match(new RegExp('\\b(' + DAYS.join('|') + ')\\b')))) {
-      base = new Date(now); base.setDate(base.getDate() + ((DAYS.indexOf(m[1]) - now.getDay() + 7) % 7 || 7)); matched.push(m[0]);
-    }
-    else if ((m = s.match(/\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+(\d{1,2})(?:st|nd|rd|th)?(?:,?\s+(\d{4}))?\b/))) {
-      base = new Date(m[3] ? +m[3] : now.getFullYear(), MONTHS.indexOf(m[1]), +m[2]); matched.push(m[0]);
-      if (!m[3] && base < today0(now)) base.setFullYear(base.getFullYear() + 1);
-    }
-    else if ((m = s.match(/\b(\d{1,2})\/(\d{1,2})(?:\/(\d{2,4}))?\b/))) {
-      base = new Date(m[3] ? (+m[3] < 100 ? 2000 + +m[3] : +m[3]) : now.getFullYear(), +m[1] - 1, +m[2]); matched.push(m[0]);
-      if (!m[3] && base < today0(now)) base.setFullYear(base.getFullYear() + 1);
-    }
-    var tm = s.match(/\b(?:at\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)\b/) || s.match(/\bat\s+(\d{1,2}):(\d{2})\b/);
-    if (tm) {
-      var h = tm[3] ? +tm[1] % 12 + (tm[3] === 'pm' ? 12 : 0) : +tm[1];
-      var explicitDay = !!base; base = base || new Date(now);
-      base.setHours(h, tm[2] ? +tm[2] : 0, 0, 0); matched.push(tm[0]);
-      if (!explicitDay && base < now) base.setDate(base.getDate() + 1); // "at 9am" said at 10am → tomorrow
-    } else if (base) base.setHours(9, 0, 0, 0);
-    return base ? { date: base, matched: matched } : null;
-  }
-  function fmt(d) {
-    var now = new Date(), t = new Date(now); t.setDate(t.getDate() + 1);
-    var day = d.toDateString() === now.toDateString() ? 'Today' : d.toDateString() === t.toDateString() ? 'Tomorrow' : d.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
-    return day + ', ' + d.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
-  }
-  function esc(s) { return s.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
-  var input = $('jv-in');
-  function parse() {
-    var raw = input.value;
-    $('jv-bubble').textContent = raw || ' ';
-    $('jv-bubble').style.visibility = raw ? 'visible' : 'hidden';
-    // Sub-items: " - item" segments (newlines in the app; dashes here since it's one line).
-    var parts = raw.split(/\s+[-•*]\s+/), main = parts.shift().trim(), subs = parts.map(function (s) { return s.trim(); }).filter(Boolean);
-    var tags = hashtags(raw), lower = main.toLowerCase().trim();
-    var isReminder = REMIND.some(function (p) { return lower.indexOf(p) === 0; });
-    var isEvent = tags.some(function (t) { return t === 'event' || t === 'cal' || t === 'calendar'; }) || /^(event|cal|add to calendar)\b/.test(lower);
-    var isTodo = tags.indexOf('todo') >= 0;
-    var date = (isReminder || isEvent) ? findDate(stripTags(main), new Date()) : null;
-    var link = (raw.match(/https?:\/\/\S+/) || [])[0];
-    var title = main;
-    if (isReminder) REMIND.some(function (p) { if (lower.indexOf(p) === 0) { title = title.slice(p.length); return true; } });
-    title = stripTags(title);
-    if (date) date.matched.forEach(function (m) { title = title.replace(new RegExp(m.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i'), ''); });
-    title = title.replace(/^\s*(add to calendar|event|cal)\b:?\s*/i, '').replace(/\s+(at|on|in|by)\s*$/i, '').replace(/\s{2,}/g, ' ').trim().replace(/^(to|at|on|in|by)\s+/i, '');
-
-    var t = $('jv-title-out');
-    t.textContent = title || 'Start typing…'; t.classList.toggle('empty', !title);
-    $('jv-when').textContent = date ? (isEvent ? '📅 ' : '⏰ ') + fmt(date.date) : 'just now';
-    $('jv-subs').innerHTML = subs.map(function (s, i) { return '<li>' + (i === subs.length - 1 ? '└─ ' : '├─ ') + esc(stripTags(s)) + '</li>'; }).join('');
-    $('jv-tags').innerHTML = tags.map(function (g) { return '<span>#' + esc(g) + '</span>'; }).join('');
-    var checks = [
-      [tags.length > 0, tags.length ? 'Filed under ' + tags.map(function (g) { return '#' + g; }).join(', ') : 'Add a #tag to file it'],
-      [isReminder && !!date, isReminder ? (date ? 'Reminder set for ' + fmt(date.date) : 'Reminder, but no time found yet') : 'Start with "remind me…" for a notification'],
-      [isEvent && !!date, isEvent ? (date ? 'Added to Calendar' : 'Event, but no date found yet') : 'Add #event and a time for the calendar'],
-      [isTodo, isTodo ? 'On your To-do list' : 'Add #todo to make it a to-do'],
-      [subs.length > 0, subs.length ? subs.length + ' sub-item' + (subs.length > 1 ? 's' : '') + ' nested under it' : 'Use " - item" for sub-items'],
-      [!!link, link ? 'Link detected' : 'Paste a link and it becomes tappable']
-    ];
-    $('jv-parsed').innerHTML = checks.map(function (c) { return '<li class="' + (c[0] ? 'on' : '') + '"><span class="ck" aria-hidden="true"></span><span>' + esc(c[1]) + '</span></li>'; }).join('');
-  }
-  input.addEventListener('input', parse);
-  document.querySelectorAll('.chips button').forEach(function (b) {
-    b.addEventListener('click', function () { input.value = b.textContent; parse(); input.focus({ preventScroll: true }); });
-  });
-  parse();
+  var LINES = [['remind me to call the endo 3pm #health', '✓ reminder · today 3:00 PM'], ['#event dinner with Sam friday 7pm', '✓ added to calendar'], ['podcast idea: worst launch days #ideas', '✓ filed to #ideas']];
+  var ht = document.getElementById('hero-type'), hf = document.getElementById('hero-filed');
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { ht.textContent = LINES[0][0]; ht.classList.remove('typing'); hf.textContent = LINES[0][1]; return; }
+  (function loop(li) {
+    var s = LINES[li][0], i = 0; hf.textContent = '';
+    (function type() {
+      ht.textContent = s.slice(0, ++i);
+      if (i < s.length) return setTimeout(type, 38 + Math.random() * 40);
+      setTimeout(function () { hf.textContent = LINES[li][1]; setTimeout(function () { loop((li + 1) % LINES.length); }, 2200); }, 350);
+    })();
+  })(0);
 })();
 </script>
 </body>
