@@ -4,9 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Daniel Schneiderman — Product Owner</title>
-<meta name="description" content="Daniel Schneiderman is a Product Owner at the UN Global Compact who designs and ships AI products people keep using. Case studies: UN reporting, Betawise, and Jarvis." />
+<meta name="description" content="Daniel Schneiderman is a Product Owner at the UN Global Compact who uses AI to build and ship products people keep using. Case studies: UN reporting and Insights, Betawise, and Jarvis." />
 <meta property="og:title" content="Daniel Schneiderman — Product Owner" />
-<meta property="og:description" content="Case studies in AI products people keep using: UN Global Compact reporting, Betawise, and Jarvis." />
+<meta property="og:description" content="AI-built products people keep using: UN Global Compact reporting and Insights, Betawise, and Jarvis." />
 <meta property="og:url" content="https://danielschneiderman.com/" />
 <meta property="og:type" content="website" />
 <meta name="color-scheme" content="light dark" />
@@ -20,49 +20,40 @@
 </script>
 <style>
 :root {
-  --bg: #f6f3ed;
-  --surface: #fffdf9;
-  --surface-2: #efeae0;
-  --ink: #1a1a17;
-  --ink-2: #4a4a43;
-  --ink-3: #6d6c63;
-  --line: #dcd6ca;
-  --accent: #1f6b4a;
-  --accent-ink: #ffffff;
-  --accent-soft: #e2eee6;
-  --warn: #a8551d;
-  --warn-soft: #f6e6d8;
-  --danger: #b4322a;
+  --bg: #f6f3ed; --surface: #fffdf9; --surface-2: #efeae0;
+  --ink: #1a1a17; --ink-2: #4a4a43; --ink-3: #6d6c63; --line: #dcd6ca;
+  --accent: #1f6b4a; --accent-ink: #ffffff; --accent-soft: #e2eee6;
+  --warn: #a8551d; --warn-soft: #f6e6d8; --danger: #b4322a; --danger-soft: #f8e1de;
   --r-vlow: #8f1d16; --r-low: #d9534a; --r-in: #2e8b57; --r-high: #e0a23a; --r-vhigh: #b5701a;
   --shadow: 0 1px 2px rgba(26,26,23,.04), 0 8px 24px -12px rgba(26,26,23,.12);
   --radius: 14px;
   --serif: "Instrument Serif", Georgia, serif;
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
-  --wrap: 1120px;
-  --gutter: clamp(16px, 4vw, 40px);
+  --wrap: 1120px; --gutter: clamp(16px, 4vw, 40px); --header: 64px;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #12130f; --surface: #1a1b17; --surface-2: #23241f; --ink: #f1eee6; --ink-2: #c4c1b7; --ink-3: #96938a;
     --line: #34352f; --accent: #6fcf9a; --accent-ink: #0f1a13; --accent-soft: #1e3227; --warn: #f0a76a; --warn-soft: #3a2a1c;
-    --danger: #ff8a80; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 30px -14px rgba(0,0,0,.6);
+    --danger: #ff8a80; --danger-soft: #3d1f1c; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 30px -14px rgba(0,0,0,.6);
   }
 }
 :root[data-theme="dark"] {
   --bg: #12130f; --surface: #1a1b17; --surface-2: #23241f; --ink: #f1eee6; --ink-2: #c4c1b7; --ink-3: #96938a;
   --line: #34352f; --accent: #6fcf9a; --accent-ink: #0f1a13; --accent-soft: #1e3227; --warn: #f0a76a; --warn-soft: #3a2a1c;
-  --danger: #ff8a80; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 30px -14px rgba(0,0,0,.6);
+  --danger: #ff8a80; --danger-soft: #3d1f1c; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 12px 30px -14px rgba(0,0,0,.6);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 80px; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header) + 16px); -webkit-text-size-adjust: 100%; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
 body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.6 var(--sans); -webkit-font-smoothing: antialiased; }
 img, svg { display: block; max-width: 100%; }
 a { color: inherit; }
 p { margin: 0 0 1em; }
 h1, h2, h3, h4 { margin: 0; font-weight: 400; }
+code { font: 500 .88em var(--mono); background: var(--surface-2); padding: 1px 5px; border-radius: 5px; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
 .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -70,108 +61,165 @@ h1, h2, h3, h4 { margin: 0; font-weight: 400; }
 .skip:focus { top: 12px; }
 
 /* ---------- Header ---------- */
-.site-header { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--bg) 86%, transparent); backdrop-filter: saturate(1.4) blur(12px); -webkit-backdrop-filter: saturate(1.4) blur(12px); border-bottom: 1px solid transparent; transition: border-color .2s; }
+.site-header { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: saturate(1.4) blur(12px); -webkit-backdrop-filter: saturate(1.4) blur(12px); border-bottom: 1px solid transparent; transition: border-color .2s; }
 .site-header.scrolled { border-bottom-color: var(--line); }
-.nav { display: flex; align-items: center; gap: 24px; height: 64px; }
+.progress { position: absolute; left: 0; bottom: -1px; height: 2px; width: 100%; background: var(--accent); transform-origin: 0 50%; transform: scaleX(0); }
+.nav { display: flex; align-items: center; gap: 20px; height: var(--header); }
 .brand { font: 400 22px/1 var(--serif); text-decoration: none; letter-spacing: -.01em; margin-right: auto; }
-.nav-links { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
+.nav-links { display: flex; gap: 2px; list-style: none; margin: 0; padding: 0; }
 .nav-links a { display: block; padding: 8px 12px; border-radius: 999px; text-decoration: none; font-size: 15px; color: var(--ink-2); transition: background .15s, color .15s; }
 .nav-links a:hover { background: var(--surface-2); color: var(--ink); }
 .nav-links a[aria-current="true"] { color: var(--ink); background: var(--surface-2); }
-.icon-btn { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+.icon-btn { width: 40px; height: 40px; flex: none; display: grid; place-items: center; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
 .icon-btn:hover { background: var(--surface-2); }
 .icon-btn svg { width: 18px; height: 18px; }
 .theme-dark-icon { display: none; }
 :root[data-theme="dark"] .theme-dark-icon { display: block; } :root[data-theme="dark"] .theme-light-icon { display: none; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .theme-dark-icon { display: block; } :root:not([data-theme="light"]) .theme-light-icon { display: none; } }
-@media (max-width: 760px) { .nav-links { display: none; } .nav { gap: 10px; } .nav .btn { padding: 0 14px; } }
+#menu-btn { display: none; }
+.menu { display: none; }
+@media (max-width: 820px) {
+  .nav-links, .nav .btn-resume { display: none; }
+  .nav { gap: 8px; }
+  #menu-btn { display: grid; }
+  .menu { position: absolute; left: 0; right: 0; top: 100%; background: var(--bg); border-bottom: 1px solid var(--line); box-shadow: var(--shadow); padding: 8px var(--gutter) 20px; }
+  .menu.open { display: block; }
+  .menu a { display: flex; justify-content: space-between; padding: 14px 4px; border-bottom: 1px solid var(--line); text-decoration: none; font-size: 18px; }
+  .menu a:last-child { border-bottom: 0; }
+  .menu a span { color: var(--ink-3); font: 500 12px var(--mono); align-self: center; }
+}
 
 /* ---------- Buttons ---------- */
-.btn { display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 20px; border-radius: 999px; font: 500 15px/1 var(--sans); text-decoration: none; border: 1px solid transparent; cursor: pointer; transition: transform .15s, background .15s, border-color .15s; white-space: nowrap; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; padding: 0 20px; border-radius: 999px; font: 500 15px/1 var(--sans); text-decoration: none; border: 1px solid transparent; cursor: pointer; transition: transform .15s, background .15s, border-color .15s; white-space: nowrap; }
 .btn:active { transform: translateY(1px); }
 .btn-primary { background: var(--ink); color: var(--bg); }
 .btn-primary:hover { background: color-mix(in srgb, var(--ink) 85%, var(--accent)); }
 .btn-ghost { border-color: var(--line); background: var(--surface); color: var(--ink); }
 .btn-ghost:hover { border-color: var(--ink-3); }
 .btn-sm { height: 38px; padding: 0 16px; font-size: 14px; }
-.arrow { transition: transform .15s; } .btn:hover .arrow, .card-link:hover .arrow { transform: translateX(3px); }
+.arrow { transition: transform .15s; } a:hover > .arrow, .btn:hover .arrow { transform: translateX(3px); }
 
 /* ---------- Type helpers ---------- */
-.eyebrow { font: 500 12px/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.eyebrow { font: 500 12px/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
 .display { font-family: var(--serif); letter-spacing: -.02em; line-height: 1.02; }
 .display em { font-style: italic; color: var(--accent); }
-.lede { font-size: clamp(18px, 2vw, 21px); color: var(--ink-2); max-width: 36em; }
-section { padding: clamp(64px, 10vw, 120px) 0; }
-.section-head { display: grid; gap: 14px; margin-bottom: 48px; max-width: 760px; }
+.lede { font-size: clamp(18px, 2vw, 20px); color: var(--ink-2); max-width: 38em; }
+section { padding: clamp(64px, 9vw, 112px) 0; }
+.section-head { display: grid; gap: 14px; margin-bottom: 40px; max-width: 760px; }
 .section-head h2 { font-size: clamp(36px, 5.4vw, 60px); }
 
 /* ---------- Hero ---------- */
-.hero { padding-top: clamp(56px, 9vw, 112px); padding-bottom: clamp(48px, 7vw, 80px); }
+.hero { padding-top: clamp(48px, 8vw, 104px); padding-bottom: clamp(40px, 6vw, 72px); }
 .status { display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px 6px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); font-size: 14px; color: var(--ink-2); }
-.status .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
-.hero h1 { font-size: clamp(46px, 8.4vw, 104px); margin: 28px 0 24px; max-width: 12ch; }
-.hero .lede { margin-bottom: 32px; }
+.status .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); flex: none; }
+.hero h1 { font-size: clamp(46px, 8.4vw, 100px); margin: 26px 0 22px; max-width: 13ch; }
+.hero .lede { margin-bottom: 30px; }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+.proof { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: clamp(40px, 6vw, 64px); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.proof > div { padding: 20px 20px 20px 0; }
+.proof > div + div { padding-left: 20px; border-left: 1px solid var(--line); }
+.proof strong { display: block; font: 400 clamp(32px, 4vw, 44px)/1 var(--serif); letter-spacing: -.02em; }
+.proof span { display: block; margin-top: 8px; font-size: 14px; color: var(--ink-2); line-height: 1.4; }
+@media (max-width: 820px) { .proof { grid-template-columns: 1fr 1fr; } .proof > div:nth-child(3) { padding-left: 0; border-left: 0; } .proof > div:nth-child(n+3) { border-top: 1px solid var(--line); } }
 
 /* ---------- Project index ---------- */
-.index { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: clamp(48px, 7vw, 80px); }
+.index { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; list-style: none; padding: 0; }
 @media (max-width: 900px) { .index { grid-template-columns: 1fr; } }
-.card-link { display: flex; flex-direction: column; gap: 10px; padding: 22px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); text-decoration: none; box-shadow: var(--shadow); transition: transform .2s, border-color .2s; min-height: 100%; }
+.card-link { display: flex; flex-direction: column; gap: 10px; height: 100%; padding: 22px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); text-decoration: none; box-shadow: var(--shadow); transition: transform .2s, border-color .2s; }
 .card-link:hover { transform: translateY(-2px); border-color: var(--ink-3); }
-.card-link .num { font: 500 12px var(--mono); color: var(--ink-3); display: flex; justify-content: space-between; }
+.card-link .num { font: 500 12px var(--mono); color: var(--ink-3); display: flex; justify-content: space-between; gap: 8px; }
 .card-link h3 { font: 400 30px/1.05 var(--serif); }
 .card-link p { color: var(--ink-2); font-size: 15px; margin: 0; flex: 1; }
 .card-link .go { font-size: 14px; font-weight: 500; color: var(--accent); display: inline-flex; gap: 6px; }
-.chips { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 0; }
-.chips li { font: 500 12px/1 var(--sans); padding: 6px 9px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); }
 
 /* ---------- Case study ---------- */
 .case { border-top: 1px solid var(--line); }
-.case-head { display: grid; grid-template-columns: 1fr auto; gap: 24px 48px; align-items: end; margin-bottom: 48px; }
-@media (max-width: 760px) { .case-head { grid-template-columns: 1fr; } }
-.case-head h2 { font-size: clamp(44px, 7vw, 84px); margin: 12px 0 16px; }
+.case-head { display: grid; grid-template-columns: 1fr auto; gap: 24px 56px; align-items: end; margin-bottom: 32px; }
+@media (max-width: 820px) { .case-head { grid-template-columns: 1fr; } }
+.case-head h2 { font-size: clamp(42px, 6.6vw, 80px); margin: 12px 0 16px; max-width: 14ch; }
+.case-head .lede { margin: 0; }
 .facts { display: grid; grid-template-columns: repeat(2, minmax(0, auto)); gap: 14px 32px; margin: 0; font-size: 14px; }
 .facts dt { color: var(--ink-3); font: 500 11px/1.4 var(--mono); text-transform: uppercase; letter-spacing: .08em; }
 .facts dd { margin: 2px 0 0; color: var(--ink); }
-.case-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: clamp(32px, 5vw, 64px); align-items: start; }
+.facts a { color: var(--accent); font-weight: 500; text-decoration: none; }
+.facts a:hover { text-decoration: underline; }
+
+.impact { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 0 0 40px; padding: 0; list-style: none; }
+@media (max-width: 820px) { .impact { grid-template-columns: 1fr; } }
+.impact li { padding: 18px 20px; border-radius: var(--radius); background: var(--accent-soft); }
+.impact strong { display: block; font: 400 34px/1.05 var(--serif); letter-spacing: -.01em; }
+.impact span { display: block; font-size: 14.5px; color: var(--ink-2); margin-top: 6px; line-height: 1.45; }
+
+.case-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: clamp(28px, 5vw, 56px); align-items: start; }
 @media (max-width: 900px) { .case-grid { grid-template-columns: 1fr; } }
-.story h3 { font: 500 12px/1.2 var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--accent); margin: 32px 0 10px; }
-.story h3:first-child { margin-top: 0; }
+.sticky-demo { position: sticky; top: calc(var(--header) + 24px); margin: 0; }
+@media (max-width: 900px) { .sticky-demo { position: static; } }
+
+/* Tabs */
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin-bottom: 22px; overflow-x: auto; scrollbar-width: none; }
+.tabs button { position: relative; border: 0; background: none; padding: 12px 14px; font: 500 15px var(--sans); color: var(--ink-3); cursor: pointer; white-space: nowrap; border-radius: 8px 8px 0 0; }
+.tabs button:hover { color: var(--ink); }
+.tabs button[aria-selected="true"] { color: var(--ink); }
+.tabs button[aria-selected="true"]::after { content: ""; position: absolute; left: 10px; right: 10px; bottom: -1px; height: 2px; background: var(--ink); border-radius: 2px; }
+.tabs .count { font: 500 11px var(--mono); color: var(--ink-3); margin-left: 4px; }
+[role="tabpanel"] { animation: fade .2s ease; }
+[role="tabpanel"]:focus-visible { outline-offset: 8px; }
+@keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 .story p { color: var(--ink-2); }
-.decisions { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.story p:last-child { margin-bottom: 0; }
+.pull { font: 400 26px/1.25 var(--serif); color: var(--ink); margin: 0 0 16px; }
+.decisions { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
 .decisions li { padding: 16px 18px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
 .decisions strong { display: block; font-weight: 600; margin-bottom: 4px; }
 .decisions span { color: var(--ink-2); font-size: 15px; display: block; }
 .decisions .tradeoff { margin-top: 8px; font-size: 13.5px; color: var(--ink-3); }
 .decisions .tradeoff b { font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; color: var(--warn); margin-right: 6px; }
-.shipped { padding-left: 0; list-style: none; margin: 0; display: grid; gap: 8px; }
-.shipped li { position: relative; padding-left: 26px; color: var(--ink-2); }
-.shipped li::before { content: ""; position: absolute; left: 2px; top: .55em; width: 12px; height: 7px; border-left: 2px solid var(--accent); border-bottom: 2px solid var(--accent); transform: rotate(-45deg); }
-.sticky-demo { position: sticky; top: 88px; }
-@media (max-width: 900px) { .sticky-demo { position: static; } }
+.shipped { padding-left: 0; list-style: none; margin: 0; display: grid; gap: 10px; }
+.shipped li { position: relative; padding-left: 28px; color: var(--ink-2); }
+.shipped li strong { color: var(--ink); font-weight: 600; }
+.shipped li::before { content: ""; position: absolute; left: 3px; top: .5em; width: 12px; height: 7px; border-left: 2px solid var(--accent); border-bottom: 2px solid var(--accent); transform: rotate(-45deg); }
+.next-tab { margin-top: 18px; border: 0; background: none; padding: 6px 0; font: 500 14px var(--sans); color: var(--accent); cursor: pointer; display: inline-flex; gap: 6px; }
+.next-tab:hover .arrow { transform: translateX(3px); }
 
 /* Panels / demos */
 .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow); overflow: hidden; }
-.panel-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--line); background: var(--surface-2); }
+.panel-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--line); background: var(--surface-2); min-height: 52px; }
 .panel-bar .eyebrow { color: var(--ink-2); }
-@media (max-width: 520px) { .panel-bar { flex-wrap: wrap; } .panel-bar .seg { width: 100%; } .seg button { flex: 1; } }
 .panel-body { padding: 20px; }
 .caption { font-size: 13px; color: var(--ink-3); margin: 12px 4px 0; }
+.pill { display: inline-flex; align-items: center; gap: 6px; font: 500 12px var(--sans); padding: 5px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--ink); white-space: nowrap; }
+.pill.bad { background: var(--danger-soft); }
+.pill.warn { background: var(--warn-soft); }
+@media (max-width: 520px) { .panel-bar { flex-wrap: wrap; } .panel-bar .seg { width: 100%; } .seg button { flex: 1; } }
 
-/* UN flow */
-.flow { display: grid; gap: 18px; }
-.flow-row { display: grid; grid-template-columns: 74px 1fr; gap: 12px; align-items: center; }
-.flow-row .eyebrow { font-size: 11px; }
-.steps { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
-.step { font-size: 13px; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--ink-2); }
-.step.manual { border-style: dashed; }
-.step.ai { background: var(--accent-soft); border-color: transparent; color: var(--ink); }
-.step.human { background: var(--warn-soft); border-color: transparent; color: var(--ink); }
-.chev { color: var(--ink-3); font-size: 12px; }
-.flow-time { grid-column: 2; font: 500 12px var(--mono); color: var(--ink-3); }
-.flow-time strong { color: var(--accent); font-weight: 500; }
-.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12.5px; color: var(--ink-3); border-top: 1px solid var(--line); padding-top: 14px; }
-.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+/* Insights callout */
+.live-card { display: grid; grid-template-columns: 1fr auto; gap: 16px 24px; align-items: center; margin-top: 24px; padding: 20px 22px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); text-decoration: none; box-shadow: var(--shadow); transition: border-color .2s, transform .2s; }
+.live-card:hover { border-color: var(--ink-3); transform: translateY(-1px); }
+.live-card h3 { font: 600 17px/1.3 var(--sans); margin: 4px 0 4px; }
+.live-card p { margin: 0; color: var(--ink-2); font-size: 14.5px; }
+.live-card .go { font: 500 14px var(--sans); color: var(--accent); display: inline-flex; gap: 6px; }
+@media (max-width: 520px) { .live-card { grid-template-columns: 1fr; } }
+
+/* UN validation demo */
+.form { display: grid; gap: 14px; }
+.field { display: grid; gap: 6px; }
+.field label { font-size: 13.5px; font-weight: 500; color: var(--ink); display: flex; justify-content: space-between; gap: 8px; }
+.field label small { font: 400 12px var(--mono); color: var(--ink-3); }
+.field input, .field select, .field textarea { width: 100%; min-width: 0; height: 42px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); padding: 0 12px; font: 400 15px var(--sans); }
+.field textarea { height: 64px; padding: 10px 12px; resize: vertical; line-height: 1.4; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--accent); outline-offset: 0; border-color: transparent; }
+.field.has-error input, .field.has-error textarea { border-color: var(--danger); }
+.field.has-warn input, .field.has-warn textarea { border-color: var(--warn); }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.msg { display: none; font-size: 13.5px; line-height: 1.45; padding: 10px 12px; border-radius: 10px; }
+.msg.show { display: block; }
+.msg.error { background: var(--danger-soft); }
+.msg.warn { background: var(--warn-soft); }
+.msg b { font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; margin-right: 6px; }
+.msg button { margin-top: 8px; display: inline-flex; border: 1px solid currentColor; background: transparent; color: var(--ink); border-radius: 999px; padding: 4px 12px; font: 500 13px var(--sans); cursor: pointer; }
+.form-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 14px; border-top: 1px solid var(--line); }
+.form-foot .btn[disabled] { opacity: .45; cursor: not-allowed; }
+.form-foot .reset { border: 0; background: none; color: var(--ink-3); font: 500 13px var(--sans); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
 
 /* Segmented control */
 .seg { display: inline-flex; padding: 3px; gap: 2px; border-radius: 999px; background: var(--bg); border: 1px solid var(--line); }
@@ -198,34 +246,33 @@ section { padding: clamp(64px, 10vw, 120px) 0; }
 .focus p { margin: 0; font-size: 14.5px; color: var(--ink-2); }
 
 /* Jarvis demo */
-.composer { display: flex; gap: 8px; }
-.composer input { flex: 1; min-width: 0; height: 46px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); padding: 0 14px; font: 400 16px var(--sans); }
+.composer input { width: 100%; height: 46px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); padding: 0 14px; font: 400 16px var(--sans); }
 .composer input:focus { outline: 2px solid var(--accent); outline-offset: 0; border-color: transparent; }
 .examples { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 18px; }
 .examples button { font: 400 12.5px var(--mono); padding: 6px 10px; border-radius: 8px; border: 1px dashed var(--line); background: transparent; color: var(--ink-2); cursor: pointer; text-align: left; }
 .examples button:hover { border-color: var(--ink-3); color: var(--ink); }
 .note-card { border: 1px solid var(--line); border-radius: 12px; padding: 16px; background: var(--bg); }
-.note-meta { display: flex; justify-content: space-between; font: 500 11.5px var(--mono); color: var(--ink-3); margin-bottom: 8px; }
+.note-meta { display: flex; justify-content: space-between; gap: 8px; font: 500 11.5px var(--mono); color: var(--ink-3); margin-bottom: 8px; }
 .note-title { font-size: 17px; font-weight: 500; min-height: 1.6em; word-break: break-word; }
 .note-title.empty { color: var(--ink-3); font-weight: 400; }
 .note-subs { list-style: none; margin: 8px 0 0; padding: 0; font: 400 14px/1.7 var(--mono); color: var(--ink-2); }
 .note-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
 .tag { font: 500 12px var(--mono); padding: 4px 8px; border-radius: 6px; background: var(--surface-2); color: var(--ink-2); }
 .parsed { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 8px; }
-.parsed li { display: grid; grid-template-columns: 22px 1fr; gap: 8px; font-size: 14px; color: var(--ink-2); align-items: start; }
+.parsed li { display: grid; grid-template-columns: 22px 1fr; gap: 8px; font-size: 14px; color: var(--ink-3); align-items: start; }
 .parsed li.on { color: var(--ink); }
 .parsed .ck { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--line); margin-top: 2px; display: grid; place-items: center; }
 .parsed li.on .ck { background: var(--accent); border-color: var(--accent); }
 .parsed li.on .ck::after { content: ""; width: 7px; height: 4px; border-left: 2px solid var(--accent-ink); border-bottom: 2px solid var(--accent-ink); transform: rotate(-45deg) translate(1px, -1px); }
 
 /* ---------- Approach ---------- */
-.principles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; counter-reset: p; }
+.principles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
 @media (max-width: 760px) { .principles { grid-template-columns: 1fr; } }
-.principle { padding: 26px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); }
-.principle h3 { font: 400 28px/1.1 var(--serif); margin: 10px 0 10px; }
+.principle { padding: 24px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); }
+.principle h3 { font: 400 27px/1.1 var(--serif); margin: 10px 0 10px; }
 .principle p { color: var(--ink-2); margin: 0 0 12px; font-size: 16px; }
-.principle .proof { font-size: 14px; color: var(--ink-3); margin: 0; padding-top: 12px; border-top: 1px solid var(--line); }
-.principle .proof b { color: var(--ink-2); font-weight: 500; }
+.principle .proof-line { font-size: 14px; color: var(--ink-3); margin: 0; padding-top: 12px; border-top: 1px solid var(--line); }
+.principle .proof-line b { color: var(--ink-2); font-weight: 500; }
 
 /* ---------- Experience ---------- */
 .timeline { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); }
@@ -242,13 +289,14 @@ section { padding: clamp(64px, 10vw, 120px) 0; }
 .cred span { color: var(--ink-3); font-size: 14px; }
 
 /* ---------- Contact ---------- */
-.contact { background: var(--ink); color: var(--bg); border-radius: 28px; padding: clamp(36px, 6vw, 72px); display: grid; gap: 28px; }
+.contact { background: var(--ink); color: var(--bg); border-radius: 28px; padding: clamp(32px, 6vw, 72px); display: grid; gap: 24px; }
 .contact h2 { font-size: clamp(40px, 6.4vw, 76px); max-width: 14ch; }
 .contact h2 em { font-style: italic; color: color-mix(in srgb, var(--accent) 60%, var(--bg)); }
 .contact p { color: color-mix(in srgb, var(--bg) 75%, var(--ink)); max-width: 34em; font-size: 18px; margin: 0; }
-.contact .hero-ctas .btn-primary { background: var(--bg); color: var(--ink); }
-.contact .hero-ctas .btn-ghost { background: transparent; color: var(--bg); border-color: color-mix(in srgb, var(--bg) 30%, var(--ink)); }
+.contact .btn-primary { background: var(--bg); color: var(--ink); }
+.contact .btn-ghost { background: transparent; color: var(--bg); border-color: color-mix(in srgb, var(--bg) 30%, var(--ink)); }
 .copy-ok { font-size: 14px; min-height: 1.4em; color: color-mix(in srgb, var(--bg) 75%, var(--ink)); }
+@media (max-width: 520px) { .contact .hero-ctas .btn { flex: 1 1 100%; } }
 footer { padding: 40px 0 56px; color: var(--ink-3); font-size: 14px; }
 footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; }
 </style>
@@ -265,48 +313,65 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
       <li><a href="#experience">Experience</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <button class="icon-btn" id="theme" type="button" aria-label="Switch color theme">
+    <button class="icon-btn" id="theme" type="button" aria-label="Switch to dark theme">
       <svg class="theme-light-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
       <svg class="theme-dark-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
     </button>
-    <a class="btn btn-primary btn-sm" href="Daniel_Schneiderman_Resume.pdf" download>Résumé <span aria-hidden="true">↓</span></a>
+    <a class="btn btn-primary btn-sm btn-resume" href="Daniel_Schneiderman_Resume.pdf" download>Résumé <span aria-hidden="true">↓</span></a>
+    <button class="icon-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
   </nav>
+  <div class="menu" id="menu">
+    <a href="#un">UN Global Compact <span>01</span></a>
+    <a href="#betawise">Betawise <span>02</span></a>
+    <a href="#jarvis">Jarvis <span>03</span></a>
+    <a href="#approach">Approach</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+    <a href="Daniel_Schneiderman_Resume.pdf" download>Download résumé <span>PDF</span></a>
+  </div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
 </header>
 
 <main id="main">
   <!-- ============ HERO ============ -->
   <div class="wrap hero">
     <span class="status"><span class="dot" aria-hidden="true"></span>Open to senior product roles · NYC / remote</span>
-    <h1 class="display">I build products people <em>keep</em> using.</h1>
-    <p class="lede">I'm Daniel, a Product Owner at the United Nations Global Compact. I design, prototype, and ship AI products, then measure whether they actually made someone's day easier. Below are three of them, with the decisions behind each.</p>
+    <h1 class="display">I use AI to ship products people <em>keep</em> using.</h1>
+    <p class="lede">I'm Daniel, a Product Owner at the United Nations Global Compact. I build the reporting experience behind the world's largest corporate sustainability initiative, and on the side, products for problems I live with myself.</p>
     <div class="hero-ctas">
       <a class="btn btn-primary" href="#work">See the work <span class="arrow" aria-hidden="true">→</span></a>
       <a class="btn btn-ghost" href="mailto:dschneiderman955@gmail.com">Email me</a>
     </div>
 
-    <div class="index" id="work" role="list">
-      <a class="card-link" href="#un" role="listitem">
+    <div class="proof" role="list">
+      <div role="listitem"><strong>16,256</strong><span>company reports in 2025, now explorable on Insights</span></div>
+      <div role="listitem"><strong>157</strong><span>countries represented in that data</span></div>
+      <div role="listitem"><strong>Days → min</strong><span>to synthesize reports with LLMs</span></div>
+      <div role="listitem"><strong>3</strong><span>products designed and shipped end to end</span></div>
+    </div>
+
+    <ul class="index" id="work">
+      <li><a class="card-link" href="#un">
         <span class="num"><span>01</span><span>Day job · 2024–now</span></span>
-        <h3>UN Global Compact Reporting</h3>
-        <p>An LLM pipeline that turned days of sustainability-report synthesis into minutes, without trading away accuracy.</p>
-        <ul class="chips" aria-label="Skills"><li>LLM product</li><li>Data quality</li><li>Roadmapping</li></ul>
+        <h3>UN Global Compact</h3>
+        <p>AI-built features that raised data quality and made reporting easier, plus Insights, the public data platform.</p>
         <span class="go">Read case study <span class="arrow" aria-hidden="true">→</span></span>
-      </a>
-      <a class="card-link" href="#betawise" role="listitem">
+      </a></li>
+      <li><a class="card-link" href="#betawise">
         <span class="num"><span>02</span><span>Founder · health</span></span>
         <h3>Betawise</h3>
-        <p>A CGM coach for people with diabetes that turns 288 readings a day into one clear thing to work on this week.</p>
-        <ul class="chips" aria-label="Skills"><li>0→1</li><li>AI safety</li><li>Privacy by design</li></ul>
+        <p>A CGM coach that turns 288 glucose readings a day into one thing to work on this week.</p>
         <span class="go">Read case study <span class="arrow" aria-hidden="true">→</span></span>
-      </a>
-      <a class="card-link" href="#jarvis" role="listitem">
+      </a></li>
+      <li><a class="card-link" href="#jarvis">
         <span class="num"><span>03</span><span>Builder · iOS</span></span>
         <h3>Jarvis</h3>
-        <p>A native iPhone notes app you use by texting yourself. Tags, reminders, to-dos, and calendar events file themselves.</p>
-        <ul class="chips" aria-label="Skills"><li>SwiftUI</li><li>Zero-UI capture</li><li>Offline-first</li></ul>
+        <p>A native iPhone notes app you use by texting yourself. Tags, reminders, and events file themselves.</p>
         <span class="go">Read case study <span class="arrow" aria-hidden="true">→</span></span>
-      </a>
-    </div>
+      </a></li>
+    </ul>
   </div>
 
   <!-- ============ 01 UN ============ -->
@@ -314,84 +379,107 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
     <div class="wrap">
       <div class="case-head">
         <div>
-          <span class="eyebrow">Case study 01 · United Nations Global Compact</span>
-          <h2 class="display" id="un-title">From days of reading to <em>minutes</em> of review.</h2>
-          <p class="lede">The Global Compact collects sustainability reports from thousands of member companies. Turning them into something decision-makers can use was slow, manual, and depended on a few people's stamina.</p>
+          <span class="eyebrow">01 · United Nations Global Compact</span>
+          <h2 class="display" id="un-title">Better data, from the <em>first</em> keystroke.</h2>
+          <p class="lede">Thousands of companies report their sustainability progress to the UN Global Compact every year. I use AI to build and ship features that make that data more trustworthy and the reporting less painful, then publish it so anyone can use it.</p>
         </div>
         <dl class="facts">
           <div><dt>Role</dt><dd>Product Owner, Reporting</dd></div>
           <div><dt>Since</dt><dd>July 2024</dd></div>
-          <div><dt>Users</dt><dd>Analysts &amp; member orgs worldwide</dd></div>
-          <div><dt>Stack</dt><dd>LLMs · React</dd></div>
+          <div><dt>Users</dt><dd>Reporting companies · analysts · public</dd></div>
+          <div><dt>Live</dt><dd><a href="https://insights.unglobalcompact.org" rel="noopener">Insights ↗</a></dd></div>
         </dl>
       </div>
 
+      <ul class="impact">
+        <li><strong>Caught at entry</strong><span>Data-quality problems flagged while companies report, not weeks later by an analyst</span></li>
+        <li><strong>Days → minutes</strong><span>LLM synthesis of reports, with analysts reviewing instead of reading</span></li>
+        <li><strong>16,256 reports</strong><span>from 157 countries, turned into a public platform on Insights</span></li>
+      </ul>
+
       <div class="case-grid">
-        <div class="story">
-          <h3>The problem</h3>
-          <p>Each reporting cycle, analysts read hundreds of long, inconsistently structured reports and synthesized them by hand. It took days, quality depended on who did it, and errors in submitted data were usually caught late, by someone happening to notice.</p>
-
-          <h3>Key decisions</h3>
-          <ul class="decisions">
-            <li>
-              <strong>Automate the synthesis, keep a human on the conclusion.</strong>
-              <span>The model drafts summaries and structured extracts; an analyst reviews and signs off. People's time moves from reading to judging.</span>
-              <span class="tradeoff"><b>Trade-off</b>Slower than fully automatic, but accuracy holds up and analysts trust the output enough to use it.</span>
-            </li>
-            <li>
-              <strong>Catch bad data at the door, not at the end.</strong>
-              <span>Rebuilt the validation layer with AI-assisted rules, so problems are flagged when a report is submitted instead of weeks later.</span>
-            </li>
-            <li>
-              <strong>Write specs people can read, then prototype from them.</strong>
-              <span>Plain-language requirements that also generate working React components, so stakeholders react to something real, not a document.</span>
-            </li>
-            <li>
-              <strong>Let usage drive the roadmap.</strong>
-              <span>Set up engagement, task-completion, and adoption metrics from scratch, and ran a global early-adopter program whose feedback actually changed what shipped.</span>
-            </li>
-          </ul>
-
-          <h3>Outcome</h3>
-          <ul class="shipped">
-            <li>Report synthesis that took days now takes minutes, at the same accuracy.</li>
-            <li>Data problems surface automatically at submission.</li>
-            <li>A roadmap tied to real usage instead of a quarterly planning doc.</li>
-          </ul>
+        <div class="story" data-tabs>
+          <div class="tabs" role="tablist" aria-label="UN Global Compact case study">
+            <button role="tab" id="un-t1" aria-controls="un-p1" aria-selected="true">Problem</button>
+            <button role="tab" id="un-t2" aria-controls="un-p2" aria-selected="false" tabindex="-1">Decisions <span class="count">4</span></button>
+            <button role="tab" id="un-t3" aria-controls="un-p3" aria-selected="false" tabindex="-1">What shipped</button>
+          </div>
+          <div role="tabpanel" id="un-p1" aria-labelledby="un-t1" tabindex="0">
+            <p class="pull">Reporting was long and confusing, and bad data was only found after it was too late to fix cheaply.</p>
+            <p>Every year, participants complete the Communication on Progress (CoP), a detailed questionnaire on governance, human rights, labour, environment, and anti-corruption. Companies of every size, in dozens of languages, fill in hundreds of fields.</p>
+            <p>Mistakes like a total that doesn't add up, a wrong unit, or a "yes" with no evidence slipped through and were only caught later by analysts, if at all. That made the data harder to trust and the insights slower to publish.</p>
+            <button class="next-tab" type="button" data-go="un-t2">See the key decisions <span class="arrow" aria-hidden="true">→</span></button>
+          </div>
+          <div role="tabpanel" id="un-p2" aria-labelledby="un-t2" tabindex="0" hidden>
+            <ul class="decisions">
+              <li>
+                <strong>Fix data quality where it's created.</strong>
+                <span>AI-assisted validation runs while companies fill in the questionnaire. Problems show up next to the field, with a plain-language reason and a one-click fix where possible.</span>
+                <span class="tradeoff"><b>Trade-off</b>More friction during reporting, so checks are specific, explain themselves, and warnings never block submission.</span>
+              </li>
+              <li>
+                <strong>AI drafts, people decide.</strong>
+                <span>LLMs read and synthesize reports; analysts review and sign off. Their time moves from reading to judging, and accuracy holds up.</span>
+              </li>
+              <li>
+                <strong>Prototype the feature, not the document.</strong>
+                <span>I write requirements in plain language and use AI to generate working React prototypes from them, so stakeholders react to something real in days, not to a spec.</span>
+              </li>
+              <li>
+                <strong>Close the loop with real usage.</strong>
+                <span>Set up engagement, task-completion, and adoption metrics, ran a global early-adopter program, and built feedback into the product itself.</span>
+              </li>
+            </ul>
+            <button class="next-tab" type="button" data-go="un-t3">See what shipped <span class="arrow" aria-hidden="true">→</span></button>
+          </div>
+          <div role="tabpanel" id="un-p3" aria-labelledby="un-t3" tabindex="0" hidden>
+            <ul class="shipped">
+              <li><strong>AI-powered validation layer:</strong> rules that catch inconsistent, missing, or implausible answers during reporting.</li>
+              <li><strong>LLM synthesis pipeline:</strong> turns report analysis that took days into minutes, at the same accuracy.</li>
+              <li><strong>Insights:</strong> a public platform to explore CoP data year over year by region, sector, organization type, and the Ten Principles.</li>
+              <li><strong>A roadmap driven by usage</strong> instead of a quarterly planning doc.</li>
+            </ul>
+            <a class="live-card" href="https://insights.unglobalcompact.org" rel="noopener">
+              <div>
+                <span class="eyebrow">Live · built by me and the team</span>
+                <h3>insights.unglobalcompact.org</h3>
+                <p>2023–2025 CoP data, 16,256 submissions in 2025 alone, explorable by anyone.</p>
+              </div>
+              <span class="go">Visit <span class="arrow" aria-hidden="true">↗</span></span>
+            </a>
+          </div>
         </div>
 
-        <figure class="sticky-demo" style="margin:0">
+        <figure class="sticky-demo">
           <div class="panel">
-            <div class="panel-bar"><span class="eyebrow">One reporting cycle</span></div>
-            <div class="panel-body flow">
-              <div class="flow-row">
-                <span class="eyebrow">Before</span>
-                <div class="steps">
-                  <span class="step manual">Collect</span><span class="chev" aria-hidden="true">→</span>
-                  <span class="step manual">Read each report</span><span class="chev" aria-hidden="true">→</span>
-                  <span class="step manual">Summarize</span><span class="chev" aria-hidden="true">→</span>
-                  <span class="step manual">Spot errors</span>
-                </div>
-                <span class="flow-time">≈ days · all manual</span>
-              </div>
-              <div class="flow-row">
-                <span class="eyebrow">After</span>
-                <div class="steps">
-                  <span class="step ai">Validate on submit</span><span class="chev" aria-hidden="true">→</span>
-                  <span class="step ai">LLM synthesis</span><span class="chev" aria-hidden="true">→</span>
-                  <span class="step human">Analyst review</span><span class="chev" aria-hidden="true">→</span>
-                  <span class="step human">Sign-off</span>
-                </div>
-                <span class="flow-time"><strong>≈ minutes</strong> · humans judge, models read</span>
-              </div>
-              <div class="legend">
-                <span><i style="border:1px dashed var(--ink-3)"></i>Manual</span>
-                <span><i style="background:var(--accent-soft)"></i>Automated</span>
-                <span><i style="background:var(--warn-soft)"></i>Human judgment</span>
-              </div>
+            <div class="panel-bar">
+              <span class="eyebrow">Try it · validation as you type</span>
+              <span class="pill" id="v-status" aria-live="polite">Checking…</span>
             </div>
+            <form class="panel-body form" id="vform" novalidate>
+              <div class="row2">
+                <div class="field" id="f-emp"><label for="v-emp">Total employees</label><input id="v-emp" inputmode="numeric" value="1,200" /></div>
+                <div class="field" id="f-women"><label for="v-women">Women employees</label><input id="v-women" inputmode="numeric" value="1,450" /></div>
+              </div>
+              <div class="msg error" id="m-women" role="alert"></div>
+              <div class="row2">
+                <div class="field" id="f-s1"><label for="v-s1">Scope 1 <small>tCO₂e</small></label><input id="v-s1" inputmode="decimal" value="8,400" /></div>
+                <div class="field" id="f-s2"><label for="v-s2">Scope 2 <small>tCO₂e</small></label><input id="v-s2" inputmode="decimal" value="5,800" /></div>
+              </div>
+              <div class="field" id="f-tot"><label for="v-tot">Total Scope 1 + 2 <small>tCO₂e</small></label><input id="v-tot" inputmode="decimal" value="12,400" /></div>
+              <div class="msg warn" id="m-tot"></div>
+              <div class="field" id="f-pol"><label for="v-pol">Do you have an anti-corruption policy?</label>
+                <select id="v-pol"><option>Yes</option><option>No</option></select>
+              </div>
+              <div class="field" id="f-desc"><label for="v-desc">Describe it <small>optional</small></label><textarea id="v-desc" placeholder="e.g. Board-approved policy covering bribery, gifts, and third parties, reviewed annually"></textarea></div>
+              <div class="msg warn" id="m-desc"></div>
+              <div class="form-foot">
+                <button class="reset" type="button" id="v-reset">Reset example</button>
+                <button class="btn btn-primary btn-sm" type="submit" id="v-submit">Submit</button>
+              </div>
+            </form>
           </div>
-          <figcaption class="caption">Simplified. Internal tooling isn't public, so this shows the shape of the change rather than screenshots.</figcaption>
+          <figcaption class="caption">An illustrative example with made-up numbers, not the production questionnaire. Errors block submission; warnings explain and offer a fix, but never block.</figcaption>
         </figure>
       </div>
     </div>
@@ -402,59 +490,74 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
     <div class="wrap">
       <div class="case-head">
         <div>
-          <span class="eyebrow">Case study 02 · Betawise</span>
+          <span class="eyebrow">02 · Betawise</span>
           <h2 class="display" id="bw-title">288 readings a day. <em>One</em> thing to work on.</h2>
-          <p class="lede">I have Type 1 diabetes. My CGM produces a reading every five minutes, and I see an endocrinologist for about fifteen minutes a few times a year. Betawise is the layer in between that I wanted for myself.</p>
+          <p class="lede">I have Type 1 diabetes. My CGM takes a reading every five minutes, and I see an endocrinologist for about fifteen minutes a few times a year. Betawise is the coach in between that I wanted for myself.</p>
         </div>
         <dl class="facts">
           <div><dt>Role</dt><dd>Founder · product &amp; build</dd></div>
           <div><dt>For</dt><dd>People with T1D &amp; T2D</dd></div>
           <div><dt>Data</dt><dd>Dexcom · Clarity · LibreView</dd></div>
-          <div><dt>Live</dt><dd><a href="https://betawise.org">betawise.org ↗</a></dd></div>
+          <div><dt>Live</dt><dd><a href="https://betawise.org" rel="noopener">betawise.org ↗</a></dd></div>
         </dl>
       </div>
 
+      <ul class="impact">
+        <li><strong>4,000 → 1</strong><span>two weeks of readings become one clear weekly focus</span></li>
+        <li><strong>0 raw readings</strong><span>sent to the AI. Analysis runs on your device; no account needed.</span></li>
+        <li><strong>3 clinical standards</strong><span>Time in Range, Glycemia Risk Index, and GMI, computed to their published definitions</span></li>
+      </ul>
+
       <div class="case-grid">
-        <div class="story">
-          <h3>The problem</h3>
-          <p>CGMs made glucose data free; understanding it is still a privilege. About 4,000 readings pile up every two weeks in apps that show a squiggly line and an average. The clinical reports are written for doctors. The person living with it gets an overload of data and no plan.</p>
-
-          <h3>Key decisions</h3>
-          <ul class="decisions">
-            <li>
-              <strong>One weekly focus, not a dashboard.</strong>
-              <span>The pattern engine finds everything (overnight lows, dawn phenomenon, post-meal spikes, rebound highs) but shows one thing to work on. Less to think about means more follow-through.</span>
-              <span class="tradeoff"><b>Trade-off</b>Hides detail power users want, so the full metrics are one tap away.</span>
-            </li>
-            <li>
-              <strong>Safety always ranks first.</strong>
-              <span>If lows exceed consensus limits, that's the focus, even when highs would gain more time in range. Try it in the demo →</span>
-            </li>
-            <li>
-              <strong>AI explains the numbers; it never invents them.</strong>
-              <span>Every metric uses a published, peer-reviewed definition: the International Consensus on Time in Range, the Glycemia Risk Index, and GMI. The AI coach talks about them; the math is deterministic and tested.</span>
-            </li>
-            <li>
-              <strong>Your readings never leave your device.</strong>
-              <span>Analysis runs in the browser. The coach gets a de-identified summary: no raw readings, dates, or device IDs. No account required.</span>
-            </li>
-            <li>
-              <strong>Guardrails that don't depend on the model.</strong>
-              <span>Dosing questions, emergencies, and crisis language are caught by fixed rules before any AI call, and get fixed, safe responses.</span>
-            </li>
-          </ul>
-
-          <h3>What shipped</h3>
-          <ul class="shipped">
-            <li>Dexcom connection plus Clarity / LibreView CSV import</li>
-            <li>Consensus metrics, Glycemia Risk Index, and an Ambulatory Glucose Profile</li>
-            <li>Pattern engine and a ranked weekly focus</li>
-            <li>AI peer coach with structured weekly insights</li>
-            <li>A one-page, clinic-ready report to bring to appointments</li>
-          </ul>
+        <div class="story" data-tabs>
+          <div class="tabs" role="tablist" aria-label="Betawise case study">
+            <button role="tab" id="bw-t1" aria-controls="bw-p1" aria-selected="true">Problem</button>
+            <button role="tab" id="bw-t2" aria-controls="bw-p2" aria-selected="false" tabindex="-1">Decisions <span class="count">5</span></button>
+            <button role="tab" id="bw-t3" aria-controls="bw-p3" aria-selected="false" tabindex="-1">What shipped</button>
+          </div>
+          <div role="tabpanel" id="bw-p1" aria-labelledby="bw-t1" tabindex="0">
+            <p class="pull">CGMs made glucose data free. Understanding it is still a privilege.</p>
+            <p>About 4,000 readings pile up every two weeks in apps that show a squiggly line and an average. The clinical reports are written for doctors. The person actually living with diabetes gets lots of data and no plan.</p>
+            <button class="next-tab" type="button" data-go="bw-t2">See the key decisions <span class="arrow" aria-hidden="true">→</span></button>
+          </div>
+          <div role="tabpanel" id="bw-p2" aria-labelledby="bw-t2" tabindex="0" hidden>
+            <ul class="decisions">
+              <li>
+                <strong>One weekly focus, not a dashboard.</strong>
+                <span>The pattern engine finds everything (overnight lows, dawn phenomenon, post-meal spikes, rebound highs) but asks you to work on one thing.</span>
+                <span class="tradeoff"><b>Trade-off</b>Hides detail power users want, so the full metrics are one tap away.</span>
+              </li>
+              <li>
+                <strong>Safety always ranks first.</strong>
+                <span>If lows exceed consensus limits, they become the focus, even when fixing highs would gain more time in range. Try "Night lows" in the demo.</span>
+              </li>
+              <li>
+                <strong>AI explains the numbers; it never invents them.</strong>
+                <span>Every metric is deterministic, tested code built on published definitions. The AI coach only talks about the results.</span>
+              </li>
+              <li>
+                <strong>Your readings never leave your device.</strong>
+                <span>Analysis runs in the browser. The coach receives a de-identified summary, with no raw readings, dates, or device IDs.</span>
+              </li>
+              <li>
+                <strong>Guardrails that don't depend on the model.</strong>
+                <span>Dosing questions, emergencies, and crisis language are caught by fixed rules before any AI call, and get fixed, safe responses.</span>
+              </li>
+            </ul>
+            <button class="next-tab" type="button" data-go="bw-t3">See what shipped <span class="arrow" aria-hidden="true">→</span></button>
+          </div>
+          <div role="tabpanel" id="bw-p3" aria-labelledby="bw-t3" tabindex="0" hidden>
+            <ul class="shipped">
+              <li><strong>Bring your data:</strong> connect Dexcom or drop in a Clarity / LibreView export.</li>
+              <li><strong>Clinical metrics:</strong> consensus targets, Glycemia Risk Index, and an Ambulatory Glucose Profile.</li>
+              <li><strong>Pattern engine</strong> with a ranked weekly focus.</li>
+              <li><strong>AI peer coach</strong> with structured weekly insights.</li>
+              <li><strong>Clinic-ready report:</strong> one page to bring to your next appointment.</li>
+            </ul>
+          </div>
         </div>
 
-        <figure class="sticky-demo" style="margin:0">
+        <figure class="sticky-demo">
           <div class="panel">
             <div class="panel-bar">
               <span class="eyebrow">Try the focus logic</span>
@@ -466,7 +569,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
             </div>
             <div class="panel-body">
               <div class="tir-top">
-                <div><span class="eyebrow">Time in range · 70–180</span><div class="tir-big" id="tir-val" aria-live="polite">—</div></div>
+                <div><span class="eyebrow">Time in range · 70–180</span><div class="tir-big" id="tir-val">—</div></div>
                 <div class="tir-target">Consensus goal<br><strong style="color:var(--ink)">over 70%</strong></div>
               </div>
               <div class="tir-bar" id="tir-bar" role="img" aria-label="Time in each glucose range"></div>
@@ -489,7 +592,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
     <div class="wrap">
       <div class="case-head">
         <div>
-          <span class="eyebrow">Case study 03 · Jarvis</span>
+          <span class="eyebrow">03 · Jarvis</span>
           <h2 class="display" id="jv-title">The best input is the one you <em>already</em> use.</h2>
           <p class="lede">Every notes app asks you to open it, choose a folder, and fill in a form. But the fastest thing anyone does on a phone is send a text. Jarvis is a notes app you use by texting yourself.</p>
         </div>
@@ -501,49 +604,60 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
         </dl>
       </div>
 
+      <ul class="impact">
+        <li><strong>0 forms</strong><span>Tags, reminders, to-dos, and calendar events come from the text itself</span></li>
+        <li><strong>5 ways in</strong><span>Siri, Action button, Shortcuts, iMessage to yourself, or its own phone number</span></li>
+        <li><strong>4 views, 1 store</strong><span>Feed, Board, To-do, and Calendar always agree. Works offline.</span></li>
+      </ul>
+
       <div class="case-grid">
-        <div class="story">
-          <h3>The problem</h3>
-          <p>Thoughts show up at bad times: walking, in a meeting, half-asleep. Every tap between the thought and saving it loses some of them, and anything that does get saved still has to be organized later.</p>
-
-          <h3>Key decisions</h3>
-          <ul class="decisions">
-            <li>
-              <strong>Syntax instead of forms.</strong>
-              <span><code>#tags</code>, "remind me…", "- sub-items", and <code>#event</code> are parsed from plain text. There are no fields to fill in; the message itself sets the structure.</span>
-              <span class="tradeoff"><b>Trade-off</b>Hard to discover, so the app gives examples and the syntax is forgiving ("at 9am", "tomorrow 3pm", "in 30 minutes").</span>
-            </li>
-            <li>
-              <strong>Capture from anywhere.</strong>
-              <span>Siri, the Action button, Shortcuts, a Messages automation (text yourself in iMessage and it's filed), and a dedicated phone number via Twilio and a Cloudflare Worker.</span>
-            </li>
-            <li>
-              <strong>One store, many views.</strong>
-              <span>Feed, Board (tags become kanban columns), To-do, and Calendar all read from one data store, so they always agree.</span>
-            </li>
-            <li>
-              <strong>Offline-first, sync second.</strong>
-              <span>The phone keeps a full copy and syncs with the web version in the background; if a note is edited in two places, the latest edit wins. Photos stay on the device.</span>
-            </li>
-            <li>
-              <strong>Glanceable, not openable.</strong>
-              <span>Lock-screen widgets and a Live Activity show today's reminders, so most of the time you never need to open the app.</span>
-            </li>
-          </ul>
-
-          <h3>What shipped</h3>
-          <ul class="shipped">
-            <li>Natural-language reminders as local notifications</li>
-            <li><code>#event</code> notes added straight to Apple Calendar</li>
-            <li>Permanent IDs (N-0024) so notes can be referenced</li>
-            <li>Lock screen, Dynamic Island, Siri, and Shortcuts support</li>
-            <li>Web sync and clean CSV export</li>
-          </ul>
+        <div class="story" data-tabs>
+          <div class="tabs" role="tablist" aria-label="Jarvis case study">
+            <button role="tab" id="jv-t1" aria-controls="jv-p1" aria-selected="true">Problem</button>
+            <button role="tab" id="jv-t2" aria-controls="jv-p2" aria-selected="false" tabindex="-1">Decisions <span class="count">4</span></button>
+            <button role="tab" id="jv-t3" aria-controls="jv-p3" aria-selected="false" tabindex="-1">What shipped</button>
+          </div>
+          <div role="tabpanel" id="jv-p1" aria-labelledby="jv-t1" tabindex="0">
+            <p class="pull">Every tap between a thought and saving it loses some thoughts.</p>
+            <p>Ideas show up at bad times: walking, in a meeting, half-asleep. Anything that does get saved then has to be organized later, which mostly never happens.</p>
+            <button class="next-tab" type="button" data-go="jv-t2">See the key decisions <span class="arrow" aria-hidden="true">→</span></button>
+          </div>
+          <div role="tabpanel" id="jv-p2" aria-labelledby="jv-t2" tabindex="0" hidden>
+            <ul class="decisions">
+              <li>
+                <strong>Syntax instead of forms.</strong>
+                <span><code>#tags</code>, "remind me…", "- sub-items", and <code>#event</code> are parsed from plain text. The message itself sets the structure.</span>
+                <span class="tradeoff"><b>Trade-off</b>Hard to discover, so the app gives examples and the syntax is forgiving ("at 9am", "tomorrow 3pm", "in 30 minutes").</span>
+              </li>
+              <li>
+                <strong>Capture from anywhere.</strong>
+                <span>Siri, the Action button, Shortcuts, a Messages automation, and a dedicated phone number via Twilio and a Cloudflare Worker.</span>
+              </li>
+              <li>
+                <strong>Offline-first, sync second.</strong>
+                <span>The phone keeps a full copy and syncs with the web in the background. If a note is edited in two places, the latest edit wins.</span>
+              </li>
+              <li>
+                <strong>Glanceable, not openable.</strong>
+                <span>Lock-screen widgets and a Live Activity show today's reminders, so most of the time you never open the app.</span>
+              </li>
+            </ul>
+            <button class="next-tab" type="button" data-go="jv-t3">See what shipped <span class="arrow" aria-hidden="true">→</span></button>
+          </div>
+          <div role="tabpanel" id="jv-p3" aria-labelledby="jv-t3" tabindex="0" hidden>
+            <ul class="shipped">
+              <li><strong>Natural-language reminders</strong> as local notifications</li>
+              <li><strong><code>#event</code> notes</strong> added straight to Apple Calendar</li>
+              <li><strong>Permanent IDs</strong> (N-0024) so notes can be referenced</li>
+              <li><strong>Lock screen, Dynamic Island, Siri, and Shortcuts</strong> support</li>
+              <li><strong>Web sync and CSV export</strong></li>
+            </ul>
+          </div>
         </div>
 
-        <figure class="sticky-demo" style="margin:0">
+        <figure class="sticky-demo">
           <div class="panel">
-            <div class="panel-bar"><span class="eyebrow">Try the parser</span><span class="eyebrow" aria-hidden="true">● live</span></div>
+            <div class="panel-bar"><span class="eyebrow">Try the parser</span><span class="pill">Live</span></div>
             <div class="panel-body">
               <label class="sr-only" for="jv-in">Type a note the way you'd text it</label>
               <div class="composer"><input id="jv-in" type="text" autocomplete="off" spellcheck="false" placeholder="Text yourself anything…" value="remind me to call the endo tomorrow 3pm #health" /></div>
@@ -553,7 +667,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
                 <button type="button">great talk on evals https://example.com #ai #read</button>
               </div>
               <div class="note-card" aria-live="polite">
-                <div class="note-meta"><span id="jv-id">N-0025</span><span id="jv-when">just now</span></div>
+                <div class="note-meta"><span>N-0025</span><span id="jv-when">just now</span></div>
                 <div class="note-title" id="jv-title-out"></div>
                 <ul class="note-subs" id="jv-subs"></ul>
                 <div class="note-tags" id="jv-tags"></div>
@@ -561,7 +675,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
               <ul class="parsed" id="jv-parsed"></ul>
             </div>
           </div>
-          <figcaption class="caption">A simplified JavaScript port of Jarvis's Swift parser. The app uses Apple's date detection, which understands far more phrasings than this demo.</figcaption>
+          <figcaption class="caption">A simplified JavaScript port of Jarvis's Swift parser. The app uses Apple's date detection, which understands far more phrasings.</figcaption>
         </figure>
       </div>
     </div>
@@ -577,27 +691,27 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
       <div class="principles">
         <article class="principle">
           <span class="eyebrow">01</span>
-          <h3>Meet people at the habit they already have.</h3>
-          <p>New behavior is expensive. I'd rather fit into a habit people already have than ask them to learn a new one.</p>
-          <p class="proof"><b>In practice:</b> Jarvis works over text messages; Betawise reads the CGM export people already have.</p>
+          <h3>Catch problems where they start.</h3>
+          <p>The cheapest moment to fix bad data, or a bad decision, is the moment it's made. Design feedback for that moment.</p>
+          <p class="proof-line"><b>In practice:</b> UN validation at entry; Betawise's safety checks before any AI call.</p>
         </article>
         <article class="principle">
           <span class="eyebrow">02</span>
           <h3>Show less, so people act more.</h3>
           <p>A dashboard with twelve numbers gets admired and then ignored. One clear next step gets done.</p>
-          <p class="proof"><b>In practice:</b> Betawise's single weekly focus, with the full detail one tap away.</p>
+          <p class="proof-line"><b>In practice:</b> Betawise's single weekly focus, with the full detail one tap away.</p>
         </article>
         <article class="principle">
           <span class="eyebrow">03</span>
           <h3>AI for the reading, people for the judgment.</h3>
           <p>Models are great at turning lots of text into something useful, but they shouldn't make the final call where it matters. I design that boundary on purpose.</p>
-          <p class="proof"><b>In practice:</b> UN analysts sign off on AI synthesis; Betawise's safety rules run before any model call.</p>
+          <p class="proof-line"><b>In practice:</b> UN analysts sign off on AI synthesis; Betawise's math is deterministic.</p>
         </article>
         <article class="principle">
           <span class="eyebrow">04</span>
-          <h3>Prototype before you persuade.</h3>
-          <p>A working thing settles in ten minutes what a document argues about for ten days. I build what I'm proposing.</p>
-          <p class="proof"><b>In practice:</b> Specs that generate React components at the UN; both side projects built end to end.</p>
+          <h3>Meet people at the habit they already have.</h3>
+          <p>New behavior is expensive. I'd rather fit into an existing habit than teach a new one.</p>
+          <p class="proof-line"><b>In practice:</b> Jarvis works over text messages; Betawise reads the CGM export you already have.</p>
         </article>
       </div>
     </div>
@@ -617,10 +731,10 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
             <h3>Product Owner, Reporting</h3>
             <p class="org">United Nations Global Compact</p>
             <ul>
-              <li>Built LLM integrations that turned days of sustainability-report synthesis into minutes</li>
-              <li>Rebuilt data validation with AI-assisted rules that flag problems automatically</li>
-              <li>Set up product metrics (engagement, task completion, adoption) and tied the roadmap to them</li>
-              <li>Ran a global early-adopter program that shaped feature decisions</li>
+              <li>Used AI to build and ship features that significantly improved data quality and the reporting experience</li>
+              <li>Built Insights (insights.unglobalcompact.org), the public platform for CoP data</li>
+              <li>Built LLM integrations that turned days of report synthesis into minutes</li>
+              <li>Set up product metrics and a global early-adopter program that shaped the roadmap</li>
             </ul>
           </div>
         </li>
@@ -664,8 +778,8 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
         <h2 class="display" id="ct-title">Let's build something people <em>keep</em> using.</h2>
         <p>I'm looking for senior product roles where AI, messy real-world data, and outcomes that matter come together.</p>
         <div class="hero-ctas">
-          <a class="btn btn-primary" href="mailto:dschneiderman955@gmail.com">dschneiderman955@gmail.com</a>
-          <button class="btn btn-ghost" type="button" id="copy-email">Copy email</button>
+          <a class="btn btn-primary" href="mailto:dschneiderman955@gmail.com">Email me</a>
+          <button class="btn btn-ghost" type="button" id="copy-email">Copy email address</button>
           <a class="btn btn-ghost" href="https://www.linkedin.com/in/danielschneiderman955/" rel="noopener">LinkedIn ↗</a>
           <a class="btn btn-ghost" href="Daniel_Schneiderman_Resume.pdf" download>Résumé ↓</a>
         </div>
@@ -684,17 +798,40 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
 
 <script>
 (function () {
-  /* ---------- Theme toggle ---------- */
   var root = document.documentElement;
-  document.getElementById('theme').addEventListener('click', function () {
-    var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
-    root.dataset.theme = dark ? 'light' : 'dark';
-    try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
-  });
+  function $(id) { return document.getElementById(id); }
 
-  /* ---------- Header border + active nav ---------- */
-  var header = document.querySelector('.site-header');
-  addEventListener('scroll', function () { header.classList.toggle('scrolled', scrollY > 8); }, { passive: true });
+  /* ---------- Theme toggle ---------- */
+  var themeBtn = $('theme');
+  function isDark() { return root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; }
+  function labelTheme() { themeBtn.setAttribute('aria-label', isDark() ? 'Switch to light theme' : 'Switch to dark theme'); }
+  themeBtn.addEventListener('click', function () {
+    root.dataset.theme = isDark() ? 'light' : 'dark';
+    try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
+    labelTheme();
+  });
+  labelTheme();
+
+  /* ---------- Mobile menu ---------- */
+  var menuBtn = $('menu-btn'), menu = $('menu');
+  function setMenu(open) {
+    menu.classList.toggle('open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  menuBtn.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menu.classList.contains('open')) { setMenu(false); menuBtn.focus(); } });
+  document.addEventListener('click', function (e) { if (menu.classList.contains('open') && !e.target.closest('.site-header')) setMenu(false); });
+
+  /* ---------- Header border, progress, active nav ---------- */
+  var header = document.querySelector('.site-header'), bar = $('progress');
+  function onScroll() {
+    header.classList.toggle('scrolled', scrollY > 8);
+    var max = document.documentElement.scrollHeight - innerHeight;
+    bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, scrollY / max) : 0) + ')';
+  }
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
   var links = {};
   document.querySelectorAll('.nav-links a').forEach(function (a) { links[a.getAttribute('href').slice(1)] = a; });
   var groups = { un: 'work', betawise: 'work', jarvis: 'work', approach: 'approach', experience: 'experience', contact: 'contact' };
@@ -706,21 +843,93 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
         var l = links[groups[e.target.id]]; if (l) l.setAttribute('aria-current', 'true');
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    Object.keys(groups).forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
+    Object.keys(groups).forEach(function (id) { var el = $(id); if (el) io.observe(el); });
   }
 
+  /* ---------- Tabs (WAI-ARIA pattern: arrows, Home/End) ---------- */
+  document.querySelectorAll('[data-tabs]').forEach(function (box) {
+    var tabs = Array.prototype.slice.call(box.querySelectorAll('[role="tab"]'));
+    function select(tab, focus) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        $(t.getAttribute('aria-controls')).hidden = !on;
+      });
+      if (focus) tab.focus();
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { select(t); });
+      t.addEventListener('keydown', function (e) {
+        var n = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1 : e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1 : null;
+        if (n === null) return;
+        e.preventDefault(); select(tabs[(n + tabs.length) % tabs.length], true);
+      });
+    });
+    box.querySelectorAll('.next-tab').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var t = $(b.dataset.go); select(t, true);
+        if (t.getBoundingClientRect().top < 0) t.scrollIntoView({ block: 'start' });
+      });
+    });
+  });
+
   /* ---------- Copy email ---------- */
-  document.getElementById('copy-email').addEventListener('click', function () {
-    var ok = document.getElementById('copy-ok');
-    var email = 'dschneiderman955@gmail.com';
+  $('copy-email').addEventListener('click', function () {
+    var ok = $('copy-ok'), email = 'dschneiderman955@gmail.com';
     (navigator.clipboard ? navigator.clipboard.writeText(email) : Promise.reject())
       .then(function () { ok.textContent = 'Copied ' + email; })
       .catch(function () { ok.textContent = email; });
   });
 
+  /* ---------- UN: validation as you type ---------- */
+  var V = { emp: $('v-emp'), women: $('v-women'), s1: $('v-s1'), s2: $('v-s2'), tot: $('v-tot'), pol: $('v-pol'), desc: $('v-desc') };
+  var DEFAULTS = { emp: '1,200', women: '1,450', s1: '8,400', s2: '5,800', tot: '12,400', pol: 'Yes', desc: '' };
+  function num(el) { var v = el.value.replace(/[,\s]/g, ''); return v === '' || isNaN(v) ? null : +v; }
+  function fmtN(n) { return n.toLocaleString('en-US'); }
+  function show(id, field, kind, html) {
+    var m = $(id), f = $(field);
+    f.classList.remove('has-error', 'has-warn');
+    if (html) { m.innerHTML = html; m.classList.add('show'); f.classList.add(kind === 'error' ? 'has-error' : 'has-warn'); }
+    else { m.innerHTML = ''; m.classList.remove('show'); }
+  }
+  function validate() {
+    var errors = 0, warns = 0, e = num(V.emp), w = num(V.women), s1 = num(V.s1), s2 = num(V.s2), t = num(V.tot);
+    if (e !== null && w !== null && w > e) {
+      errors++;
+      show('m-women', 'f-women', 'error', '<b>Error</b>Women employees (' + fmtN(w) + ') can\'t be more than total employees (' + fmtN(e) + '). Check whether the numbers are swapped.<br><button type="button" data-fix="swap">Swap the two numbers</button>');
+    } else show('m-women', 'f-women');
+    if (s1 !== null && s2 !== null && t !== null && Math.abs(s1 + s2 - t) > 0.5) {
+      warns++;
+      show('m-tot', 'f-tot', 'warn', '<b>Check</b>Scope 1 + Scope 2 is ' + fmtN(s1 + s2) + ', but the total says ' + fmtN(t) + '.<br><button type="button" data-fix="total">Use ' + fmtN(s1 + s2) + '</button>');
+    } else show('m-tot', 'f-tot');
+    var d = V.desc.value.trim();
+    if (V.pol.value === 'Yes' && d.split(/\s+/).filter(Boolean).length < 6) {
+      warns++;
+      show('m-desc', 'f-desc', 'warn', '<b>Suggestion</b>You answered "Yes". A sentence on what the policy covers and who approved it makes the answer verifiable, and readers trust it more.');
+    } else show('m-desc', 'f-desc');
+    var st = $('v-status');
+    st.className = 'pill' + (errors ? ' bad' : warns ? ' warn' : '');
+    st.textContent = errors ? errors + ' error' + (errors > 1 ? 's' : '') + (warns ? ' · ' + warns + ' to check' : '') : warns ? warns + ' to check · can submit' : '✓ Ready to submit';
+    $('v-submit').disabled = errors > 0;
+  }
+  $('vform').addEventListener('input', validate);
+  $('vform').addEventListener('change', validate);
+  $('vform').addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-fix]'); if (!b) return;
+    if (b.dataset.fix === 'swap') { var tmp = V.emp.value; V.emp.value = V.women.value; V.women.value = tmp; V.women.focus(); }
+    if (b.dataset.fix === 'total') { V.tot.value = fmtN(num(V.s1) + num(V.s2)); V.tot.focus(); }
+    validate();
+  });
+  $('vform').addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var st = $('v-status'); st.className = 'pill'; st.textContent = '✓ Submitted (demo)';
+  });
+  $('v-reset').addEventListener('click', function () { Object.keys(DEFAULTS).forEach(function (k) { V[k].value = DEFAULTS[k]; }); validate(); });
+  validate();
+
   /* ---------- Betawise: focus logic ---------- */
-  // Shares of 14 days in each range. Consensus targets (Battelino 2019):
-  // <54 under 1%, 54–69 under 4%, 70–180 over 70%, 181–250 under 20% (all >180 under 25%), >250 under 5%.
+  // Consensus targets (Battelino 2019): <54 under 1%, <70 under 4%, 70–180 over 70%, >180 under 25%, >250 under 5%.
   var RANGES = [
     { k: 'vlow', label: 'Very low · under 54', color: 'var(--r-vlow)', ok: function (p) { return p.vlow < 1; }, goal: 'under 1%' },
     { k: 'low', label: 'Low · 54–69', color: 'var(--r-low)', ok: function (p) { return p.vlow + p.low < 4; }, goal: 'under 4%' },
@@ -734,34 +943,29 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
     { vlow: 0.3, low: 1.7, in: 58, high: 27, vhigh: 13, gain: 9, pattern: 'Post-breakfast spikes', where: 'Glucose rises above 250 within 90 minutes of breakfast on 9 of 14 days.' }
   ];
   function focusFor(p) {
-    if (p.vlow >= 1 || p.vlow + p.low >= 4) {
-      return { safety: true, kind: 'Safety first · this week\'s focus', title: p.pattern, body: p.where + ' Lows come first, even though cutting highs would add more time in range.' };
-    }
-    var gain = p.gain;
-    return { safety: false, kind: 'Biggest opportunity · this week\'s focus', title: p.pattern, body: p.where + ' Fixing this could add about ' + gain + ' points of time in range.' };
+    if (p.vlow >= 1 || p.vlow + p.low >= 4) return { safety: true, kind: 'Safety first · this week\'s focus', title: p.pattern, body: p.where + ' Lows come first, even though cutting highs would add more time in range.' };
+    return { safety: false, kind: 'Biggest opportunity · this week\'s focus', title: p.pattern, body: p.where + ' Fixing this could add about ' + p.gain + ' points of time in range.' };
   }
-  var bar = document.getElementById('tir-bar'), rows = document.getElementById('tir-rows');
+  var tbar = $('tir-bar'), rows = $('tir-rows');
   RANGES.forEach(function (r) {
-    var s = document.createElement('span'); s.style.background = r.color; s.dataset.k = r.k; bar.appendChild(s);
+    var s = document.createElement('span'); s.style.background = r.color; s.dataset.k = r.k; tbar.appendChild(s);
     var li = document.createElement('li'); li.dataset.k = r.k;
     li.innerHTML = '<i style="background:' + r.color + '"></i><span>' + r.label + '</span><span class="val"></span><span class="goal"></span>';
     rows.appendChild(li);
   });
   function renderProfile(i) {
     var p = PROFILES[i];
-    document.getElementById('tir-val').innerHTML = p.in + '<small>%</small>';
+    $('tir-val').innerHTML = p.in + '<small>%</small>';
     RANGES.forEach(function (r) {
-      bar.querySelector('[data-k="' + r.k + '"]').style.flexGrow = p[r.k];
+      tbar.querySelector('[data-k="' + r.k + '"]').style.flexGrow = p[r.k];
       var li = rows.querySelector('[data-k="' + r.k + '"]');
       li.querySelector('.val').textContent = p[r.k].toFixed(1) + '%';
-      var g = li.querySelector('.goal'); var ok = r.ok(p);
+      var g = li.querySelector('.goal'), ok = r.ok(p);
       g.textContent = (ok ? '✓ ' : '✕ ') + r.goal; g.classList.toggle('miss', !ok);
     });
-    var f = focusFor(p), box = document.getElementById('focus');
-    box.classList.toggle('safety', f.safety);
-    document.getElementById('focus-kind').textContent = f.kind;
-    document.getElementById('focus-title').textContent = f.title;
-    document.getElementById('focus-body').textContent = f.body;
+    var f = focusFor(p);
+    $('focus').classList.toggle('safety', f.safety);
+    $('focus-kind').textContent = f.kind; $('focus-title').textContent = f.title; $('focus-body').textContent = f.body;
   }
   var segBtns = document.querySelectorAll('.seg button');
   segBtns.forEach(function (b) {
@@ -778,31 +982,30 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
   var MONTHS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
   function hashtags(t) { var out = [], m, re = /(?<![\w&])#([A-Za-z0-9_\-]+)/g; while ((m = re.exec(t))) { var g = m[1].toLowerCase(); if (out.indexOf(g) < 0) out.push(g); } return out; }
   function stripTags(t) { return t.replace(/(?<![\w&])#[A-Za-z0-9_\-]+\s?/g, ''); }
+  function today0(now) { return new Date(now.getFullYear(), now.getMonth(), now.getDate()); }
   function findDate(t, now) {
-    var s = t.toLowerCase(), d = null, m, matched = [];
+    var s = t.toLowerCase(), m, matched = [];
     if ((m = s.match(/\bin (\d+) (minute|min|hour|hr|day)s?\b/))) {
       var n = +m[1], unit = m[2][0];
-      d = new Date(now.getTime() + n * (unit === 'm' ? 60e3 : unit === 'h' ? 36e5 : 864e5)); matched.push(m[0]);
-      return { date: d, matched: matched };
+      return { date: new Date(now.getTime() + n * (unit === 'm' ? 60e3 : unit === 'h' ? 36e5 : 864e5)), matched: [m[0]] };
     }
     var base = null;
     if ((m = s.match(/\btomorrow\b/))) { base = new Date(now); base.setDate(base.getDate() + 1); matched.push(m[0]); }
     else if ((m = s.match(/\btoday\b|\btonight\b/))) { base = new Date(now); matched.push(m[0]); }
     else if ((m = s.match(new RegExp('\\b(' + DAYS.join('|') + ')\\b')))) {
-      base = new Date(now); var diff = (DAYS.indexOf(m[1]) - now.getDay() + 7) % 7 || 7; base.setDate(base.getDate() + diff); matched.push(m[0]);
+      base = new Date(now); base.setDate(base.getDate() + ((DAYS.indexOf(m[1]) - now.getDay() + 7) % 7 || 7)); matched.push(m[0]);
     }
     else if ((m = s.match(/\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+(\d{1,2})(?:st|nd|rd|th)?(?:,?\s+(\d{4}))?\b/))) {
       base = new Date(m[3] ? +m[3] : now.getFullYear(), MONTHS.indexOf(m[1]), +m[2]); matched.push(m[0]);
-      if (!m[3] && base < new Date(now.getFullYear(), now.getMonth(), now.getDate())) base.setFullYear(base.getFullYear() + 1);
+      if (!m[3] && base < today0(now)) base.setFullYear(base.getFullYear() + 1);
     }
     else if ((m = s.match(/\b(\d{1,2})\/(\d{1,2})(?:\/(\d{2,4}))?\b/))) {
-      var y = m[3] ? (+m[3] < 100 ? 2000 + +m[3] : +m[3]) : now.getFullYear();
-      base = new Date(y, +m[1] - 1, +m[2]); matched.push(m[0]);
-      if (!m[3] && base < new Date(now.getFullYear(), now.getMonth(), now.getDate())) base.setFullYear(base.getFullYear() + 1);
+      base = new Date(m[3] ? (+m[3] < 100 ? 2000 + +m[3] : +m[3]) : now.getFullYear(), +m[1] - 1, +m[2]); matched.push(m[0]);
+      if (!m[3] && base < today0(now)) base.setFullYear(base.getFullYear() + 1);
     }
     var tm = s.match(/\b(?:at\s+)?(\d{1,2})(?::(\d{2}))?\s*(am|pm)\b/) || s.match(/\bat\s+(\d{1,2}):(\d{2})\b/);
     if (tm) {
-      var h = +tm[1] % 12 + (tm[3] === 'pm' ? 12 : 0); if (!tm[3]) h = +tm[1];
+      var h = tm[3] ? +tm[1] % 12 + (tm[3] === 'pm' ? 12 : 0) : +tm[1];
       var explicitDay = !!base; base = base || new Date(now);
       base.setHours(h, tm[2] ? +tm[2] : 0, 0, 0); matched.push(tm[0]);
       if (!explicitDay && base < now) base.setDate(base.getDate() + 1); // "at 9am" said at 10am → tomorrow
@@ -815,7 +1018,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
     return day + ', ' + d.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
   }
   function esc(s) { return s.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
-  var input = document.getElementById('jv-in');
+  var input = $('jv-in');
   function parse() {
     var raw = input.value;
     // Sub-items: " - item" segments (newlines in the app; dashes here since it's one line).
@@ -832,12 +1035,11 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
     if (date) date.matched.forEach(function (m) { title = title.replace(new RegExp(m.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i'), ''); });
     title = title.replace(/^\s*(add to calendar|event|cal)\b:?\s*/i, '').replace(/\s+(at|on|in|by)\s*$/i, '').replace(/\s{2,}/g, ' ').trim().replace(/^(to|at|on|in|by)\s+/i, '');
 
-    var t = document.getElementById('jv-title-out');
+    var t = $('jv-title-out');
     t.textContent = title || 'Start typing…'; t.classList.toggle('empty', !title);
-    document.getElementById('jv-when').textContent = date ? (isEvent ? '📅 ' : '⏰ ') + fmt(date.date) : 'just now';
-    document.getElementById('jv-subs').innerHTML = subs.map(function (s, i) { return '<li>' + (i === subs.length - 1 ? '└─ ' : '├─ ') + esc(stripTags(s)) + '</li>'; }).join('');
-    document.getElementById('jv-tags').innerHTML = tags.map(function (g) { return '<span class="tag">#' + esc(g) + '</span>'; }).join('');
-
+    $('jv-when').textContent = date ? (isEvent ? '📅 ' : '⏰ ') + fmt(date.date) : 'just now';
+    $('jv-subs').innerHTML = subs.map(function (s, i) { return '<li>' + (i === subs.length - 1 ? '└─ ' : '├─ ') + esc(stripTags(s)) + '</li>'; }).join('');
+    $('jv-tags').innerHTML = tags.map(function (g) { return '<span class="tag">#' + esc(g) + '</span>'; }).join('');
     var checks = [
       [tags.length > 0, tags.length ? 'Filed under ' + tags.map(function (g) { return '#' + g; }).join(', ') : 'No tags: it lands in the feed'],
       [isReminder && !!date, isReminder ? (date ? 'Reminder scheduled for ' + fmt(date.date) : 'Reminder, but no time found yet') : 'Start with "remind me…" to schedule a notification'],
@@ -846,7 +1048,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: 
       [subs.length > 0, subs.length ? subs.length + ' sub-item' + (subs.length > 1 ? 's' : '') + ' nested under it' : 'Use " - item" to add sub-items'],
       [!!link, link ? 'Link detected and made tappable' : 'Paste a link and it becomes tappable']
     ];
-    document.getElementById('jv-parsed').innerHTML = checks.map(function (c) { return '<li class="' + (c[0] ? 'on' : '') + '"><span class="ck" aria-hidden="true"></span><span>' + esc(c[1]) + '</span></li>'; }).join('');
+    $('jv-parsed').innerHTML = checks.map(function (c) { return '<li class="' + (c[0] ? 'on' : '') + '"><span class="ck" aria-hidden="true"></span><span>' + esc(c[1]) + '</span></li>'; }).join('');
   }
   input.addEventListener('input', parse);
   document.querySelectorAll('.examples button').forEach(function (b) {
