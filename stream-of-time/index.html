@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>The Stream of Time — Daniel Schneiderman</title>
+<meta name="description" content="Case study: The Stream of Time, an interactive edition of Sebastian Adams's 1871 chart of world history." />
+<meta property="og:title" content="The Stream of Time — Daniel Schneiderman" />
+<meta property="og:description" content="Case study: The Stream of Time, an interactive edition of Sebastian Adams's 1871 chart of world history." />
+<meta property="og:url" content="https://danielschneiderman.com/stream-of-time/" />
+<meta property="og:type" content="website" />
+<link rel="canonical" href="https://danielschneiderman.com/stream-of-time/" />
+<meta name="color-scheme" content="dark light" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b7bff'/%3E%3Cstop offset='1' stop-color='%2322d3ee'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='url(%23g)'/%3E%3Ctext x='16' y='21.5' font-family='Helvetica,Arial' font-weight='700' font-size='13' fill='white' text-anchor='middle'%3EDS%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css" />
+<script>
+  // Saved theme before first paint; otherwise dark unless the device prefers light.
+  (function () {
+    var t = null; try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    document.documentElement.dataset.theme = t;
+  })();
+  // A page transition the browser skips (e.g. background tab) is harmless; don't log it as an error.
+  ['pageswap', 'pagereveal'].forEach(function (ev) {
+    addEventListener(ev, function (e) { var vt = e.viewTransition; if (vt) { vt.ready.catch(function () {}); vt.finished.catch(function () {}); } });
+  });
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="nav glass" aria-label="Primary">
+  <a class="mark" href="/" aria-label="Daniel Schneiderman, home">DS</a>
+  <a class="link" href="/">Home</a>
+  <a class="link" href="/insights/">Insights</a>
+  <a class="link" href="/betawise/">Betawise</a>
+  <a class="link" href="/jarvis/">Jarvis</a>
+  <a class="link" href="/stream-of-time/">Stream of Time</a>
+  <a class="link" href="/about/">About</a>
+  <button class="k" type="button" data-cmdk aria-haspopup="dialog"><span class="k-long">Search</span><span class="k-short">Menu</span><kbd>⌘K</kbd></button>
+  <button class="icon" type="button" id="theme" aria-label="Switch theme">
+    <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+  </button>
+</nav>
+
+<main id="main">
+
+<header class="page-head">
+  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <p class="crumbs"><a href="/">Work</a><span aria-hidden="true">/</span><span>The Stream of Time</span></p>
+    <h1 class="vt-sot">The Stream of Time</h1>
+    <p class="lede">A side project: an interactive edition of Sebastian Adams's 1871 <i>Synchronological Chart of Universal History</i>, a 23-foot scroll that drew 6,000 years of history as rivers running side by side.</p>
+    <dl class="meta"><div class="glass"><dt>Role</dt><dd>Designer &amp; builder</dd></div><div class="glass"><dt>Type</dt><dd>Interactive data story</dd></div><div class="glass"><dt>Spans</dt><dd>4004 B.C. to today</dd></div><div class="glass"><dt>Try it</dt><dd><a href="/stream-of-time/app/">Open the app ↗</a></dd></div></dl>
+  </div>
+</header>
+<section class="wrap" aria-label="Live app" style="padding-bottom:24px">
+  <figure class="reveal" style="margin:0">
+    <div class="browser glass">
+      <div class="browser-bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="url">danielschneiderman.com/stream-of-time/app</span><a class="open-full" href="/stream-of-time/app/">Full screen ↗</a></div>
+      <div class="embed" id="embed">
+        <iframe src="/stream-of-time/app/" title="The Stream of Time, interactive chart of world history" loading="lazy"></iframe>
+        <button class="embed-cover" id="embed-cover" type="button"><span class="btn btn-primary">Click to explore <span aria-hidden="true">→</span></span><span class="hint">Drag sideways to travel through time. Try "Tell the story".</span></button>
+      </div>
+    </div>
+    <figcaption class="fine" style="max-width:none;margin-top:14px">The real app, running live. On a phone it's best opened full screen.</figcaption>
+  </figure>
+</section>
+
+<section class="wrap prose">
+  <div class="stats reveal" style="margin:32px 0 0">
+    <div class="glass spot"><strong>6,030 years</strong><span>from Adams's 4004 B.C. start to today</span></div>
+    <div class="glass spot"><strong>24 streams</strong><span>regions and traditions, side by side</span></div>
+    <div class="glass spot"><strong>19 chapters</strong><span>in a guided story, plus 6 threads to follow</span></div>
+  </div>
+  <div class="chapter reveal" style="margin-top:40px">
+    <span class="label">01 — The idea</span>
+    <h2>Look down any year and see the whole world.</h2>
+    <p>In 1871 Sebastian Adams drew every nation as a stream flowing left to right, swelling in its age of power and narrowing in decline. Read straight down a single year and you see what was happening everywhere at once: Rome and Han China as contemporaries, the Mongols and the Renaissance a few inches apart.</p>
+    <p>I love that chart and wanted to see what it could become as something you travel through instead of unroll.</p>
+  </div>
+  <div class="chapter reveal">
+    <span class="label">02 — What's in it</span>
+    <h2>One line of time, many ways in.</h2>
+    <ul class="features">
+      <li class="glass spot"><strong>The reading line</strong><span>A gold line marks one year. Everything under it, across every stream, is happening at the same time.</span></li>
+      <li class="glass spot"><strong>A living map</strong><span>Each realm alive at the reading line lights up on a world map above the river.</span></li>
+      <li class="glass spot"><strong>Tell the story</strong><span>A 19-chapter guided tour, from "In the beginning" to "Today".</span></li>
+      <li class="glass spot"><strong>Follow a thread</strong><span>Trace one idea, like the Silk Road or gunpowder, across centuries and the map.</span></li>
+      <li class="glass spot"><strong>Marvels, ideas, and lives</strong><span>Drawn monuments, inventions, and 90+ notable people placed in time.</span></li>
+      <li class="glass spot"><strong>Find anything</strong><span>Search a year like 1492, an event, a dynasty, or a person, and jump straight there.</span></li>
+    </ul>
+  </div>
+  <div class="chapter reveal">
+    <span class="label">03 — Choices that shaped it</span>
+    <h2>Faithful to the scroll, honest about it.</h2>
+    <ol class="decisions" style="margin-top:22px">
+      <li class="glass spot"><h3>Show a moment, not a list.</h3><p>The reading line turns the chart's best trick, seeing everything at once, into the main interaction.</p></li>
+      <li class="glass spot"><h3>Keep Adams's scale, but let people change it.</h3><p>Like the original, ancient centuries are compressed and recent ones stretched. "Even scale" draws every century the same width.</p></li>
+      <li class="glass spot"><h3>Respect the source, add context.</h3><p>The chart keeps Adams's 4004 B.C. starting point and his scripture bands, and the story says plainly where archaeology tells a longer one.</p></li>
+      <li class="glass spot"><h3>Guided or free, your choice.</h3><p>A story for people who want to be led, threads for the curious, and drag-to-travel for everyone else.</p></li>
+    </ol>
+  </div>
+  <div class="chapter reveal">
+    <span class="label">04 — How I built it</span>
+    <h2>A side project, built with AI as a pair.</h2>
+    <p>I designed and built it with Claude: assembling the timeline data, drawing the map and the monuments, and iterating on the design until it felt like a story rather than a spreadsheet. In its Claude-hosted version, an optional "fuller story" writes deeper context about any event on click; the copy here runs without it.</p>
+  </div>
+  <a class="next-case glass spot reveal" href="/insights/"><div><span class="label">Next · UN Global Compact</span><strong>Insights</strong></div><span class="arrow-chip" aria-hidden="true">→</span></a>
+</section>
+
+<section class="contact-band" aria-labelledby="ct-title">
+  <div class="wrap reveal">
+    <h2 id="ct-title">Say <span class="grad-text">hello.</span></h2>
+    <p>Always happy to talk about product, building with AI, or diabetes tech.</p>
+    <div class="ctas">
+      <a class="btn btn-primary" href="mailto:dschneiderman955@gmail.com">Email me</a>
+      <button class="btn btn-glass glass" type="button" data-copy>Copy email</button>
+      <a class="btn btn-glass glass" href="https://www.linkedin.com/in/danielschneiderman955/" rel="noopener">LinkedIn ↗</a>
+      <a class="btn btn-glass glass" href="/Daniel_Schneiderman_Resume.pdf" download>Résumé ↓</a>
+    </div>
+    <span class="copied" id="copied" role="status"></span>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Daniel A. Schneiderman · Fort Lee, NJ</span>
+    <span>Designed and coded by hand, with AI as a pair. Press <kbd>⌘K</kbd> anywhere.</span>
+  </div>
+</footer>
+
+<dialog class="cmdk" id="cmdk" aria-label="Command menu">
+  <div class="cmdk-in">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+    <input id="cmdk-q" type="text" placeholder="Go to a page or run an action…" autocomplete="off" role="combobox" aria-expanded="true" aria-controls="cmdk-list" aria-autocomplete="list" />
+    <kbd>esc</kbd>
+  </div>
+  <ul id="cmdk-list" role="listbox" aria-label="Results"></ul>
+  <div class="cmdk-foot"><span>↑↓ navigate</span><span>↵ select</span><span>esc close</span></div>
+</dialog>
+
+<script src="/site.js"></script>
+<script>
+(function () {
+  var cover = document.getElementById('embed-cover'), embed = document.getElementById('embed');
+  cover.addEventListener('click', function () { embed.classList.add('live'); var f = embed.querySelector('iframe'); try { f.focus(); } catch (e) {} });
+})();
+</script>
+</body>
+</html>

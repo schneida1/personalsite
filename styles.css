@@ -504,3 +504,25 @@ dialog.cmdk::backdrop { background: rgba(0,0,0,.35); backdrop-filter: blur(4px);
 /* The theme switch uses its own circular reveal, not the page-change fade */
 :root.theme-vt::view-transition-old(root), :root.theme-vt::view-transition-new(root) { animation: none; }
 :root.theme-vt::view-transition-group(*) { animation: none; }
+
+/* =====================================================================
+   The Stream of Time
+   ===================================================================== */
+.vt-sot { view-transition-name: t-sot; }
+@media (min-width: 901px) { .bento .b-stat { grid-column: span 2; } }
+.mini-streams { position: relative; margin-top: auto; padding-top: 18px; display: grid; gap: 7px; }
+.mini-streams i { display: block; height: 12px; width: var(--w); margin-left: var(--l); border-radius: 999px; background: color-mix(in srgb, var(--c) 70%, transparent); }
+.mini-streams .reader { position: absolute; top: 8px; bottom: -6px; left: 46%; width: 2px; border-radius: 2px; background: #e2bb6a; box-shadow: 0 0 12px #e2bb6a; animation: read 9s ease-in-out infinite alternate; }
+@keyframes read { from { left: 18%; } to { left: 78%; } }
+@media (prefers-reduced-motion: reduce) { .mini-streams .reader { animation: none; } }
+
+.browser-bar .open-full { font: 500 12px var(--sans); color: var(--a2); text-decoration: none; white-space: nowrap; }
+.browser-bar .open-full:hover { text-decoration: underline; }
+.embed { position: relative; height: min(78vh, 680px); background: #0b0f1c; }
+.embed iframe { display: block; width: 100%; height: 100%; border: 0; pointer-events: none; }
+.embed.live iframe { pointer-events: auto; }
+.embed-cover { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 12px; border: 0; cursor: pointer; background: rgba(8,8,12,.35); transition: background .3s, opacity .3s; }
+.embed-cover:hover { background: rgba(8,8,12,.2); }
+.embed-cover .hint { font: 500 13px var(--sans); color: #ececf0; text-shadow: 0 1px 8px rgba(0,0,0,.8); }
+.embed.live .embed-cover { opacity: 0; pointer-events: none; }
+@media (max-width: 640px) { .embed { height: 70vh; } }

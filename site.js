@@ -56,6 +56,7 @@
     { g: 'Pages', t: 'Insights — UN Global Compact data platform', ic: '▦', run: nav('/insights/') },
     { g: 'Pages', t: 'Betawise — CGM coach', ic: '◐', run: nav('/betawise/') },
     { g: 'Pages', t: 'Jarvis — text-yourself notes app', ic: '✦', run: nav('/jarvis/') },
+    { g: 'Pages', t: 'The Stream of Time — 6,000 years of history', ic: '≋', run: nav('/stream-of-time/') },
     { g: 'Pages', t: 'About & experience', ic: '◇', run: nav('/about/') },
     { g: 'Actions', t: 'Copy email address', ic: '⧉', run: function () { copyEmail(); var c = $('copied'); if (c) c.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' }); } },
     { g: 'Actions', t: 'Email Daniel', ic: '→', run: function () { location.href = 'mailto:' + EMAIL; } },
